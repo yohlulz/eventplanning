@@ -16,6 +16,9 @@ $lang['website_sign_in']						= 'Sign in';
 $lang['website_sign_up']						= 'Sign up';
 $lang['website_connect_with_facebook']			= 'Connect with Facebook';
 $lang['website_page_rendered_in_x_seconds']		= 'Page rendered in %s seconds';
+$lang['terms_of_use']						= 'Terms of use';
+$lang['privacy_policy']						= 'Privacy policy';
+$lang['author']						= 'Marin Oana Andreea';
 
 
 /* End of file general_lang.php */

@@ -41,7 +41,7 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';//change it !!!!! 
+$db['default']['hostname'] = 'localhost';//'192.168.1.4';//change it !!!!! 
 $db['default']['username'] = 'oana';
 $db['default']['password'] = 'somnorici';
 $db['default']['database'] = 'oana_event';

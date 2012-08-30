@@ -13,6 +13,7 @@
 <!-- ======================================================== -->
 <div class="cl">&nbsp;</div>
         <div class="grid_6">
+            <?php echo form_open(uri_string().($this->input->get('continue')?'/?continue='.urlencode($this->input->get('continue')):'')); ?>
             <?php echo form_fieldset(); ?>
             <h3><?php echo lang('sign_in_heading'); ?></h3>
             <?php if (isset($sign_in_error)) : ?>

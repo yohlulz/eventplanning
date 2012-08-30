@@ -117,6 +117,7 @@ h1#logo a {
 
 h1#logo a:hover {
 	text-decoration: none;
+	text-decoration: italic;
 	font-weight: bold;
 }
 
