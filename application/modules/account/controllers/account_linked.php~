@@ -85,9 +85,8 @@ class Account_linked extends CI_Controller {
 				$data['num_of_linked_accounts']++;
 			}
 		}
-		$this->load->view('header');
-		$this->load->view('account/account_linked', $data);		
-		$this->load->view('footer');
+		
+		$this->load->view('account/account_linked', $data);
 	}
 	
 }

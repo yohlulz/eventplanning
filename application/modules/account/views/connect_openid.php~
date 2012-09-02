@@ -14,48 +14,45 @@
 
 	<!-- login -->
 	<div class="container_12 log_form">
-        <div class="grid_12">
-        	<h2><?php echo lang('forgot_password_page_name'); ?></h2>
+ <div class="grid_12">
+            <h2><?php echo sprintf(lang('connect_with_x'), lang('connect_openid')); ?></h2>
         </div>
         <div class="clear"></div>
-        <div class="grid_12">
+        <div class="grid_6">
             <?php echo form_open(uri_string()); ?>
             <?php echo form_fieldset(); ?>
-            <p><?php echo lang('forgot_password_instructions'); ?></p>
-            <div class="grid_2 alpha">
-                <?php echo form_label(lang('forgot_password_username_email'), 'forgot_password_username_email'); ?>
+            <h3><?php echo sprintf(lang('connect_enter_your'), lang('connect_openid_url')); ?></h3> 
+                <small><?php echo anchor($this->config->item('openid_what_is_url'), lang('connect_start_what_is_openid'), array('target'=>'_blank')); ?></small>
+            <?php if (isset($connect_openid_error)) : ?>
+            <div class="grid_6 alpha">
+                <div class="form_error"><?php echo $connect_openid_error; ?></div>
             </div>
-            <div class="grid_6 omega">
+            <div class="clear"></div>
+            <?php endif; ?>
+            <?php if ($this->session->flashdata('connect_openid_error')) : ?>
+            <div class="grid_6 alpha">
+                <div class="form_error"><?php echo $this->session->flashdata('connect_openid_error'); ?></div>
+            </div>
+            <div class="clear"></div>
+            <?php endif; ?>
+            <div class="grid_6 alpha">
                 <?php echo form_input(array(
-                        'name' => 'forgot_password_username_email',
-                        'id' => 'forgot_password_username_email',
-                        'value' => set_value('forgot_password_username_email') ? set_value('forgot_password_username_email') : (isset($account) ? $account->username : ''),
-                        'maxlength' => '80'
+                        'name' => 'connect_openid_url',
+                        'id' => 'connect_openid_url',
+                        'class' => 'openid-input',
+                        'value' => set_value('connect_openid_url')
                     )); ?>
-                <?php echo form_error('forgot_password_username_email'); ?>
-                <?php if (isset($forgot_password_username_email_error)) : ?>
-                <span class="field_error"><?php echo $forgot_password_username_email_error; ?></span>
-                <?php endif; ?>
+                <?php echo form_error('connect_openid_url'); ?>
             </div>
             <div class="clear"></div>
-            <?php if (isset($recaptcha)) : ?>
-            <div class="prefix_2 grid_8 alpha">
-                <?php echo $recaptcha; ?>
-            </div>
-            <?php if (isset($forgot_password_recaptcha_error)) : ?>
-            <div class="prefix_2 grid_6 alpha">
-                <span class="field_error"><?php echo $forgot_password_recaptcha_error; ?></span>
-            </div>
-            <?php endif; ?>
-            <div class="clear"></div>
-            <?php endif; ?>
-            <div class="prefix_2 grid_6 alpha">
+            <div class="grid_6 alpha">
                 <?php echo form_button(array(
                         'type' => 'submit',
                         'class' => 'btn',
-                        'content' => lang('forgot_password_send_instructions')
+                        'content' => lang('connect_proceed')
                     )); ?>
             </div>
+            <div class="clear"></div>
             <?php echo form_fieldset_close(); ?>
             <?php echo form_close(); ?>
         </div>

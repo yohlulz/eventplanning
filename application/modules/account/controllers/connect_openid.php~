@@ -145,9 +145,8 @@ class Connect_openid extends CI_Controller {
 				header("Location: ".$auth_request->redirectURL(base_url(), site_url('account/connect_openid')));
 			}
 		}
-		$this->load->view('header');
+		
 		$this->load->view('connect_openid', isset($data) ? $data : NULL);
-		$this->load->view('footer');
 	}
 	
 }

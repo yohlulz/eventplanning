@@ -97,9 +97,7 @@ class Account_settings extends CI_Controller {
 			}
 		}
 		
-		$this->load->view('header');
 		$this->load->view('account/account_settings', $data);
-		$this->load->view('footer');
 	}
 	
 	/**

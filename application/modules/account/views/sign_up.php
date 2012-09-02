@@ -1,25 +1,26 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><?php echo lang('sign_up_page_name'); ?></title>
-<base href="<?php echo base_url(); ?>" />
-<link rel="shortcut icon" href="<?php echo base_url(); ?>favicon.ico" />
-<link type="text/css" rel="stylesheet" href="resource/css/960gs/960gs.css" />
-<link type="text/css" rel="stylesheet" href="resource/css/style.css" />
-</head>
-<body class="sign_up">
-<?php echo $this->load->view('header'); ?>
-<div id="content">
-    <div class="container_12">
-        <div class="grid_12">
-            <h2><?php echo anchor(current_url(), lang('sign_up_page_name')); ?></h2>
+<body>
+<?php echo $this->load->view('headup'); ?>
+<div class="shell">
+<?php echo $this->load->view('slider'); ?>
+<?php echo $this->load->view('menu'); ?>
+<!-- main -->
+<div id="main">
+
+	<!-- content -->
+	<div id="content" class="left">
+
+
+<!-- ======================================================== -->
+
+	<!-- login -->
+	<div class="container_12 log_form">
+<div class="grid_12">
         </div>
         <div class="clear"></div>
         <div class="grid_6">
             <?php echo form_open(uri_string()); ?>
             <?php echo form_fieldset(); ?>
-            <h3><?php echo lang('sign_up_heading'); ?></h3>
+            <h2><?php echo lang('sign_up_heading'); ?></h2>
             <div class="grid_2 alpha">
                 <?php echo form_label(lang('sign_up_username'), 'sign_up_username'); ?>
             </div>
@@ -37,6 +38,7 @@
             </div>
             <div class="clear"></div>
             <div class="grid_2 alpha">
+
                 <?php echo form_label(lang('sign_up_password'), 'sign_up_password'); ?>
             </div>
             <div class="grid_4 omega">
@@ -78,7 +80,7 @@
             <div class="prefix_2 grid_4 alpha omega">
                 <?php echo form_button(array(
                         'type' => 'submit',
-                        'class' => 'button',
+                        'class' => 'btn',
                         'content' => lang('sign_up_create_my_account')
                     )); ?>
             </div>
@@ -89,18 +91,81 @@
             <?php echo form_close(); ?>
         </div>
         <div class="grid_6">
-            <h3><?php echo sprintf(lang('sign_up_third_party_heading')); ?></h3>
+            <h2><?php echo sprintf(lang('sign_up_third_party_heading')); ?></h2>
             <ul>
                 <?php foreach($this->config->item('third_party_auth_providers') as $provider) : ?>
                 <li class="third_party <?php echo $provider; ?>"><?php echo anchor('account/connect_'.$provider, lang('connect_'.$provider), 
                     array('title'=>sprintf(lang('sign_up_with'), lang('connect_'.$provider)))); ?></li>
                 <?php endforeach; ?>
+
             </ul>
             <div class="clear"></div>
         </div>
         <div class="clear"></div>
     </div>
+	<!-- end login -->
+
+
+          
+<!-- ========================================================== -->
+
+
+
+
+
+
 </div>
-<?php echo $this->load->view('footer'); ?>
-</body>
-</html>
+	<!-- end content -->
+	
+	<!-- sidebar -->
+	<div id="sidebar" class="right">
+
+<!--  ==================================================================== -->
+<!-- blog roll -->
+			<div class="blog-roll">
+				<a href="#" class="rss-feed notext">&nbsp;</a>
+				<h2>Blog Roll</h2>
+				<div class="cl">&nbsp;</div>
+				
+				<!-- blog roll item -->
+				<div class="blog-item">
+					<h4><a href="#">Nulla at lobortis mauris.</a></h4>
+					<span class="blog-date">23.05.09</span>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at lobortis mauris.</p>
+				</div>
+				<!-- end blog roll item -->
+				
+				<!-- blog roll item -->
+				<div class="blog-item">
+					<h4><a href="#">Ipsum dolor sit</a></h4>
+					<span class="blog-date">23.05.09</span>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at lobortis mauris.</p>
+				</div>
+				<!-- end blog roll item -->
+				
+				<!-- blog roll item -->
+				<div class="blog-item">
+					<h4><a href="#">Suspedisse quis orci vitae</a></h4>
+					<span class="blog-date">23.05.09</span>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at lobortis mauris.</p>
+				</div>
+				<!-- end blog roll item -->
+
+			</div>
+			<!-- end blog roll -->
+							
+			<!-- contact -->
+			<div class="contact">
+				<h2>Contact</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at lobortis mauris. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.</p>
+			</div>
+			<!-- end contact -->
+<!-- ====================================================================================== -->
+
+
+	</div>
+	<!-- end sidebar -->
+
+	<div class="cl">&nbsp;</div>
+</div>
+<!-- end main -->

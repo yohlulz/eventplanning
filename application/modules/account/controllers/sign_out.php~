@@ -29,13 +29,13 @@ class Sign_out extends CI_Controller {
 	function index()
 	{
 		// Redirect signed out users to homepage
-		if ( ! $this->authentication->is_signed_in()) redirect('');
+		//if ( ! $this->authentication->is_signed_in()) redirect('');
 		
 		// Run sign out routine
-		$this->authentication->sign_out();
+		//$this->authentication->sign_out();
 		
 		// Redirect to homepage
-		if ( ! $this->config->item("sign_out_view_enabled")) redirect('');
+		//if ( ! $this->config->item("sign_out_view_enabled")) redirect('');
 		
 		// Load sign out view
 		$this->load->view('header');

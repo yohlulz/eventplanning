@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= '';//TODO https://diana.uk.to/Oana/event
+$config['base_url']	= '';//TODO https://diana.uk.to/oana/event
 
 /*
 |--------------------------------------------------------------------------

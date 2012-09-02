@@ -92,9 +92,7 @@ class Sign_up extends CI_Controller {
 				$data['recaptcha'] = $this->recaptcha->load($recaptcha_result, $this->config->item("ssl_enabled"));
 		
 		// Load sign up view
-		$this->load->view('header');
 		$this->load->view('sign_up', isset($data) ? $data : NULL);
-		$this->load->view('footer');
 	}
 	
 	/**

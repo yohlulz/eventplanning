@@ -1,5 +1,5 @@
 <div id="main_menu">
-    <div class="container_12 account_form">
+    <div class="container_12 log_form">
         <div class="grid_12">
             <ul>
                 <li<?php if ($current == 'account_settings') echo ' class="active"'; ?>><?php echo anchor('account/account_settings', lang('website_account')); ?></li>

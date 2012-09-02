@@ -16,7 +16,7 @@
 	<div class="container_12 log_form">
 		<?php echo $this->load->view('account/account_menu', array('current' => 'account_settings')); ?>
 		 <div class="grid_12">
-            <h2><?php echo lang('settings_page_name'); ?></h2>
+            <h2><?php echo anchor(current_url(), lang('settings_page_name')); ?></h2>
         </div>
         <div class="clear"></div>
         <div class="grid_8">
