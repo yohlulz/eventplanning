@@ -49,6 +49,17 @@ if ( ! function_exists('maintain_ssl'))
     }
 }
 
+if(! function_exists('checkLanguage')){
+	function checkLanguage()
+	{
+		$CI=&get_instance();
+		$tmp=$CI->session->userdata('lang');
+		if(isset($tmp)){
+			return $tmp;
+		}
+		return "english";
+	}
+}
 
 /* End of file ssl_helper.php */
 /* Location: ./application/helpers/ssl_helper.php */

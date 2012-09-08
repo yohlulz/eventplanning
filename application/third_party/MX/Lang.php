@@ -36,7 +36,7 @@
 class MX_Lang extends CI_Lang
 {
 	public function load($langfile, $lang = '', $return = FALSE, $_module = NULL)	{
-		
+		$lang=checkLanguage();
 		if (is_array($langfile)) return $this->load_many($langfile);
 			
 		$deft_lang = CI::$APP->config->item('language');

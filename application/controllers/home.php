@@ -15,8 +15,7 @@ class Home extends CI_Controller {
 	
 	function index()
 	{
-		maintain_ssl();
-		
+		maintain_ssl();	
 		if ($this->authentication->is_signed_in())
 		{
 			$data['account'] = $this->account_model->get_by_id($this->session->userdata('account_id'));
