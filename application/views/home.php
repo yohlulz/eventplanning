@@ -20,7 +20,7 @@
 				
 				<!-- news item -->
 				<div class="news-item">
-					<span class="news-pointer">9 Nov</span>
+					<span class="news-pointer-date">9 Nov</span>
 					<div class="news-body">
 						<h3>Vehicula neque</h3>
 						<a href="#" class="btn"><span><em>read more</em></span></a>

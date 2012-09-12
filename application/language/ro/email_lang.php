@@ -18,4 +18,3 @@ $lang['email_smtp_auth_un'] = 'Utilizatorul nu a putut fi gasit. Eroare: %s';
 $lang['email_smtp_auth_pw'] = 'Parola este gresita. Eroare: %s';
 $lang['email_smtp_data_failure'] = 'Datele nu au fost trimise: %s';
 $lang['email_exit_status'] = 'Cod de iesire: %s';
-?>

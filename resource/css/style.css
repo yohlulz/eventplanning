@@ -142,15 +142,19 @@ h2 {
 }
 
 #header { 
-	margin-bottom: 13px; 
+	margin-bottom: 1px; 
 }
 
-#header .authenticate {
+#authenticate {
 	float: right;
-	padding-top: 20px;
+	padding-top: 50px;
+}
+	
+#authenticate ul{
+	margin-bottom: 1px;
 }
 
-#header .authenticate li {
+#authenticate li {
 	display:inline; 
 	padding:0 3px; 
 	margin:0;
@@ -159,9 +163,10 @@ h2 {
 h1#logo { 
 	float: left; 
 	display: inline; 
-	width: 330px; 
+	width: 500px; 
 	height: 31px; 
-	padding: 26px 0 0 7px;  
+	padding: 26px 0 0 7px;
+	z-index:12;  
 }
   
 h1#logo a { 
@@ -385,9 +390,22 @@ h1#logo a:hover {
 	width: 78px; 
 	height: 63px; 
 	background: url(images/news-pointer.gif) no-repeat 0 0; 
-	font-size: 23px; 
+	font-size: 30px; 
 	font-weight: bold; 
-	padding: 17px 0 0 36px; 
+	padding: 25px 0 0 36px; 
+	margin: 0 30px 0 -23px;  
+}
+
+.news-item .news-pointer-date { 
+	position: relative;  
+	float: left; 
+	display: inline;  
+	width: 78px; 
+	height: 63px; 
+	background: url(images/news-pointer.gif) no-repeat 0 0; 
+	font-size: 25px; 
+	font-weight: lighter; 
+	padding: 30px 0 0 36px; 
 	margin: 0 30px 0 -23px;  
 }
 
@@ -452,13 +470,13 @@ h1#logo a:hover {
 	text-decoration: none; 
 }
 
-.contact { 
+.contact1 { 
 	border-bottom: 1px dashed #c2c2c2; 
 	padding-bottom: 10px; 
 	margin-top: 25px; 
 }
 
-.contact h2 { 
+.contact1 h2 { 
 	margin-bottom: 10px; 
 }
 

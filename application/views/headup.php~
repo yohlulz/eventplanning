@@ -1,7 +1,7 @@
 <div id="header" class="center">
 	<div id="contactFormContainer" class="center">
         <div id="contactForm">
-            <form action="<?php echo site_url().'/ajax/'.uri_string(); ?>" class="contactForm" name="cform" method="post">
+            <form action="<?php echo site_url('ajax').'/'.uri_string(); ?>" class="contactForm" name="cform" method="post">
                 <p><?php echo lang('contact_text');?></p>
                 <div class="input_boxes">
                     <p><label for="name"><?php echo lang('contact_name');?></label><span class="name-missing"><?php echo lang('contact_name_error');?></span><br />

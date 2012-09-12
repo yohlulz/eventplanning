@@ -23,6 +23,20 @@ $lang['rights_reserved']						= 'All rights reserved';
 
 //==================================================================================
 
+/*
+|--------------------------------------------------------------------------
+| Contact
+|--------------------------------------------------------------------------
+*/
+
+$lang['contact_text']							= 'Bla bla bla';
+$lang['contact_name']							= 'Name';
+$lang['contact_name_error']						= 'Please enter your name';
+$lang['contact_email']							= 'Profile';
+$lang['contact_email_error']						= 'Please enter a valid e-mail';
+$lang['contact_message']							= 'Message';
+$lang['contact_message_error']					= 'Please type your message';
+$lang['contact_send']							= 'Send feedback';
 
 /* End of file general_lang.php */
 /* Location: ./application/language/english/general_lang.php */

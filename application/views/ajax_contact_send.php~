@@ -1,0 +1,24 @@
+<?php
+/*
+	//declare our variables
+	$name = $_POST['name'];
+	$email = $_POST['email'];
+	$message = nl2br($_POST['message']);
+	$CI=&get_instance();
+	// Load email library
+	$CI->load->library('email');
+	// Send email
+	$CI->email->from($this->config->item('contact_from_email'), lang('reset_password_email_sender'));
+	$CI->email->to($this->config->item('contact_to_email'));
+	$CI->email->reply_to($email, $name);
+	$CI->email->subject($this->config->item('contact_subject').lang('reset_password_email_sender'));  
+	$CI->email->message($message);
+	$CI->email->send();*/
+?>
+<!--Display a thankyou message in the callback -->
+<div id="mail_response">
+    <h3>Thank you <?php echo $name ?>!</h3><br />
+    <p>I will answer your message soon as possible.</p><br /><br /><br />
+    <h5>Message sent on: </h5>
+    <p><?php echo $todayis ?></p>
+</div>    

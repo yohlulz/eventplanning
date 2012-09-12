@@ -60,7 +60,6 @@ if(! function_exists('checkLanguage')){
 	function checkLanguage()
 	{
 		$CI=&get_instance();
-		$CI->load->library('session');
 		$tmp=$CI->session->userdata('lang');
 		if(isset($tmp)){
 			return $tmp;
