@@ -71,7 +71,7 @@
 <!--  ==================================================================== -->
 <!-- blog roll -->
 			<div class="blog-roll">
-				<a href="#" class="rss-feed notext">&nbsp;</a>
+				<a href="<?php echo site_url('rss'); ?>" class="rss-feed notext">&nbsp;</a>
 				<h2>Blog Roll</h2>
 				<div class="cl">&nbsp;</div>
 				

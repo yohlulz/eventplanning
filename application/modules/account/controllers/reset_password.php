@@ -45,7 +45,9 @@ class Reset_password extends CI_Controller {
 			$data['recaptcha'] = $this->recaptcha->load($recaptcha_result, $this->config->item("ssl_enabled"));
 			
 			// Load reset password captcha view
+			$this->load->view('header');
 			$this->load->view('reset_password_captcha', isset($data) ? $data : NULL);
+			$this->load->view('footer');
 			return;
 		}
 		
@@ -71,7 +73,9 @@ class Reset_password extends CI_Controller {
 		}
 		
 		// Load reset password unsuccessful view
+		$this->load->view('header');
 		$this->load->view('reset_password_unsuccessful', isset($data) ? $data : NULL);
+		$this->load->view('footer');
 	}
 	
 }

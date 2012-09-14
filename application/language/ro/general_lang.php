@@ -20,7 +20,7 @@ $lang['terms_of_use']							= 'Termeni de utilizare';
 $lang['privacy_policy']							= 'Termeni legali';
 $lang['author']									= 'Marin Oana Andreea';
 $lang['rights_reserved']						= 'Toate drepturile rezervate.';
-
+$lang['rss_site_description']					= 'Ceva povesti';
 
 /* End of file general_lang.php */
 /* Location: ./application/language/english/general_lang.php */

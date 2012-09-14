@@ -20,6 +20,7 @@ $lang['terms_of_use']							= 'Terms of use';
 $lang['privacy_policy']							= 'Privacy policy';
 $lang['author']									= 'Marin Oana Andreea';
 $lang['rights_reserved']						= 'All rights reserved';
+$lang['rss_site_description']					= 'Ceva povesti';
 
 //==================================================================================
 

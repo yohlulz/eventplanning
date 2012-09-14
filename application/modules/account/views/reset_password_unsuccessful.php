@@ -1,25 +1,82 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><?php echo lang('reset_password_page_name'); ?></title>
-<base href="<?php echo base_url(); ?>" />
-<link rel="shortcut icon" href="<?php echo base_url(); ?>favicon.ico" />
-<link type="text/css" rel="stylesheet" href="resource/css/960gs/960gs.css" />
-<link type="text/css" rel="stylesheet" href="resource/css/style.css" />
-</head>
 <body>
-<?php echo $this->load->view('header'); ?>
-<div id="content">
-    <div class="container_12">
+<?php echo $this->load->view('headup'); ?>
+<div class="shell">
+<?php echo $this->load->view('slider'); ?>
+<?php echo $this->load->view('menu'); ?>
+<!-- main -->
+<div id="main">
+
+	<!-- content -->
+	<div id="content" class="left">
+
+
+<!-- ======================================================== -->
+
+  <div class="container_12">
         <div class="grid_12">
-            <h2><?php echo anchor(current_url(), lang('reset_password_page_name')); ?></h2>
+            <h2><?php echo lang('reset_password_page_name'); ?></h2>
             <p><?php echo lang('reset_password_unsuccessful'); ?></p>
             <p><?php echo anchor('account/forgot_password', lang('reset_password_resend'), array('class'=>'button')); ?></p>
         </div>
         <div class="clear"></div>
     </div>
+
+
+          
+<!-- ========================================================== -->
+
 </div>
-<?php echo $this->load->view('footer'); ?>
-</body>
-</html>
+	<!-- end content -->
+	
+	<!-- sidebar -->
+	<div id="sidebar" class="right">
+
+<!--  ==================================================================== -->
+<!-- blog roll -->
+			<div class="blog-roll">
+				<a href="#" class="rss-feed notext">&nbsp;</a>
+				<h2>Blog Roll</h2>
+				<div class="cl">&nbsp;</div>
+				
+				<!-- blog roll item -->
+				<div class="blog-item">
+					<h4><a href="#">Nulla at lobortis mauris.</a></h4>
+					<span class="blog-date">23.05.09</span>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at lobortis mauris.</p>
+				</div>
+				<!-- end blog roll item -->
+				
+				<!-- blog roll item -->
+				<div class="blog-item">
+					<h4><a href="#">Ipsum dolor sit</a></h4>
+					<span class="blog-date">23.05.09</span>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at lobortis mauris.</p>
+				</div>
+				<!-- end blog roll item -->
+				
+				<!-- blog roll item -->
+				<div class="blog-item">
+					<h4><a href="#">Suspedisse quis orci vitae</a></h4>
+					<span class="blog-date">23.05.09</span>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at lobortis mauris.</p>
+				</div>
+				<!-- end blog roll item -->
+
+			</div>
+			<!-- end blog roll -->
+							
+			<!-- contact -->
+			<div class="contact">
+				<h2>Contact</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at lobortis mauris. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.</p>
+			</div>
+			<!-- end contact -->
+<!-- ====================================================================================== -->
+
+
+	</div>
+	<!-- end sidebar -->
+
+	<div class="cl">&nbsp;</div>
+</div>
+<!-- end main -->
