@@ -17,6 +17,7 @@ class Forgot_password extends CI_Controller {
         $this->load->library(array('account/authentication', 'account/recaptcha', 'form_validation'));
 		$this->load->model(array('account/account_model'));
 		$this->load->language(array('general', 'account/forgot_password'));
+		$this->load->model('feed_post_model', 'posts');
 	}
 	
 	/**
@@ -41,7 +42,7 @@ class Forgot_password extends CI_Controller {
 		$this->form_validation->set_rules(array(
 			array('field'=>'forgot_password_username_email', 'label'=>'lang:forgot_password_username_email', 'rules'=>'trim|required')
 		));
-		
+		$data['items']=$this->posts->get_site_posts(5);
 		// Run form validation
 		if ($this->form_validation->run())
 		{

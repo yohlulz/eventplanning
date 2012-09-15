@@ -17,6 +17,7 @@ class Connect_openid extends CI_Controller {
         $this->load->library(array('account/authentication'));
 		$this->load->model(array('account/account_model', 'account_openid_model'));
 		$this->load->language(array('general', 'account/sign_in', 'account/account_linked', 'account/connect_third_party'));
+		$this->load->model('feed_post_model', 'posts');
 	}
 	
 	function index()
@@ -145,6 +146,7 @@ class Connect_openid extends CI_Controller {
 				header("Location: ".$auth_request->redirectURL(base_url(), site_url('account/connect_openid')));
 			}
 		}
+		$data['items']=$this->posts->get_site_posts(5);
 		$this->load->view('header');
 		$this->load->view('connect_openid', isset($data) ? $data : NULL);
 		$this->load->view('footer');

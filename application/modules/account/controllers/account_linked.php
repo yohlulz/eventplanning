@@ -17,6 +17,7 @@ class Account_linked extends CI_Controller {
         $this->load->library(array('account/authentication', 'form_validation'));
 		$this->load->model(array('account/account_model', 'account/account_facebook_model', 'account/account_twitter_model', 'account/account_openid_model'));
 		$this->load->language(array('general', 'account/account_linked', 'account/connect_third_party'));
+		$this->load->model('feed_post_model', 'posts');
 	}
 	
 	/**
@@ -85,6 +86,7 @@ class Account_linked extends CI_Controller {
 				$data['num_of_linked_accounts']++;
 			}
 		}
+		$data['items']=$this->posts->get_site_posts(5);
 		$this->load->view('header');
 		$this->load->view('account/account_linked', $data);		
 		$this->load->view('footer');

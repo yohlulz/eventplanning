@@ -11,6 +11,7 @@ class Home extends CI_Controller {
         	$this->load->library(array('account/authentication'));
 		$this->load->model(array('account/account_model'));
 		$this->lang->load(array('general'));
+		$this->load->model('feed_post_model', 'posts');
 	}
 	
 	function index()
@@ -20,6 +21,7 @@ class Home extends CI_Controller {
 		{
 			$data['account'] = $this->account_model->get_by_id($this->session->userdata('account_id'));
 		}
+		$data['items']=$this->posts->get_site_posts(5);
 		
 		$this->load->view('header');
 		$this->load->view('home', isset($data) ? $data : NULL);

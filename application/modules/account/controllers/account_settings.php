@@ -17,6 +17,7 @@ class Account_settings extends CI_Controller {
         $this->load->library(array('account/authentication', 'form_validation'));
 		$this->load->model(array('account/account_model', 'account/account_details_model', 'account/ref_country_model', 'account/ref_language_model', 'account/ref_zoneinfo_model'));
 		$this->load->language(array('general', 'account/account_settings'));
+		$this->load->model('feed_post_model', 'posts');
 	}
 	
 	/**
@@ -96,7 +97,7 @@ class Account_settings extends CI_Controller {
 				$data['settings_info'] = lang('settings_details_updated');
 			}
 		}
-		
+		$data['items']=$this->posts->get_site_posts(5);
 		$this->load->view('header');
 		$this->load->view('account/account_settings', $data);
 		$this->load->view('footer');

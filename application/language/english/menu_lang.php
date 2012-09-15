@@ -9,7 +9,7 @@ $lang['menu_about']							= 'About';
 $lang['menu_gallery']						= 'Gallery';
 $lang['menu_service']						= 'Services';
 $lang['menu_suggestion']					= 'Opinions';
-$lang['menu_blog']							= 'Blog';
+$lang['menu_blog']							= 'News';
 $lang['menu_place']							= 'Places';
 $lang['menu_events']						= 'Events';
 

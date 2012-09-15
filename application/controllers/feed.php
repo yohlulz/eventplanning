@@ -13,7 +13,7 @@ class Feed extends CI_Controller {
 		$this->lang->load(array('general'));
 		$this->load->helper('xml');
 		$this->load->helper('text');
-		$this->load->model('feed_post_model', 'post');
+		$this->load->model('feed_post_model', 'posts');
 	}
 	
 	function index()
@@ -22,7 +22,7 @@ class Feed extends CI_Controller {
         $data['description'] = lang('rss_site_description');
         $data['copyright'] = lang('website_title');
         $data['date'] = date("D M j G:i:s T Y");
-        $data['items'] = $this->post->getPosts(10);  
+        $data['items'] = $this->posts->getPosts(10);  
         header("Content-Type: application/rss+xml"); // important!
         
         $this->load->view('rss', $data);

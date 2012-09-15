@@ -8,6 +8,7 @@
 	<link type="text/css" rel="stylesheet" href="resource/css/960gs/960gs.css" />
 	<link type="text/css" rel="stylesheet" href="resource/css/style.css" />
 	<link type="text/css" href="resource/css/styles.css" rel="stylesheet" />
+	<link type="text/css" href="resource/css/jquery.ad-gallery.css" rel="stylesheet" />
 	<!--[if IE 6]>
 		<link rel="stylesheet" href="css/ie6.css" type="text/css" media="all" />
 		<script src="js/png-fix.js" type="text/javascript" charset="utf-8"></script>
@@ -18,8 +19,16 @@
 	<script src="resource/js/jquery-1.5/Arial.font.js" type="text/javascript" charset="utf-8"></script>
 	<script src="resource/js/jquery-1.5/js-func.js" type="text/javascript" charset="utf-8"></script>
 	<script src="resource/js/contact.js" type="text/javascript" charset="utf-8"></script>
+<script src="resource/js/jquery-ad-gallery/jquery.ad-gallery.js" type="text/javascript" charset="utf-8"></script>
+<script src="resource/js/jQuery.tubeplayer.min.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
                 $(function() {
+			 var galleries = $('.ad-gallery').adGallery();
+			    $('#switch-effect').change(
+				 function() {
+				   galleries[0].settings.effect = $(this).val();
+				   return false;
+				 });
                 $(".bt_events").click(function() {
                     if ($(".bt_events").hasClass("clicked")) {
                         $(".bt_events").removeClass("clicked");
@@ -42,6 +51,16 @@
                         $(".service_submenu").show();
                     }
                 });
+						jQuery("#youtube-player-container").tubeplayer({
+	width: 690, 
+	height: 500,
+	theme: "light", 
+	initialVideo: document.getElementById("youtube-player-container").getAttribute("v"), 
+	preferredQuality: "default"
+});
+
             });
         </script>
+	<script type="text/javascript">
+  </script>
 </head>

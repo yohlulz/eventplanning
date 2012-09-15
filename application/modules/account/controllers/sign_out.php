@@ -16,6 +16,7 @@ class Sign_out extends CI_Controller {
 		$this->load->config('account/account');
 		$this->load->language(array('general', 'account/sign_out'));
         $this->load->library(array('account/authentication'));
+		$this->load->model('feed_post_model', 'posts');
 	}
 	
 	// --------------------------------------------------------------------
@@ -38,6 +39,7 @@ class Sign_out extends CI_Controller {
 		if ( ! $this->config->item("sign_out_view_enabled")) redirect('');
 		
 		// Load sign out view
+		$data['items']=$this->posts->get_site_posts(5);
 		$this->load->view('header');
 		$this->load->view('sign_out');
 		$this->load->view('footer');

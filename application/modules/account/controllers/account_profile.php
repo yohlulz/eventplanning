@@ -17,6 +17,7 @@ class Account_profile extends CI_Controller {
         $this->load->library(array('account/authentication', 'form_validation'));
 		$this->load->model(array('account/account_model', 'account/account_details_model'));
 		$this->load->language(array('general', 'account/account_profile'));
+		$this->load->model('feed_post_model', 'posts');
 	}
 	
 	/**
@@ -120,7 +121,7 @@ class Account_profile extends CI_Controller {
 			
 			if ( ! isset($error)) $data['profile_info'] = lang('profile_updated');
 		}
-
+		$data['items']=$this->posts->get_site_posts(5);
 		$this->load->view('header');		
 		$this->load->view('account/account_profile', $data);
 		$this->load->view('footer');

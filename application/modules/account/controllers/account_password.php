@@ -17,6 +17,8 @@ class Account_password extends CI_Controller {
         $this->load->library(array('account/authentication', 'form_validation'));
 		$this->load->model(array('account/account_model'));
 		$this->load->language(array('general', 'account/account_password'));
+		$this->load->model('feed_post_model', 'posts');
+		
 	}
 	
 	/**
@@ -54,7 +56,7 @@ class Account_password extends CI_Controller {
 			$this->session->set_flashdata('password_info', lang('password_password_has_been_changed'));
 			redirect('account/account_password');
 		}
-	
+		$data['items']=$this->posts->get_site_posts(5);
 		$this->load->view('header');
 		$this->load->view('account/account_password', $data);
 		$this->load->view('footer');

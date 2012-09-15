@@ -17,6 +17,7 @@ class Sign_up extends CI_Controller {
         $this->load->library(array('account/authentication', 'account/recaptcha', 'form_validation'));
 		$this->load->model(array('account/account_model', 'account/account_details_model'));
 		$this->load->language(array('general', 'account/sign_up', 'account/connect_third_party'));
+		$this->load->model('feed_post_model', 'posts');
 	}
 	
 	/**
@@ -35,7 +36,7 @@ class Sign_up extends CI_Controller {
 		
 		// Check recaptcha
 		$recaptcha_result = $this->recaptcha->check();
-		
+		$data['items']=$this->posts->get_site_posts(5);
 		// Store recaptcha pass in session so that users only needs to complete captcha once
 		if ($recaptcha_result === TRUE) $this->session->set_userdata('sign_up_recaptcha_pass', TRUE);
 		

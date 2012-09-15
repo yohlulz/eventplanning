@@ -34,34 +34,10 @@
 <!--  ==================================================================== -->
 <!-- blog roll -->
 			<div class="blog-roll">
-				<a href="#" class="rss-feed notext">&nbsp;</a>
-				<h2>Blog Roll</h2>
+				<a href="<?php echo site_url('rss'); ?>" class="rss-feed notext">&nbsp;</a>
+				<h2><?php echo lang('menu_blog'); ?></h2>
 				<div class="cl">&nbsp;</div>
-				
-				<!-- blog roll item -->
-				<div class="blog-item">
-					<h4><a href="#">Nulla at lobortis mauris.</a></h4>
-					<span class="blog-date">23.05.09</span>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at lobortis mauris.</p>
-				</div>
-				<!-- end blog roll item -->
-				
-				<!-- blog roll item -->
-				<div class="blog-item">
-					<h4><a href="#">Ipsum dolor sit</a></h4>
-					<span class="blog-date">23.05.09</span>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at lobortis mauris.</p>
-				</div>
-				<!-- end blog roll item -->
-				
-				<!-- blog roll item -->
-				<div class="blog-item">
-					<h4><a href="#">Suspedisse quis orci vitae</a></h4>
-					<span class="blog-date">23.05.09</span>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at lobortis mauris.</p>
-				</div>
-				<!-- end blog roll item -->
-
+				<?php echo $items; ?>
 			</div>
 			<!-- end blog roll -->
 							

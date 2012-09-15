@@ -17,6 +17,7 @@ class Sign_in extends CI_Controller {
         $this->load->library(array('account/authentication', 'account/recaptcha', 'form_validation'));
 		$this->load->model(array('account/account_model'));
 		$this->load->language(array('general', 'account/sign_in', 'account/connect_third_party'));
+		$this->load->model('feed_post_model', 'posts');
 	}
 	
 	/**
@@ -35,7 +36,7 @@ class Sign_in extends CI_Controller {
 		
 		// Set default recaptcha pass
 		$recaptcha_pass = $this->session->userdata('sign_in_failed_attempts') < $this->config->item('sign_in_recaptcha_offset') ? TRUE : FALSE;
-		
+		$data['items']=$this->posts->get_site_posts(5);
 		// Check recaptcha
 		$recaptcha_result = $this->recaptcha->check();
 		

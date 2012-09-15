@@ -8,6 +8,19 @@ class Feed_post_model extends CI_Model {
         parent::__construct();
     }
 	
+	function get_site_posts($limit=NULL){
+		$result="";
+		$entries=$this->getEntries($limit);
+		foreach ($entries as $post) {
+			$result.='<div class="blog-item">
+					<h4>'.$post->title.'</h4>
+					<span class="blog-date">'.$post->date_post.'</span>
+					<p>'.$post->text.'</p>
+				</div>';
+		}
+		return $result;
+	}
+	
 	function getPosts($limit=NULL){
 		$result="";
 		$entries=$this->getEntries($limit);
@@ -32,15 +45,12 @@ class Feed_post_model extends CI_Model {
 }
 
 /*
-
- <item>
-          <title>Your first feed file goes here</title>
-          <description>A brief description of the file goes here</description>
-          <link>http://www.yourdomain.com/rssfeedfolder/file1.html</link>
-          <guid isPermaLink="true">http://www.yourdomain.com/rssfeedfolder/file1.html</guid>
-          <pubDate>Tue, 04 Dec 2007 09:19:42 CST</pubDate>
-          <source url="http://www.rssFeedFolder.com/">rssFeedFolder.com</source>
-        </item>
+<div class="blog-item">
+					<h4><a href="#">Ipsum dolor sit</a></h4>
+					<span class="blog-date">23.05.09</span>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at lobortis mauris.</p>
+				</div>
+				<!-- end blog roll item -->
 */
 /* End of file feed_post_model.php */
 /* Location: ./application/modules/models/feed_post_model.php */

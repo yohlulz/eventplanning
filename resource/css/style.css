@@ -320,7 +320,7 @@ h1#logo a:hover {
 }
 
 #navigation ul li a,
-#navigation ul li a span { 
+#navigation ul li a span  { 
 	float: left; 
 	display: inline;  
 	height: 25px; 
@@ -337,7 +337,7 @@ h1#logo a:hover {
 }
 
 #navigation ul li a:hover,
-#navigation ul li a:hover span { 
+#navigation ul li a:hover span{ 
 	text-decoration: none; 
 	background: url(images/nav-hover.gif) no-repeat 0 0; 
 	color: #fff; 
@@ -352,11 +352,11 @@ h1#logo a:hover {
 }
 
 #content { 
-	width: 600px; 
+	width: 700px; 
 }
 
 #sidebar { 
-	width: 350px; 
+	width: 250px; 
 }
 
 .welcome, .log_form, .account_form { 
@@ -400,19 +400,19 @@ h1#logo a:hover {
 	position: relative;  
 	float: left; 
 	display: inline;  
-	width: 78px; 
+	width: 88px; 
 	height: 63px; 
 	background: url(images/news-pointer.gif) no-repeat 0 0; 
-	font-size: 25px; 
+	font-size: 20px; 
 	font-weight: lighter; 
-	padding: 30px 0 0 36px; 
+	padding: 20px 0 0 26px; 
 	margin: 0 30px 0 -23px;  
 }
 
 .news-item .news-body { 
 	float: left; 
 	display: inline;  
-	width: 470px; 
+	width: 565px; 
 }
 
 .news-item .news-body h3 { 
@@ -424,6 +424,13 @@ h1#logo a:hover {
 	font-weight: normal; 
 }
 
+.news-item .ad-gallery {
+	float: left;
+	display: block;
+	width: 690px;
+	
+}
+
 .news-item a.btn { 
 	margin: 5px 0 0 8px; 
 }
@@ -432,6 +439,11 @@ h1#logo a:hover {
 	background: url(images/ico-btn.gif) no-repeat right 5px; 
 	padding-right: 13px; 
 	font-style: normal; 
+}
+
+#youtube-player-container {
+	float: left;
+	display: block;
 }
 
 .blog-roll{ }
@@ -456,9 +468,10 @@ h1#logo a:hover {
 	margin-bottom: 7px; 
 }
 
-.blog-roll .blog-item h4 a { 
+.blog-roll .blog-item h4  { 
 	font-size: 13px; 
 	color: #78823a;  
+	cursor:default;
 }
 
 .blog-roll .blog-item .blog-date { 

@@ -17,6 +17,7 @@ class Connect_create extends CI_Controller {
         $this->load->library(array('account/authentication', 'form_validation'));
 		$this->load->model(array('account/account_model', 'account/account_details_model', 'account/account_facebook_model', 'account/account_twitter_model', 'account/account_openid_model'));
 		$this->load->language(array('general', 'account/connect_third_party'));
+		$this->load->model('feed_post_model', 'posts');
 	}
 	
 	/**
@@ -78,7 +79,7 @@ class Connect_create extends CI_Controller {
 				$this->authentication->sign_in($user_id);
 			}
 		}
-		
+		$data['items']=$this->posts->get_site_posts(5);
 		$this->load->view('header');
 		$this->load->view('connect_create', isset($data) ? $data : NULL);
 		$this->load->view('footer');
