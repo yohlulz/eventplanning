@@ -22,6 +22,7 @@ class Home extends CI_Controller {
 			$data['account'] = $this->account_model->get_by_id($this->session->userdata('account_id'));
 		}
 		$data['items']=$this->posts->get_site_posts(5);
+		$data['submenus']=getSubmenus();
 		
 		$this->load->view('header');
 		$this->load->view('home', isset($data) ? $data : NULL);

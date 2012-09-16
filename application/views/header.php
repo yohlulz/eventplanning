@@ -9,11 +9,12 @@
 	<link type="text/css" rel="stylesheet" href="resource/css/style.css" />
 	<link type="text/css" href="resource/css/styles.css" rel="stylesheet" />
 	<link type="text/css" href="resource/css/jquery.ad-gallery.css" rel="stylesheet" />
+	<link type="text/css" href="resource/css/sharre.css" rel="stylesheet" />
 	<!--[if IE 6]>
 		<link rel="stylesheet" href="css/ie6.css" type="text/css" media="all" />
 		<script src="js/png-fix.js" type="text/javascript" charset="utf-8"></script>
 	<![endif]-->
-	<script src="resource/js/jquery-1.5/jquery-1.5.js" type="text/javascript" charset="utf-8"></script>
+	<script src="resource/js/jquery-1.8.1.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="resource/js/jquery-1.5/jquery.jcarousel.js" type="text/javascript" charset="utf-8"></script>
 	<script src="resource/js/jquery-1.5/cufon-yui.js" type="text/javascript" charset="utf-8"></script>
 	<script src="resource/js/jquery-1.5/Arial.font.js" type="text/javascript" charset="utf-8"></script>
@@ -21,6 +22,7 @@
 	<script src="resource/js/contact.js" type="text/javascript" charset="utf-8"></script>
 <script src="resource/js/jquery-ad-gallery/jquery.ad-gallery.js" type="text/javascript" charset="utf-8"></script>
 <script src="resource/js/jQuery.tubeplayer.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="resource/js/jquery.sharrre-1.3.3.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
                 $(function() {
 			 var galleries = $('.ad-gallery').adGallery();
@@ -51,14 +53,46 @@
                         $(".service_submenu").show();
                     }
                 });
-						jQuery("#youtube-player-container").tubeplayer({
-	width: 690, 
-	height: 500,
-	theme: "light", 
-	initialVideo: document.getElementById("youtube-player-container").getAttribute("v"), 
-	preferredQuality: "default"
-});
-
+			function playVideo(divId,videoId){
+						jQuery("#"+divId).tubeplayer({
+							width: 690, 
+							height: 500,
+							theme: "light", 
+							initialVideo: videoId, 
+							preferredQuality: "default"
+			});}
+			var youtubePlayer=document.getElementsByTagName("div");
+			for(var i=0;i<youtubePlayer.length;i++)
+			{
+				if(youtubePlayer[i].getAttribute("class")=="youtube-player-container")
+				{
+					playVideo(youtubePlayer[i].getAttribute("id"),youtubePlayer[i].getAttribute("v"));
+				}
+			}
+			$('#share').sharrre({
+				 share: {
+					googlePlus: true,
+				   facebook: true,
+				   linkedin: true,
+				   delicious: true,
+				   pinterest: true,
+				   twitter: true
+				 },
+				 buttons: {
+				   googlePlus: {size: 'tall'},
+				   facebook: {layout: 'box_count'},
+				   twitter: {count: 'vertical'},
+					delicious:{size: 'tall'},
+					linkedin:{counter:'top'},
+					pinterest:{layout:'vertical'}
+				 },
+				 hover: function(api, options){
+				   $(api.element).find('.buttons').show();      
+				 },
+				 hide: function(api, options){
+				   $(api.element).find('.buttons').hide();
+				 }
+			    });
             });
         </script>
 	<script type="text/javascript">

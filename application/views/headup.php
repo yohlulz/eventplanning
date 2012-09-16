@@ -17,6 +17,7 @@
       <div class="contact"></div>    
   </div>
 	<h1 id="logo"><?php echo anchor('', lang('website_title')); ?></h1>
+	<div id="share" data-title="Share" data-url="http://eventplanning.uk.to" ></div>
 	<div id="authenticate">
             <ul>
             	<?php if ($this->authentication->is_signed_in()) : ?>

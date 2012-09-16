@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= '';//TODO https://diana.uk.to/oana/event
+$config['base_url']	= '';//TODO https://eventplanning.uk.to/oana/event/
 
 /*
 |--------------------------------------------------------------------------
@@ -355,7 +355,7 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
-$config['contact_to_email'] 				= 'ovidiu.maja@diana.uk.to';
+$config['contact_to_email'] 				= 'eventplanning@diana.uk.to';
 $config['contact_from_email'] 			= 'notify@diana.uk.to';
 $config['contact_subject'] 			= 'Feedback';
 

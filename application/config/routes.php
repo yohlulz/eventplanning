@@ -43,6 +43,7 @@ $route['404_override'] = '';
 $route['lang/(:any)/(:any)']='changelanguage/index/$1/$2';
 $route['lang/(:any)/(:any)/(:any)']='changelanguage/index/$1/$2/$3';
 $route['lang/(:any)']='changelanguage/index/$1';
+$route['ajax/share/(:any)']='ajax/share/$1';
 $route['ajax/(:any)']='ajax/index/$1';
 $route['ajax/(:any)/(:any)']='ajax/index/$1/$2';
 $route['ajax/(:any)/(:any)/(:any)']='ajax/index/$1/$2/$3';

@@ -43,6 +43,7 @@ class Forgot_password extends CI_Controller {
 			array('field'=>'forgot_password_username_email', 'label'=>'lang:forgot_password_username_email', 'rules'=>'trim|required')
 		));
 		$data['items']=$this->posts->get_site_posts(5);
+		$data['submenus']=getSubmenus();
 		// Run form validation
 		if ($this->form_validation->run())
 		{

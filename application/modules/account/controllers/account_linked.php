@@ -87,6 +87,8 @@ class Account_linked extends CI_Controller {
 			}
 		}
 		$data['items']=$this->posts->get_site_posts(5);
+		$data['submenus']=getSubmenus();
+		
 		$this->load->view('header');
 		$this->load->view('account/account_linked', $data);		
 		$this->load->view('footer');

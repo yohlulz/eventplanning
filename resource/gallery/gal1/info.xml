@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<gallery>
+	<item>
+		<path>1.jpg</path>
+		<thumb>thumbs/t1.jpg</thumb>
+		<title>Picture 1</title>
+		<description>Picture 1 desc</description>
+	</item>
+	<item>	
+		<path>12.jpg</path>
+		<thumb>thumbs/t12.jpg</thumb>
+		<title>Picture 12</title>
+		<description>Picture 12 desc</description>
+	</item>
+</gallery>

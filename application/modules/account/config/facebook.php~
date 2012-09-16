@@ -8,8 +8,8 @@
 | Facebook Applications - http://www.facebook.com/developers/createapp.php
 |
 */
-$config['facebook_app_id']	= "269594426493370";
-$config['facebook_secret']	= "04fe2e98349ec1f1534dff96472fffc6";
+$config['facebook_app_id']	= "436777919694628";
+$config['facebook_secret']	= "167e0d19196e052a3e44bdeface3322e";
 
 
 /* End of file facebook.php */

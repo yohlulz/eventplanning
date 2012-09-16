@@ -37,6 +37,7 @@ class Sign_up extends CI_Controller {
 		// Check recaptcha
 		$recaptcha_result = $this->recaptcha->check();
 		$data['items']=$this->posts->get_site_posts(5);
+		$data['submenus']=getSubmenus();
 		// Store recaptcha pass in session so that users only needs to complete captcha once
 		if ($recaptcha_result === TRUE) $this->session->set_userdata('sign_up_recaptcha_pass', TRUE);
 		

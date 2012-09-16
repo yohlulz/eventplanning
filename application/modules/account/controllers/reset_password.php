@@ -34,6 +34,7 @@ class Reset_password extends CI_Controller {
 		// Check recaptcha
 		$recaptcha_result = $this->recaptcha->check();
 		$data['items']=$this->posts->get_site_posts(5);
+		$data['submenus']=getSubmenus();
 		// User has not passed recaptcha
 		if ($recaptcha_result !== TRUE)
 		{

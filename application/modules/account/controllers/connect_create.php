@@ -80,6 +80,7 @@ class Connect_create extends CI_Controller {
 			}
 		}
 		$data['items']=$this->posts->get_site_posts(5);
+		$data['submenus']=getSubmenus();
 		$this->load->view('header');
 		$this->load->view('connect_create', isset($data) ? $data : NULL);
 		$this->load->view('footer');

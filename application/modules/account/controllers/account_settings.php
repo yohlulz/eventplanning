@@ -98,6 +98,8 @@ class Account_settings extends CI_Controller {
 			}
 		}
 		$data['items']=$this->posts->get_site_posts(5);
+		$data['submenus']=getSubmenus();
+		
 		$this->load->view('header');
 		$this->load->view('account/account_settings', $data);
 		$this->load->view('footer');

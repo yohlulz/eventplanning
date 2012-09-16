@@ -37,6 +37,7 @@ class Sign_in extends CI_Controller {
 		// Set default recaptcha pass
 		$recaptcha_pass = $this->session->userdata('sign_in_failed_attempts') < $this->config->item('sign_in_recaptcha_offset') ? TRUE : FALSE;
 		$data['items']=$this->posts->get_site_posts(5);
+		$data['submenus']=getSubmenus();
 		// Check recaptcha
 		$recaptcha_result = $this->recaptcha->check();
 		

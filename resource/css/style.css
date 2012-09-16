@@ -441,7 +441,7 @@ h1#logo a:hover {
 	font-style: normal; 
 }
 
-#youtube-player-container {
+.youtube-player-container {
 	float: left;
 	display: block;
 }

@@ -40,6 +40,7 @@ class Sign_out extends CI_Controller {
 		
 		// Load sign out view
 		$data['items']=$this->posts->get_site_posts(5);
+		$data['submenus']=getSubmenus();
 		$this->load->view('header');
 		$this->load->view('sign_out');
 		$this->load->view('footer');

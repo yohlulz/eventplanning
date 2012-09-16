@@ -57,6 +57,8 @@ class Account_password extends CI_Controller {
 			redirect('account/account_password');
 		}
 		$data['items']=$this->posts->get_site_posts(5);
+		$data['submenus']=getSubmenus();
+		
 		$this->load->view('header');
 		$this->load->view('account/account_password', $data);
 		$this->load->view('footer');

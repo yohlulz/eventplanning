@@ -122,6 +122,8 @@ class Account_profile extends CI_Controller {
 			if ( ! isset($error)) $data['profile_info'] = lang('profile_updated');
 		}
 		$data['items']=$this->posts->get_site_posts(5);
+		$data['submenus']=getSubmenus();
+		
 		$this->load->view('header');		
 		$this->load->view('account/account_profile', $data);
 		$this->load->view('footer');
