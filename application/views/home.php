@@ -57,6 +57,20 @@
 				</div>
 				<!-- end news item -->
 				
+				<!-- news item -->
+				<div class="news-item">
+					<span class="news-pointer-date"><b>9 Nov</b> <i>2009</i></span>
+					<div class="news-body">
+						<h3>Nulla lovortis cubilia</h3>
+						<a href="#" class="btn"><span><em>read more</em></span></a>
+						<div class="cl">&nbsp;</div>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at lobortis mauris. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec mi nisl, sollicitudin eget hendrerit eu, molestie in odio. Suspendisse quis orci vitae purus scelerisque porttitor sollicitudin porttitor sem.</p>
+					</div>
+					<?php echo $gmap; ?>
+					<div class="cl">&nbsp;</div>
+				</div>
+				<!-- end news item -->
+				
 			</div>
 			<!-- end news -->
 

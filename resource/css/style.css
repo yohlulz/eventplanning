@@ -441,9 +441,15 @@ h1#logo a:hover {
 	font-style: normal; 
 }
 
-.youtube-player-container {
+.youtube-player-container,.gmap-container{
 	float: left;
 	display: block;
+}
+
+.gmap-container {
+	border: 1px solid #C0C0C0;
+	width: 690px;
+	height: 500px;
 }
 
 .blog-roll{ }

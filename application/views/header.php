@@ -23,78 +23,14 @@
 <script src="resource/js/jquery-ad-gallery/jquery.ad-gallery.js" type="text/javascript" charset="utf-8"></script>
 <script src="resource/js/jQuery.tubeplayer.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="resource/js/jquery.sharrre-1.3.3.js" type="text/javascript" charset="utf-8"></script>
-	<script type="text/javascript">
-                $(function() {
-			 var galleries = $('.ad-gallery').adGallery();
-			    $('#switch-effect').change(
-				 function() {
-				   galleries[0].settings.effect = $(this).val();
-				   return false;
-				 });
-                $(".bt_events").click(function() {
-                    if ($(".bt_events").hasClass("clicked")) {
-                        $(".bt_events").removeClass("clicked");
-                        $(".events_submenu").hide();
-                    } else {
-                    	$(".bt_service").removeClass("clicked");
-                        $(".service_submenu").hide();
-                        $(".bt_events").addClass("clicked");
-                        $(".events_submenu").show();
-                    }
-                });
-                $(".bt_service").click(function() {
-                    if ($(".bt_service").hasClass("clicked")) {
-                        $(".bt_service").removeClass("clicked");
-                        $(".service_submenu").hide();
-                    } else {
-                    	$(".bt_events").removeClass("clicked");
-                        $(".events_submenu").hide();
-                        $(".bt_service").addClass("clicked");
-                        $(".service_submenu").show();
-                    }
-                });
-			function playVideo(divId,videoId){
-						jQuery("#"+divId).tubeplayer({
-							width: 690, 
-							height: 500,
-							theme: "light", 
-							initialVideo: videoId, 
-							preferredQuality: "default"
-			});}
-			var youtubePlayer=document.getElementsByTagName("div");
-			for(var i=0;i<youtubePlayer.length;i++)
-			{
-				if(youtubePlayer[i].getAttribute("class")=="youtube-player-container")
-				{
-					playVideo(youtubePlayer[i].getAttribute("id"),youtubePlayer[i].getAttribute("v"));
-				}
-			}
-			$('#share').sharrre({
-				 share: {
-					googlePlus: true,
-				   facebook: true,
-				   linkedin: true,
-				   delicious: true,
-				   pinterest: true,
-				   twitter: true
-				 },
-				 buttons: {
-				   googlePlus: {size: 'tall'},
-				   facebook: {layout: 'box_count'},
-				   twitter: {count: 'vertical'},
-					delicious:{size: 'tall'},
-					linkedin:{counter:'top'},
-					pinterest:{layout:'vertical'}
-				 },
-				 hover: function(api, options){
-				   $(api.element).find('.buttons').show();      
-				 },
-				 hide: function(api, options){
-				   $(api.element).find('.buttons').hide();
-				 }
-			    });
-            });
-        </script>
-	<script type="text/javascript">
-  </script>
+<script src="resource/js/jquery-ad-gallery/ad-gallery.js" type="text/javascript" charset="utf-8"></script>
+<script src="resource/js/submenu.js" type="text/javascript" charset="utf-8"></script>
+<script src="resource/js/tubeplayer.js" type="text/javascript" charset="utf-8"></script>
+<script src="resource/js/sharre.js" type="text/javascript" charset="utf-8">
+</script>
+<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+<script src="resource/js/jquery-gmap3-4.1/gmap3.min.js" type="text/javascript" charset="utf-8">
+</script>
+<script src="resource/js/jquery-gmap3-4.1/gmap.js" type="text/javascript" charset="utf-8">
+</script>
 </head>

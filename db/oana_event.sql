@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 30, 2012 at 08:45 PM
+-- Generation Time: Sep 16, 2012 at 06:24 PM
 -- Server version: 5.5.25a
 -- PHP Version: 5.4.4
 
@@ -40,14 +40,7 @@ CREATE TABLE IF NOT EXISTS `a3m_account` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC AUTO_INCREMENT=3 ;
-
---
--- Dumping data for table `a3m_account`
---
-
-INSERT INTO `a3m_account` (`id`, `username`, `email`, `password`, `createdon`, `verifiedon`, `lastsignedinon`, `resetsenton`, `deletedon`, `suspendedon`) VALUES
-(2, 'ovidiu', 'ovi_dan89@yahoo.com', '$2a$08$RF/d8mvzIA2AbdRa7lMf.OeUKfSJcstSnIMf0tr3eZltAtaDAK/ki', '2012-08-27 15:43:23', NULL, '2012-08-27 15:43:24', '2012-08-27 15:49:38', NULL, NULL);
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC AUTO_INCREMENT=5 ;
 
 -- --------------------------------------------------------
 
@@ -69,13 +62,6 @@ CREATE TABLE IF NOT EXISTS `a3m_account_details` (
   `picture` varchar(240) DEFAULT NULL,
   PRIMARY KEY (`account_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
-
---
--- Dumping data for table `a3m_account_details`
---
-
-INSERT INTO `a3m_account_details` (`account_id`, `fullname`, `firstname`, `lastname`, `dateofbirth`, `gender`, `postalcode`, `country`, `language`, `timezone`, `picture`) VALUES
-(2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -124,21 +110,6 @@ CREATE TABLE IF NOT EXISTS `a3m_account_twitter` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ci_session`
---
-
-CREATE TABLE IF NOT EXISTS `ci_session` (
-  `session_id` varchar(40) NOT NULL DEFAULT '0',
-  `ip_address` varchar(16) NOT NULL DEFAULT '0',
-  `user_agent` varchar(50) NOT NULL,
-  `last_activity` int(10) unsigned NOT NULL DEFAULT '0',
-  `user_data` text NOT NULL,
-  PRIMARY KEY (`session_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `ci_sessions`
 --
 
@@ -157,9 +128,91 @@ CREATE TABLE IF NOT EXISTS `ci_sessions` (
 --
 
 INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-('be62b880895ba3a3bae2d64d998f7f2b', '127.0.0.1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.19', 1346344865, ''),
-('e9c01749b06b8470ef64db97f17e2573', '192.168.1.5', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.19', 1346351038, ''),
-('f9f2d375a1bf1ad68107e64292618033', '192.168.1.5', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.19', 1346349533, '');
+('22530d1fdb01010e56d2b3f6451ff83f', '89.136.51.153', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.1 (KH', 1347801058, ''),
+('2a50da1e33fe4467450697c68419e389', '89.136.51.153', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.1 (KH', 1347800458, ''),
+('300cd747662a715c2e059f8b59579d4f', '89.136.51.153', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.1 (KH', 1347799258, ''),
+('68bc012c7d6701d487bc546bf55052e5', '89.136.51.153', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.1 (KH', 1347799857, ''),
+('6ad7cd581198b5a69e7076a191315a03', '89.136.51.153', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.1 (KH', 1347798657, ''),
+('6d08073e69728c5d45e46aeb3f9796f7', '89.136.51.153', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.1 (KH', 1347804058, ''),
+('93d50c3293995707678f082dcefbd838', '89.136.51.153', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.1 (KH', 1347803458, ''),
+('a0229e68ab810ee584ee83ce587683dd', '89.136.51.153', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.1 (KH', 1347802858, ''),
+('a6f5a3fba80c85e9ab7873056e507cd8', '89.136.51.153', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.1 (KH', 1347801658, ''),
+('cd7f031bbaeaf7a636abeb18e381cbfe', '127.0.0.1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.19', 1347805118, ''),
+('d22fd856e54710cb96f20a9a650078b0', '89.136.51.153', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.1 (KH', 1347804658, ''),
+('dc13ae1405b11c77a9103e5edb1ce899', '89.136.51.153', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.1 (KH', 1347802258, ''),
+('fb9e075693862c4a5ee13cb74a7ecf7f', '89.136.51.153', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.1 (KH', 1347805258, ''),
+('fc132d5cfec0929967ab1f974096651f', '192.168.1.5', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.19', 1347803945, '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `event_place`
+--
+
+CREATE TABLE IF NOT EXISTS `event_place` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `address` varchar(200) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `event_place`
+--
+
+INSERT INTO `event_place` (`id`, `address`, `name`) VALUES
+(1, 'Iulius Mall, Cluj-Napoca, Cluj, Romania', 'Iulius Mall'),
+(2, 'Bulevardul 21 Decembrie 1989, Cluj-Napoca, Cluj, România', 'Bulevardul 21 Decembrie');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `event_type`
+--
+
+CREATE TABLE IF NOT EXISTS `event_type` (
+  `name` varchar(100) NOT NULL,
+  `url` varchar(100) NOT NULL DEFAULT '#',
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `event_type`
+--
+
+INSERT INTO `event_type` (`name`, `url`) VALUES
+('event_celebration_aniversary', '#'),
+('event_celebration_graduation', '#'),
+('event_celebration_wedding', '#'),
+('event_corporate', '#'),
+('event_public', '#');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gallery`
+--
+
+CREATE TABLE IF NOT EXISTS `gallery` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) NOT NULL,
+  `comment` text NOT NULL,
+  `path` varchar(50) NOT NULL,
+  `picture` tinyint(1) NOT NULL,
+  `year` int(4) NOT NULL,
+  `date_month` varchar(50) NOT NULL,
+  `event_type` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `event_type` (`event_type`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `gallery`
+--
+
+INSERT INTO `gallery` (`id`, `title`, `comment`, `path`, `picture`, `year`, `date_month`, `event_type`) VALUES
+(1, 'Primis in faucibus luctus', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at lobortis mauris. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at lobortis mauris. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at lobortis mauris. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.', 'ysSxxIqKNN0', 0, 2012, '5 Nov', 'event_public'),
+(2, 'Nulla lovortis cubilia', 'Nulla lovortis cubiliaNulla lovortis cubilia\r\nNulla lovortis cubiliaNulla lovortis cubiliaNulla lovortis cubiliavvNulla lovortis cubiliaNulla lovortis cubiliav\r\nNulla lovortis cubiliavvNulla lovortis cubilia\r\nNulla lovortis cubilia', 'gal1', 1, 2012, '6 Nov', 'event_corporate');
 
 -- --------------------------------------------------------
 
@@ -101220,6 +101273,39 @@ INSERT INTO `ref_zoneinfo` (`zoneinfo`, `offset`, `summer`, `country`) VALUES
 ('Africa/Johannesburg', 'UTC+2', NULL, 'za'),
 ('Africa/Lusaka', 'UTC+2', NULL, 'zm'),
 ('Africa/Harare', 'UTC+2', NULL, 'zw');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rss_posts`
+--
+
+CREATE TABLE IF NOT EXISTS `rss_posts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(120) NOT NULL,
+  `text` text NOT NULL,
+  `date_post` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `rss_posts`
+--
+
+INSERT INTO `rss_posts` (`id`, `title`, `text`, `date_post`) VALUES
+(1, 'Some great article', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for ''lorem ipsum'' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).', '2009-08-10'),
+(2, 'Another great article', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for ''lorem ipsum'' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).', '2009-08-10'),
+(3, 'News from myfeed', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for ''lorem ipsum'' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).', '2009-08-10');
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `gallery`
+--
+ALTER TABLE `gallery`
+  ADD CONSTRAINT `gallery_ibfk_1` FOREIGN KEY (`event_type`) REFERENCES `event_type` (`name`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
