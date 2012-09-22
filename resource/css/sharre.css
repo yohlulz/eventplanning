@@ -2,9 +2,8 @@
     display:inline-block;
 	position: absolute;
 	z-index: 2;
-	margin-top:10px;
 	float:left;
-	margin-left: 650px;
+	margin-top: -40px;
 
   }
   .sharrre .box{

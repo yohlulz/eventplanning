@@ -14,7 +14,7 @@ class Gallery_model extends CI_Model {
 			return;
 		}
 		$result=array();
-		$dir="resource/gallery/";
+		$dir="resource/gallery";
 		if(!file_exists($dir."/".$path."/info.xml")){
 			return;
 		}

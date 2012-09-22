@@ -33,6 +33,7 @@
                 <li><?php echo anchor('account/sign_in', lang('website_sign_in')); ?></li>
                 <?php endif; ?>
 			<li>&nbsp;</li>		
+			<li>&nbsp;</li>		
 			<li><?php echo anchor('lang/english/'.uri_string(),img(array('src'=>'resource/img/lang/'.(checkLanguage()=='english'?'en_sel.gif':'en.gif'), 'width'=>'32', 'height'=>'20', 'alt'=>'English'))); ?></li>
 			<li><?php echo anchor('lang/de/'.uri_string(),img(array('src'=>'resource/img/lang/'.(checkLanguage()=='de'?'de_sel.gif':'de.gif'), 'width'=>'32', 'height'=>'20', 'alt'=>'English'))); ?></li>
 			<li><?php echo anchor('lang/ro/'.uri_string(),img(array('src'=>'resource/img/lang/'.(checkLanguage()=='ro'?'ro_sel.gif':'ro.gif'), 'width'=>'32', 'height'=>'20', 'alt'=>'English'))); ?></li>

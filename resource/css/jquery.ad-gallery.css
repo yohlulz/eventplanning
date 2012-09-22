@@ -91,6 +91,10 @@
 	margin-left: 10px;
 	margin-right: 10px;
   }
+.ad-gallery .ad-controls select:hover{
+	background: url(images/read-more-btn.gif) no-repeat 0 0;
+}
+
     .ad-gallery .ad-info {
       float: left;
     }
