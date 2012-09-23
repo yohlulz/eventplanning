@@ -240,6 +240,15 @@ class Account_model extends CI_Model {
 		$this->db->update('a3m_account', array('suspendedon' => NULL), array('id' => $account_id));
 	}
 	
+	function update_role($account_id,$role,$isId=false){
+		if($isId){
+			$this->db->update('a3m_account', array('role' => $role), array('id' => $account_id));
+		}
+		else{
+			$this->db->update('a3m_account', array('role' => $role), array('username' => $account_id));
+		}
+	}
+	
 }
 
 

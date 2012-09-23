@@ -19,7 +19,8 @@
 	<h1 id="logo"><?php echo anchor('', lang('website_title')); ?></h1>
 	<div id="authenticate">
             <ul>
-			<li><div id="share" data-title="Share" data-url="http://eventplanning.uk.to" ></div></li>
+			<li><div id="cart" lang="<?php echo (checkLanguage()=='english'?'en':checkLanguage()); ?>" head="<?php echo lang('website_title');?>" foot="<?php echo lang('website_title').' PayPal'; ?>" email="<?php echo getConfigItem('contact_to_email'); ?>">Cart</div></li>
+			<li><div id="share" data-title="Share" data-url="<?php echo getConfigItem('check_site'); ?>" ></div></li>
 			<li>&nbsp;</li>		
 			<li>&nbsp;</li>
 			<li>&nbsp;</li>		
@@ -33,7 +34,7 @@
                 <li><?php echo anchor('account/sign_in', lang('website_sign_in')); ?></li>
                 <?php endif; ?>
 			<li>&nbsp;</li>		
-			<li><?php echo anchor('lang/english/'.uri_string(),img(array('src'=>'resource/img/lang/'.(checkLanguage()=='english'?'en_sel.gif':'en.gif'), 'width'=>'32', 'height'=>'20', 'alt'=>'English'))); ?></li>
+			<li><?php echo anchor('lang/english/'.uri_string(),img(array('src'=>'resource/img/lang/'.((checkLanguage()=='en'|| checkLanguage()=='english')?'en_sel.gif':'en.gif'), 'width'=>'32', 'height'=>'20', 'alt'=>'English'))); ?></li>
 			<li><?php echo anchor('lang/de/'.uri_string(),img(array('src'=>'resource/img/lang/'.(checkLanguage()=='de'?'de_sel.gif':'de.gif'), 'width'=>'32', 'height'=>'20', 'alt'=>'English'))); ?></li>
 			<li><?php echo anchor('lang/ro/'.uri_string(),img(array('src'=>'resource/img/lang/'.(checkLanguage()=='ro'?'ro_sel.gif':'ro.gif'), 'width'=>'32', 'height'=>'20', 'alt'=>'English'))); ?></li>
 			</ul>

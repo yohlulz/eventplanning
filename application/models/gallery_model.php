@@ -31,6 +31,18 @@ class Gallery_model extends CI_Model {
 			$picture->setThumb($dir.'/'.$path.'/'.$child->thumb);
 			$picture->setTitle($child->title);
 			$picture->setDescription($child->description);
+			if(isset($child->id)){
+				$picture->setCartId($child->id);
+			}
+			if(isset($child->name)){
+				$picture->setCartName($child->name);
+			}
+			if(isset($child->price)){
+				$picture->setCartPrice($child->price);
+			}
+			if(isset($child->shipping)){
+				$picture->setCartShipping($child->shipping);
+			}
 			$result[]=$picture;
 		}
 		return $result;
@@ -71,7 +83,20 @@ class Gallery_model extends CI_Model {
 									<ul class="ad-thumb-list">';
 				foreach ($pictures as $picture) {
 					$result.='	<li>
-              						<a href="'.$picture->getPath().'"><img src="'.$picture->getThumb().'" title="'.$picture->getTitle().'" alt="'.$picture->getDescription().'" class="image_picture"></a>
+              						<a href="'.$picture->getPath().'"><img src="'.$picture->getThumb().'" title="'.$picture->getTitle().'" alt="'.$picture->getDescription().'" ';
+						if($picture->getCartId()!=''){
+							$result.='cart_id="'.$picture->getCartId().'" ';
+						}
+						if($picture->getCartName()!=''){
+							$result.='cart_name="'.$picture->getCartName().'" ';
+						}
+						if($picture->getCartPrice()!=''){
+							$result.='cart_price="'.$picture->getCartPrice().'" ';
+						}
+						if($picture->getCartShipping()!=''){
+							$result.='cart_shipping="'.$picture->getCartShipping().'" ';
+						}	
+						$result.='class="image_picture"></a>
             					</li>';
 				}
 					$result.='</ul>

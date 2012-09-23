@@ -58,7 +58,7 @@ if(! function_exists('checkLanguage')){
 		if(isset($tmp)){
 			return $tmp;
 		}
-		return "en";
+		return "english";
 	}
 }
 

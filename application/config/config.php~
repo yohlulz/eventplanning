@@ -15,7 +15,6 @@
 |
 */
 $config['base_url']	= '';//TODO https://eventplanning.uk.to/oana/event/
-$config['check_site']='http://eventplanning.uk.to';
 
 /*
 |--------------------------------------------------------------------------

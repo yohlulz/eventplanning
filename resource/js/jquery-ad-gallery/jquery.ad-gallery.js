@@ -23,7 +23,7 @@
                      slideshow: {
                        enable: true,
                        autostart: false,
-                       speed: 5000,
+                       speed: 6000,
                        start_label: 'Start',
                        stop_label: 'Stop',
                        stop_on_scroll: true,
@@ -289,12 +289,14 @@
           link.addClass('ad-thumb'+ i);
           link.click(
             function() {
+			if($(this).is('.ad-active')) {}
               context.showImage(i);
               context.slideshow.stop();
               return false;
             }
           ).hover(
             function() {
+			if($(this).is('.ad-active')) {}
               if(!$(this).is('.ad-active') && context.settings.thumb_opacity < 1) {
                 $(this).find('img').fadeTo(300, 1);
               };
@@ -324,9 +326,13 @@
           } else if(thumb.attr('title') && thumb.attr('title').length) {
             title = thumb.attr('title');
           };
+		var cart_id=thumb.attr('cart_id');
+		var cart_name=thumb.attr('cart_name');
+		var cart_price=thumb.attr('cart_price');
+		var cart_shipping=thumb.attr('cart_shipping');
           context.images[i] = { thumb: thumb.attr('src'), image: image_src, error: false,
                                 preloaded: false, desc: desc, title: title, size: false,
-                                link: link };
+                                link: link, cart_id: cart_id, cart_name:cart_name, cart_price:cart_price, cart_shipping:cart_shipping };
         }
       );
       // Wait until all thumbs are loaded, and then set the width of the ul
@@ -393,6 +399,7 @@
             context.prevImage();
             context.slideshow.stop();
           };
+		updateElements();
         }
       ).find('div').css('opacity', 0.7);
     },
@@ -545,6 +552,13 @@
         var context = this;
         var image = this.images[index];
         var img_container = $(document.createElement('div')).addClass('ad-image');
+		var cart_img=$(document.createElement('div')).addClass('cart_image');
+		cart_img.attr('id',image.cart_id);
+		cart_img.attr('name',image.cart_name);
+		cart_img.attr('price',image.cart_price);	
+		cart_img.attr('shipping',image.cart_shipping);
+		cart_img.append('Cost €'+image.cart_price+' ( +€'+image.cart_shipping+') ');
+	if(image.cart_id) { img_container.append(cart_img);}
         var img = $(new Image()).attr('src', image.image);
         img_container.append(img);
         this.image_wrapper.prepend(img_container);
@@ -564,7 +578,6 @@
           }
         };
         this.highLightThumb(this.nav.find('.ad-thumb'+ index));
-
         var direction = 'right';
         if(this.current_index < index) {
           direction = 'left';

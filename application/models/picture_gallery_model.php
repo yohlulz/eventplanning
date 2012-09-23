@@ -5,6 +5,10 @@ class Picture_gallery_model extends CI_Model {
 	private $thumb;
 	private $title;
 	private $description;
+	private $id;
+	private $name;
+	private $price;
+	private $shipping;
 	
 		
 	function __construct()
@@ -44,7 +48,40 @@ class Picture_gallery_model extends CI_Model {
 	function getDescription(){
 		return $this->description;
 	}
+	
+	function setCartId($id){
+		$this->id=$id;
+	}
+	
+	function getCartId(){
+		return $this->id;
+	}
+	
+	function setCartName($name){
+		$this->name=$name;
+	}
+	
+	function getCartName(){
+		return $this->name;
+	}
+	
+	function setCartPrice($price){
+		$this->price=$price;
+	}
+	
+	function getCartPrice(){
+		return $this->price;
+	}
+	
+	function setCartShipping($shipping){
+		$this->shipping=$shipping;
+	}
+	
+	function getCartShipping(){
+		return $this->shipping;
+	}
 }
+
 
 /* End of file picture_gallery_model.php */
 /* Location: ./application/modules/models/picture_gallery_model.php */

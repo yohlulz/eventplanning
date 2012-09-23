@@ -15,9 +15,9 @@
 		<thumb>thumbs/t12.jpg</thumb>
 		<title>Picture 12</title>
 		<description>Picture 12 desc</description>
-<name>Test2</name>
+<name>Test</name>
 		<id>test-13</id>
-		<price>6</price>
-		<shipping>2</shipping>
+		<price>5</price>
+		<shipping>1</shipping>
 	</item>
 </gallery>
