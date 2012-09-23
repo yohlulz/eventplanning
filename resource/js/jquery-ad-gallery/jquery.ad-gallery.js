@@ -289,6 +289,23 @@
           link.addClass('ad-thumb'+ i);
           link.click(
             function() {
+			var cartContainer=document.getElementById('cart-container-id1');
+			cartContainer.innerHTML='';
+			if(thumb.attr('cart_id')){
+				cartContainer.innerHTML='Cost €'+thumb.attr('cart_price')+' ( +€'+thumb.attr('cart_shipping')+') ';
+			cartContainer.setAttribute('cart_id',thumb.attr('cart_id'));
+			cartContainer.setAttribute('name',thumb.attr('cart_name'));
+			cartContainer.setAttribute('price',thumb.attr('cart_price'));
+			cartContainer.setAttribute('shipping',thumb.attr('cart_shipping'));
+			}
+			else{
+				cartContainer.innerHTML='No Cost ';
+			cartContainer.removeAttribute('cart_id');
+			cartContainer.removeAttribute('name');
+			cartContainer.removeAttribute('price');
+			cartContainer.removeAttribute('shipping');
+			}
+
 			if($(this).is('.ad-active')) {}
               context.showImage(i);
               context.slideshow.stop();
@@ -339,7 +356,7 @@
       var inter = setInterval(
         function() {
           if(thumb_count == thumbs_loaded) {
-            thumb_wrapper_width -= 100;
+            thumb_wrapper_width -= 0;
             var list = context.nav.find('.ad-thumb-list');
             list.css('width', thumb_wrapper_width +'px');
             var i = 1;
@@ -551,14 +568,14 @@
       if(this.images[index]) {
         var context = this;
         var image = this.images[index];
-        var img_container = $(document.createElement('div')).addClass('ad-image');
-		var cart_img=$(document.createElement('div')).addClass('cart_image');
+       var img_container = $(document.createElement('div')).addClass('ad-image');
+/*		var cart_img=$(document.createElement('div')).addClass('cart_image');
 		cart_img.attr('id',image.cart_id);
 		cart_img.attr('name',image.cart_name);
 		cart_img.attr('price',image.cart_price);	
 		cart_img.attr('shipping',image.cart_shipping);
 		cart_img.append('Cost €'+image.cart_price+' ( +€'+image.cart_shipping+') ');
-	if(image.cart_id) { img_container.append(cart_img);}
+	if(image.cart_id) { img_container.append(cart_img);}*/
         var img = $(new Image()).attr('src', image.image);
         img_container.append(img);
         this.image_wrapper.prepend(img_container);

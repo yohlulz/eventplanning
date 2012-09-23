@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 16, 2012 at 06:24 PM
+-- Generation Time: Sep 23, 2012 at 01:08 PM
 -- Server version: 5.5.25a
 -- PHP Version: 5.4.4
 
@@ -37,10 +37,19 @@ CREATE TABLE IF NOT EXISTS `a3m_account` (
   `resetsenton` datetime DEFAULT NULL,
   `deletedon` datetime DEFAULT NULL,
   `suspendedon` datetime DEFAULT NULL,
+  `role` varchar(50) NOT NULL DEFAULT 'user',
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
-  UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC AUTO_INCREMENT=5 ;
+  UNIQUE KEY `email` (`email`),
+  KEY `role` (`role`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `a3m_account`
+--
+
+INSERT INTO `a3m_account` (`id`, `username`, `email`, `password`, `createdon`, `verifiedon`, `lastsignedinon`, `resetsenton`, `deletedon`, `suspendedon`, `role`) VALUES
+(1, 'ovidiu', 'ovi_dan89@yahoo.com', NULL, '2012-09-21 23:14:21', NULL, '2012-09-22 09:09:17', NULL, NULL, NULL, 'user');
 
 -- --------------------------------------------------------
 
@@ -61,7 +70,14 @@ CREATE TABLE IF NOT EXISTS `a3m_account_details` (
   `timezone` varchar(40) DEFAULT NULL,
   `picture` varchar(240) DEFAULT NULL,
   PRIMARY KEY (`account_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+
+--
+-- Dumping data for table `a3m_account_details`
+--
+
+INSERT INTO `a3m_account_details` (`account_id`, `fullname`, `firstname`, `lastname`, `dateofbirth`, `gender`, `postalcode`, `country`, `language`, `timezone`, `picture`) VALUES
+(1, 'Ovidiu Dan Maja', 'Ovidiu', 'Maja', '1989-11-22', 'm', NULL, 'ro', 'ro', 'Europe/Bucharest', 'pic_e4da3b7fbbce2345d7772b0674a318d5.jpg');
 
 -- --------------------------------------------------------
 
@@ -70,12 +86,12 @@ CREATE TABLE IF NOT EXISTS `a3m_account_details` (
 --
 
 CREATE TABLE IF NOT EXISTS `a3m_account_facebook` (
-  `account_id` bigint(20) NOT NULL,
+  `account_id` bigint(20) unsigned NOT NULL,
   `facebook_id` bigint(20) NOT NULL,
   `linkedon` datetime NOT NULL,
   PRIMARY KEY (`account_id`),
   UNIQUE KEY `facebook_id` (`facebook_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -89,7 +105,14 @@ CREATE TABLE IF NOT EXISTS `a3m_account_openid` (
   `linkedon` datetime NOT NULL,
   PRIMARY KEY (`openid`),
   KEY `account_id` (`account_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+
+--
+-- Dumping data for table `a3m_account_openid`
+--
+
+INSERT INTO `a3m_account_openid` (`openid`, `account_id`, `linkedon`) VALUES
+('https://me.yahoo.com/a/XEDeseQX0es5EjZ4X38QKTttsZAeMw--', 1, '2012-09-21 23:14:21');
 
 -- --------------------------------------------------------
 
@@ -98,14 +121,14 @@ CREATE TABLE IF NOT EXISTS `a3m_account_openid` (
 --
 
 CREATE TABLE IF NOT EXISTS `a3m_account_twitter` (
-  `account_id` bigint(20) NOT NULL,
+  `account_id` bigint(20) unsigned NOT NULL,
   `twitter_id` bigint(20) NOT NULL,
   `oauth_token` varchar(80) NOT NULL,
   `oauth_token_secret` varchar(80) NOT NULL,
   `linkedon` datetime NOT NULL,
   PRIMARY KEY (`account_id`),
   KEY `twitter_id` (`twitter_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -128,20 +151,21 @@ CREATE TABLE IF NOT EXISTS `ci_sessions` (
 --
 
 INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-('22530d1fdb01010e56d2b3f6451ff83f', '89.136.51.153', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.1 (KH', 1347801058, ''),
-('2a50da1e33fe4467450697c68419e389', '89.136.51.153', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.1 (KH', 1347800458, ''),
-('300cd747662a715c2e059f8b59579d4f', '89.136.51.153', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.1 (KH', 1347799258, ''),
-('68bc012c7d6701d487bc546bf55052e5', '89.136.51.153', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.1 (KH', 1347799857, ''),
-('6ad7cd581198b5a69e7076a191315a03', '89.136.51.153', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.1 (KH', 1347798657, ''),
-('6d08073e69728c5d45e46aeb3f9796f7', '89.136.51.153', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.1 (KH', 1347804058, ''),
-('93d50c3293995707678f082dcefbd838', '89.136.51.153', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.1 (KH', 1347803458, ''),
-('a0229e68ab810ee584ee83ce587683dd', '89.136.51.153', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.1 (KH', 1347802858, ''),
-('a6f5a3fba80c85e9ab7873056e507cd8', '89.136.51.153', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.1 (KH', 1347801658, ''),
-('cd7f031bbaeaf7a636abeb18e381cbfe', '127.0.0.1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.19', 1347805118, ''),
-('d22fd856e54710cb96f20a9a650078b0', '89.136.51.153', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.1 (KH', 1347804658, ''),
-('dc13ae1405b11c77a9103e5edb1ce899', '89.136.51.153', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.1 (KH', 1347802258, ''),
-('fb9e075693862c4a5ee13cb74a7ecf7f', '89.136.51.153', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.1 (KH', 1347805258, ''),
-('fc132d5cfec0929967ab1f974096651f', '192.168.1.5', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.19', 1347803945, '');
+('4a8858319cb07dfef9edb517d6e46b75', '127.0.0.1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/536.11', 1348391151, 'a:2:{s:4:"cart";b:1;s:4:"lang";s:7:"english";}');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `event_entry`
+--
+
+CREATE TABLE IF NOT EXISTS `event_entry` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `type` varchar(100) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `type` (`type`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -163,6 +187,31 @@ CREATE TABLE IF NOT EXISTS `event_place` (
 INSERT INTO `event_place` (`id`, `address`, `name`) VALUES
 (1, 'Iulius Mall, Cluj-Napoca, Cluj, Romania', 'Iulius Mall'),
 (2, 'Bulevardul 21 Decembrie 1989, Cluj-Napoca, Cluj, România', 'Bulevardul 21 Decembrie');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `event_step`
+--
+
+CREATE TABLE IF NOT EXISTS `event_step` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `entry_id` int(11) NOT NULL,
+  `reversible` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `entry_id` (`entry_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `event_step_type`
+--
+
+CREATE TABLE IF NOT EXISTS `event_step_type` (
+  `id` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -101297,9 +101346,56 @@ INSERT INTO `rss_posts` (`id`, `title`, `text`, `date_post`) VALUES
 (2, 'Another great article', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for ''lorem ipsum'' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).', '2009-08-10'),
 (3, 'News from myfeed', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for ''lorem ipsum'' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).', '2009-08-10');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_role`
+--
+
+CREATE TABLE IF NOT EXISTS `user_role` (
+  `id` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `a3m_account_details`
+--
+ALTER TABLE `a3m_account_details`
+  ADD CONSTRAINT `a3m_account_details_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `a3m_account` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `a3m_account_facebook`
+--
+ALTER TABLE `a3m_account_facebook`
+  ADD CONSTRAINT `a3m_account_facebook_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `a3m_account` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `a3m_account_openid`
+--
+ALTER TABLE `a3m_account_openid`
+  ADD CONSTRAINT `a3m_account_openid_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `a3m_account` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `a3m_account_twitter`
+--
+ALTER TABLE `a3m_account_twitter`
+  ADD CONSTRAINT `a3m_account_twitter_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `a3m_account` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `event_entry`
+--
+ALTER TABLE `event_entry`
+  ADD CONSTRAINT `event_entry_ibfk_1` FOREIGN KEY (`type`) REFERENCES `event_type` (`name`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `event_step`
+--
+ALTER TABLE `event_step`
+  ADD CONSTRAINT `event_step_ibfk_1` FOREIGN KEY (`entry_id`) REFERENCES `event_entry` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `gallery`

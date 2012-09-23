@@ -72,7 +72,7 @@ class Gallery_model extends CI_Model {
 							<div class="ad-image-wrapper"></div>
 							<div class="ad-controls">';
 							if($cart){
-							$result.='<div class="cart-image" id="cart-container-id1">No Cost</div>';						
+							$result.='<div class="cart-image" id="cart-container-id1">No Csost</div>';						
 							}
 						$result.='<select id="switch-effect">
       								<option value="slide-hori">Slide horizontal</option>

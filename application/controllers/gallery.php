@@ -19,8 +19,10 @@ class Gallery extends CI_Controller {
 	
 	function index()
 	{
-        $data['items'] = $this->posts->get_site_posts(10);
-       	$data['gallery']=$this->gallery->getGalleries(5);
+		$data['items'] = $this->posts->get_site_posts(10);
+		setCart(true);
+        $data['cart']=getCart();
+       	$data['gallery']=$this->gallery->getGalleries(5,'',true);
 		if ($this->authentication->is_signed_in())
 		{
 			$data['account'] = $this->account_model->get_by_id($this->session->userdata('account_id'));

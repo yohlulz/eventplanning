@@ -30,6 +30,18 @@ function updateElements(){
 			}
 		}
 }
-updateElements();
-setInterval('updateElements()',1000);
+
+function addItemContainerId1(){
+		var cartContainer=document.getElementById('cart-container-id1');
+		if(cartContainer.getAttribute('cart_id')==undefined){return;}
+		cart.add({
+					id: cartContainer.getAttribute('cart_id'),
+					name: cartContainer.getAttribute('name'),
+					price: cartContainer.getAttribute('price'),
+					shipping: cartContainer.getAttribute('shipping'),
+					allowMultiple: false
+				});
+}
+
+$('#cart-container-id1').click(function(){addItemContainerId1();});
 });

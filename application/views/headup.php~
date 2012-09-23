@@ -22,6 +22,7 @@
 			<?php if($cart) {
 				echo '<li><div id="cart" lang="'.(checkLanguage()=='english'?'en':checkLanguage()).'" head="'.lang('website_title').'" foot="'.lang('website_title').' PayPal" email="'.getConfigItem('contact_to_email').'" >Cart</div></li>';
 			}?>
+			<?php echo ; ?>" head="<?php echo ;?>" foot="<?php echo ; ?>" email="<?php echo getConfigItem('contact_to_email'); ?>">Cart</div></li>
 			<li><div id="share" data-title="Share" data-url="<?php echo getConfigItem('check_site'); ?>" ></div></li>
 			<li>&nbsp;</li>		
 			<li>&nbsp;</li>
