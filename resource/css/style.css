@@ -233,7 +233,14 @@ h1#logo a:hover {
 	z-index: 0;
 	margin-left: -100px;
 	margin-top: -5px;
+	-moz-margin-top: -40px;
 	position: absolute;
+}
+
+@-moz-document url-prefix(){
+	#cart {
+		margin-top: -40px;
+	}
 }
 
 #slider { 

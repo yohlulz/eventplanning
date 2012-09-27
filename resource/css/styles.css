@@ -2,7 +2,7 @@
 /* Positions the contact form so it doesn't interfere with any other content, as well as a z-index above any other elements on the page */	
 #contactFormContainer {
 	position:absolute;
-	z-index:3;
+	z-index:110;
 	}
 	
 /* Hides the whole contact form until needed */	
