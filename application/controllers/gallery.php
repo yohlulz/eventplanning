@@ -28,6 +28,7 @@ class Gallery extends CI_Controller {
 			$data['account'] = $this->account_model->get_by_id($this->session->userdata('account_id'));
 		}
 		$data['submenus']=getSubmenus();
+		$data['page_info']='';
 	    
         $this->load->view('header');
         $this->load->view('gallery', isset($data)?$data:NULL);

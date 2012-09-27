@@ -21,6 +21,9 @@ $lang['privacy_policy']							= 'Privacy policy';
 $lang['author']									= 'Marin Oana Andreea';
 $lang['rights_reserved']						= 'All rights reserved';
 $lang['rss_site_description']					= 'Ceva povesti';
+$lang['event_desc']								= 'Event description';
+$lang['notice']									= 'Notice';
+$lang['not_logged']								= 'Nu sunteti autentificat.<br> Logati-va pentru a putea continua.';
 
 //==================================================================================
 

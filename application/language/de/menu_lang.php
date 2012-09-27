@@ -12,6 +12,7 @@ $lang['menu_suggestion']						= 'Opinions';
 $lang['menu_blog']							= 'Blog';
 $lang['menu_place']							= 'Places';
 $lang['menu_events']						= 'Events';
+$lang['menu_people']						= 'People';
 
 /*
 |--------------------------------------------------------------------------

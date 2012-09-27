@@ -10,10 +10,7 @@
 	<div id="content" class="left">
 	<!-- ==================================================================-->
 	<!-- welcome  -->
-			<div class="welcome">
-				<h2>Welcome</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at lobortis mauris. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec mi nisl, sollicitudin eget hendrerit eu, molestie in odio. Suspendisse quis orci vitae purus scelerisque porttitor sollicitudin porttitor sem.</p>
-			</div>
+				<?php echo $page_info; ?>
 			<!-- end welcome  -->
 			<!-- news -->
 			<div class="news">

@@ -21,6 +21,9 @@ $lang['privacy_policy']							= 'Datenschutz';
 $lang['author']									= 'Marin Oana Andreea';
 $lang['rights_reserved']						= 'Alle Rechte vorbehalten';
 $lang['rss_site_description']					= 'Ceva povesti';
+$lang['event_desc']								= 'Descriere eveniment';
+$lang['notice']									= 'Notificare';
+$lang['not_logged']								= 'Nu sunteti autentificat.<br> Logati-va pentru a putea continua.';
 
 /* End of file general_lang.php */
 /* Location: ./application/language/english/general_lang.php */

@@ -96,7 +96,7 @@ $autoload['config'] = array();
 |
 */
 
-$autoload['language'] = array('contact','menu');
+$autoload['language'] = array('contact','menu','event_desc');
 
 
 /*

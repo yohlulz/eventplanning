@@ -17,6 +17,13 @@ class Step_model extends CI_Model {
 		$this->description=$description;
 	}
 	
+	function isDone(){
+		//TODO
+	}
+	
+	private function persist(){
+		//TODO
+	}
 }
 
 /*

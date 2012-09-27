@@ -3,7 +3,8 @@
 class Event_model extends CI_Model {
 		
 	private $steps;
-	private $index;	
+	private $index;
+	private static $table='';
 		
 	function __construct()
     {

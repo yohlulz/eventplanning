@@ -20,7 +20,7 @@ function getEventsSubmenu(){
 	$result.='<div class="events_submenu">
     				<div class="triangle"></div>';
 	foreach($entries as $entry){
-		$result.='<a href="'.$entry->url.'">'.lang($entry->name).'</a>';	
+		$result.='<a href="'.site_url($entry->url).'">'.lang($entry->name).'</a>';	
 	}
 	$result.='</div>';
 	return $result;

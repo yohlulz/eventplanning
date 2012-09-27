@@ -26,6 +26,10 @@ class Home extends CI_Controller {
        	$data['items']=$this->posts->get_site_posts(5);
 		$data['submenus']=getSubmenus();
 		$data['gmap']=getPlace("Iulius Mall").getPlace("21 Decembrie","street");
+		$data['page_info']='<div class="welcome">
+				<h2>Welcome</h2>
+				<p>TODO</p>
+			</div>';
 		
 		$this->load->view('header');
 		$this->load->view('home', isset($data) ? $data : NULL);

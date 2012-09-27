@@ -49,6 +49,7 @@ $route['ajax/(:any)/(:any)']='ajax/index/$1/$2';
 $route['ajax/(:any)/(:any)/(:any)']='ajax/index/$1/$2/$3';
 $route['rss']='feed';
 $route['gallery']='gallery';
+$route['events/(:any)']='events/steps/$1';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
