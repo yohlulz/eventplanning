@@ -15,6 +15,8 @@ class Gallery extends CI_Controller {
 		$this->load->helper('text');
 		$this->load->model('feed_post_model', 'posts');
 		$this->load->model('gallery_model', 'gallery');
+		$this->load->model('slider_model', 'slider');
+		
 	}
 	
 	function index()
@@ -22,6 +24,7 @@ class Gallery extends CI_Controller {
 		$data['items'] = $this->posts->get_site_posts(10);
 		setCart(true);
         $data['cart']=getCart();
+		$data['slider']=$this->slider->getSliders(5);
        	$data['gallery']=$this->gallery->getGalleries(5,'',true);
 		if ($this->authentication->is_signed_in())
 		{

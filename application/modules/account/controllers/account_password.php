@@ -18,7 +18,7 @@ class Account_password extends CI_Controller {
 		$this->load->model(array('account/account_model'));
 		$this->load->language(array('general', 'account/account_password'));
 		$this->load->model('feed_post_model', 'posts');
-		
+		$this->load->model('slider_model', 'slider');
 	}
 	
 	/**
@@ -58,6 +58,9 @@ class Account_password extends CI_Controller {
 		}
 		$data['items']=$this->posts->get_site_posts(5);
 		$data['submenus']=getSubmenus();
+		$data['slider']=$this->slider->getSliders(5);
+		setCart(false);
+        $data['cart']=getCart();
 		
 		$this->load->view('header');
 		$this->load->view('account/account_password', $data);

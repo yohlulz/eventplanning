@@ -18,6 +18,7 @@ class Sign_up extends CI_Controller {
 		$this->load->model(array('account/account_model', 'account/account_details_model'));
 		$this->load->language(array('general', 'account/sign_up', 'account/connect_third_party'));
 		$this->load->model('feed_post_model', 'posts');
+		$this->load->model('slider_model', 'slider');
 	}
 	
 	/**
@@ -38,6 +39,10 @@ class Sign_up extends CI_Controller {
 		$recaptcha_result = $this->recaptcha->check();
 		$data['items']=$this->posts->get_site_posts(5);
 		$data['submenus']=getSubmenus();
+		$data['slider']=$this->slider->getSliders(5);
+		setCart(false);
+        $data['cart']=getCart();
+		
 		// Store recaptcha pass in session so that users only needs to complete captcha once
 		if ($recaptcha_result === TRUE) $this->session->set_userdata('sign_up_recaptcha_pass', TRUE);
 		

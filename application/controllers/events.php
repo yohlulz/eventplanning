@@ -14,6 +14,7 @@ class Events extends CI_Controller {
 //		$this->load->helper('xml');
 //		$this->load->helper('text');
 		$this->load->model('feed_post_model', 'posts');
+		$this->load->model('slider_model', 'slider');
 //		$this->load->model('gallery_model', 'gallery');
 	}
 	
@@ -37,10 +38,17 @@ class Events extends CI_Controller {
 	}
 	
 	function steps($type){
+		
+		maintain_ssl();	
+		if ($this->authentication->is_signed_in())
+		{
+			$data['account'] = $this->account_model->get_by_id($this->session->userdata('account_id'));
+		}
 		setCart(false);
 		$data['cart']=getCart();
 		$data['submenus']=getSubmenus();
 		$data['items']=$this->posts->get_site_posts(5);
+		$data['slider']=$this->slider->getSliders(5);
 		$data['page_info']='<div class="welcome">
 								<h2>'.lang('event_desc').'</h2>
 								<p>'.lang('event_desc_'.$type).'</p>

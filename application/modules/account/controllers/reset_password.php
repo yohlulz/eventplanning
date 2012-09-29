@@ -18,6 +18,7 @@ class Reset_password extends CI_Controller {
 		$this->load->model(array('account/account_model'));
 		$this->load->language(array('general', 'account/reset_password'));
 		$this->load->model('feed_post_model', 'posts');
+		$this->load->model('slider_model', 'slider');
 	}
 	
 	/**
@@ -35,6 +36,10 @@ class Reset_password extends CI_Controller {
 		$recaptcha_result = $this->recaptcha->check();
 		$data['items']=$this->posts->get_site_posts(5);
 		$data['submenus']=getSubmenus();
+		$data['slider']=$this->slider->getSliders(5);
+		setCart(false);
+        $data['cart']=getCart();
+		
 		// User has not passed recaptcha
 		if ($recaptcha_result !== TRUE)
 		{

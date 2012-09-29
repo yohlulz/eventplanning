@@ -18,6 +18,7 @@ class Connect_openid extends CI_Controller {
 		$this->load->model(array('account/account_model', 'account_openid_model'));
 		$this->load->language(array('general', 'account/sign_in', 'account/account_linked', 'account/connect_third_party'));
 		$this->load->model('feed_post_model', 'posts');
+		$this->load->model('slider_model', 'slider');
 	}
 	
 	function index()
@@ -148,6 +149,10 @@ class Connect_openid extends CI_Controller {
 		}
 		$data['items']=$this->posts->get_site_posts(5);
 		$data['submenus']=getSubmenus();
+		$data['slider']=$this->slider->getSliders(5);
+		setCart(false);
+        $data['cart']=getCart();
+		
 		$this->load->view('header');
 		$this->load->view('connect_openid', isset($data) ? $data : NULL);
 		$this->load->view('footer');
