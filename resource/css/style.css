@@ -267,20 +267,24 @@ h1#logo a:hover {
 	height: 215px; 
 	position: relative; 
 	overflow: hidden; 
-	padding: 21px 0 0 79px; 
+	padding: 21px 0 0 21px; 
 }
 
 #slider .content ul li .slide-image { 
 	float: left; 
 	display: inline; 
-	margin-right: 72px; 
+	margin-right: 50px; 
+	height: 200px;
+	width: auto;
+	max-width: 400px;
 }
 
 #slider .content ul li .text-container { 
 	float: left; 
 	display: inline; 
-	width: 480px; 
+	width: 400px; 
 	padding-top: 25px;  
+	cursor: default;
 }
 
 #slider .content ul li .text-container h2 { 

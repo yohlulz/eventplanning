@@ -8,10 +8,11 @@ class Home extends CI_Controller {
 		
 		// Load the necessary stuff...
 		$this->load->helper(array('language', 'url', 'form', 'account/ssl'));
-        	$this->load->library(array('account/authentication'));
+        $this->load->library(array('account/authentication'));
 		$this->load->model(array('account/account_model'));
 		$this->lang->load(array('general'));
 		$this->load->model('feed_post_model', 'posts');
+		$this->load->model('slider_model', 'slider');
 	}
 	
 	function index()
@@ -25,6 +26,7 @@ class Home extends CI_Controller {
         $data['cart']=getCart();
        	$data['items']=$this->posts->get_site_posts(5);
 		$data['submenus']=getSubmenus();
+		$data['slider']=$this->slider->getSliders(5);
 		$data['gmap']=getPlace("Iulius Mall").getPlace("21 Decembrie","street");
 		$data['page_info']='<div class="welcome">
 				<h2>Welcome</h2>
