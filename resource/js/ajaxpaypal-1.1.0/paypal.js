@@ -1,5 +1,6 @@
 $(function(){
 	   // Create a new AJAXPaypalCart Object
+	if(document.getElementById('cart')){
             var cart = $('#cart').DCAJAXPaypalCart({
                 width:600,
 			currency: 'EUR',
@@ -16,6 +17,7 @@ $(function(){
                     page_style:'digicrafts'
                 }
             });            
+}
             
 function updateElements(){
 		var carts=document.getElementsByTagName('div');
@@ -42,6 +44,7 @@ function addItemContainerId1(){
 					allowMultiple: false
 				});
 }
-
-$('#cart-container-id1').click(function(){addItemContainerId1();});
+if(document.getElementById('cart-container-id1')){
+	$('#cart-container-id1').click(function(){addItemContainerId1();});
+}
 });

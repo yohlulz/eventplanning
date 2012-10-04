@@ -48,14 +48,19 @@ class Slider_model extends CI_Model {
 		$result.='<div id="slider">
 					<div class="content">
 						<ul>';
+		$lang=$this->session->userdata('lang');
+		if($lang==''){
+			$lang='english';
+			$this->session->set_userdata('lang',$lang);
+		}
 		foreach ($entries as $entry) {
 			$items=$this->getSliderItems($entry->path);
 			foreach ($items as $item) {
 				$result.='	<li>
 								<img src="'.$item->getPath().'" class="slide-image"/>
 								<div class="text-container">
-									<h2>'.$item->getTitle($this->session->userdata('lang')).'</h2>
-									<p>'.$item->getDescription($this->session->userdata('lang')).'</p>
+									<h2>'.$item->getTitle($lang).'</h2>
+									<p>'.$item->getDescription($lang).'</p>
 									<div class="cl">&nbsp;</div>
 								</div>
 							</li>';							

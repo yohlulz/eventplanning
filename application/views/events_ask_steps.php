@@ -9,10 +9,30 @@
 	<!-- content -->
 	<div id="content" class="left">
 	<!-- ==================================================================-->
-	<!-- welcome  -->
-			<?php echo $page_info; ?>
-			<!-- end welcome  -->
+		<!-- welcome  -->
+		<?php echo $page_info; ?>
+		<!-- end welcome  -->
 
+	<div class="welcome">
+	<ul id="selectedSortableList" class="connectedSortable">
+	<li>Selected items</li>	
+	<li class="ui-state-default">Item 1</li>
+	<li class="ui-state-default">Item 2</li>
+	<li class="ui-state-default">Item 3</li>
+	<li class="ui-state-default">Item 4</li>
+	<li class="ui-state-default">Item 5</li>
+</ul>
+
+<ul id="availableSortableList" class="connectedSortable">
+	<li>Available items</li>
+	<li class="ui-state-highlight">Item 1</li>
+	<li class="ui-state-highlight">Item 2</li>
+	<li class="ui-state-highlight ui-state-disabled">Item 3</li>
+	<li class="ui-state-highlight">Item 4</li>
+	<li class="ui-state-highlight">Item 5</li>
+</ul>
+</div>
+	
 <!-- ============================================================= -->
 
 	</div>

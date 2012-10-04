@@ -15,7 +15,7 @@ class Events extends CI_Controller {
 //		$this->load->helper('text');
 		$this->load->model('feed_post_model', 'posts');
 		$this->load->model('slider_model', 'slider');
-//		$this->load->model('gallery_model', 'gallery');
+		$this->load->model('event_model');
 	}
 	
 	function index()
@@ -35,6 +35,7 @@ class Events extends CI_Controller {
         $this->load->view('gallery', isset($data)?$data:NULL);
 		$this->load->view('footer');
 		 */
+		 redirect(site_url());
 	}
 	
 	function steps($type){
@@ -54,7 +55,8 @@ class Events extends CI_Controller {
 								<p>'.lang('event_desc_'.$type).'</p>
 							</div>';
 		if($this->authentication->is_signed_in()){
-		//TODO	
+			$event=$this->event_model->createEvent($type,$this->session->userdata('account_id'));
+			$data['page_info'].=$event->renderSteps();
 		}
 		else{
 			$data['page_info'].='<div class="welcome">

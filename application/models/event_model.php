@@ -4,6 +4,8 @@ class Event_model extends CI_Model {
 		
 	private $steps;
 	private $index;
+	private $type;
+	private $user;
 	private static $table='';
 		
 	function __construct()
@@ -12,10 +14,10 @@ class Event_model extends CI_Model {
         parent::__construct();
 		$this->load->model('step_model', 'step');
 		$this->steps=array();
-		$this->index=0;
+		$this->index=-1;
     }
 	
-	function addStep($step){
+/*	function addStep($step){
 		$this->steps[]=$step;
 	}
 	
@@ -59,12 +61,25 @@ class Event_model extends CI_Model {
 			}
 			$this->index++;
 		}
+	}*/
+	
+	public static function createEvent($type,$accountId){
+		$event=new Event_model();
+		$event->type=$type;
+		$event->user=$accountId;
+	}
+	
+	public function save(){
+		//TODO
 	}
 	
 	private function persist(){
 		//TODO
 	}
 
+	public function renderSteps(){
+		
+	}
 }
 
 /*
