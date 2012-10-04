@@ -67,6 +67,7 @@ class Event_model extends CI_Model {
 		$event=new Event_model();
 		$event->type=$type;
 		$event->user=$accountId;
+		
 	}
 	
 	public function save(){
