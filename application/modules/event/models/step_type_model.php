@@ -8,7 +8,6 @@ class Step_type_model extends CI_Model {
     {
         // Call the Model constructor
         parent::__construct();
-		$this->load->model('step_type_model', 'step_type');
     }
 	
 	function getName(){

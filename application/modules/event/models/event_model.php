@@ -12,7 +12,8 @@ class Event_model extends CI_Model {
     {
         // Call the Model constructor
         parent::__construct();
-		$this->load->model('step_model', 'step');
+		$this->load->model('event/step_model', 'step');
+		$this->load->model('gallery_model', 'gallery');
 		$this->steps=array();
 		$this->index=-1;
     }
@@ -63,11 +64,54 @@ class Event_model extends CI_Model {
 		}
 	}*/
 	
-	public static function createEvent($type,$accountId){
-		$event=new Event_model();
-		$event->type=$type;
-		$event->user=$accountId;
-		
+	public static function getStepsForType($type,$current='nothing'){
+		$CI=&get_instance();
+		$data['current']=$current;
+		$data['type']=$type;
+		$result=$CI->load->view('event_menu',$data,true);
+		$result.='<div class="welcome">';
+		$defaults=$CI->db->where('eventName',$type)->get('event_type_default_steps')->result();
+		$available=$CI->db->where('eventName',$type)->get('event_type_available_steps')->result();
+		$result.='<ul id="selectedSortableList" class="connectedSortable">
+					<li class="headingSortable ui-state-disabled">'.lang('selected_items').'</li>';
+		$least=false;			
+		foreach ($defaults as $entry) {
+			$disabled='';
+			if($entry->implicit==1){
+				$disabled=' ui-state-disabled';
+			}
+			$result.='<li class="ui-state-highlight'.$disabled.'">'.$entry->stepName.'</li>';
+			$least=true;
+		}
+		if(!$least){
+			$result.='<li class="ui-state-disabled">'.lang('no_items_available').'</li>';
+		}
+		$result.='</ul>
+				  <ul id="availableSortableList" class="connectedSortable">
+				  	<li class="headingSortable ui-state-disabled">'.lang('available_items').'</li>';
+		$least=false;
+		foreach ($available as $entry) {
+			$result.='<li class="ui-state-default">'.$entry->stepName.'</li>';
+			$least=true;
+		}
+		if(!$least){
+			$result.='<li class="ui-state-disabled">'.lang('no_items_available').'</li>';
+		}		  
+		$result.='</ul>
+				<div class="cl">&nbsp;</div>
+				</div>';
+		return $result;
+	}
+	
+	public static function getHeadings($type,$gallery=false,$cart=false){
+		$CI =&get_instance();
+		$data['current']='nothing';
+		$data['type']=$type;
+		$result=$CI->load->view('event_menu',$data,true);
+		if($gallery){
+			$result.=$CI->gallery->getGalleries(MEDIUM_LOAD_ITEMS,$type,$cart);
+		}
+		return $result;
 	}
 	
 	public function save(){

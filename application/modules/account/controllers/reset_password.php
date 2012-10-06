@@ -34,9 +34,9 @@ class Reset_password extends CI_Controller {
 		
 		// Check recaptcha
 		$recaptcha_result = $this->recaptcha->check();
-		$data['items']=$this->posts->get_site_posts(5);
+		$data['items']=$this->posts->get_site_posts(MEDIUM_LOAD_ITEMS);
 		$data['submenus']=getSubmenus();
-		$data['slider']=$this->slider->getSliders(5);
+		$data['slider']=$this->slider->getSliders(MEDIUM_LOAD_ITEMS);
 		setCart(false);
         $data['cart']=getCart();
 		

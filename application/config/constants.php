@@ -49,5 +49,10 @@ define('PHPASS_HASH_STRENGTH', 8);
 define('PHPASS_HASH_PORTABLE', FALSE);
 
 
+define('MEDIUM_LOAD_ITEMS', 5);
+define('SHORT_LOAD_ITEMS',2);
+define('LONG_LOAD_ITEMS',10);
+
+
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

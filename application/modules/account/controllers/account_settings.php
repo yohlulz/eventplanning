@@ -98,9 +98,9 @@ class Account_settings extends CI_Controller {
 				$data['settings_info'] = lang('settings_details_updated');
 			}
 		}
-		$data['items']=$this->posts->get_site_posts(5);
+		$data['items']=$this->posts->get_site_posts(MEDIUM_LOAD_ITEMS);
 		$data['submenus']=getSubmenus();
-		$data['slider']=$this->slider->getSliders(5);
+		$data['slider']=$this->slider->getSliders(MEDIUM_LOAD_ITEMS);
 		setCart(false);
         $data['cart']=getCart();
 		

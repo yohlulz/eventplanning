@@ -38,19 +38,7 @@
 |
 */
 
-$route['default_controller'] = 'home';
-$route['404_override'] = '';
-$route['lang/(:any)/(:any)']='changelanguage/index/$1/$2';
-$route['lang/(:any)/(:any)/(:any)']='changelanguage/index/$1/$2/$3';
-$route['lang/(:any)/(:any)/(:any)/(:any)']='changelanguage/index/$1/$2/$3/$4';
-$route['lang/(:any)']='changelanguage/index/$1';
-$route['ajax/share/(:any)']='ajax/share/$1';
-$route['ajax/(:any)']='ajax/index/$1';
-$route['ajax/(:any)/(:any)']='ajax/index/$1/$2';
-$route['ajax/(:any)/(:any)/(:any)']='ajax/index/$1/$2/$3';
-$route['rss']='feed';
-$route['gallery']='gallery';
-//$route['events/(:any)']='events/steps/$1';
+$route['steps/$1'] = 'steps/index/$1';
 
 /* End of file routes.php */
-/* Location: ./application/config/routes.php */
+/* Location: ./application/modules/event/config/routes.php */

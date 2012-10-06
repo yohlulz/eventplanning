@@ -43,9 +43,9 @@ class Forgot_password extends CI_Controller {
 		$this->form_validation->set_rules(array(
 			array('field'=>'forgot_password_username_email', 'label'=>'lang:forgot_password_username_email', 'rules'=>'trim|required')
 		));
-		$data['items']=$this->posts->get_site_posts(5);
+		$data['items']=$this->posts->get_site_posts(MEDIUM_LOAD_ITEMS);
 		$data['submenus']=getSubmenus();
-		$data['slider']=$this->slider->getSliders(5);
+		$data['slider']=$this->slider->getSliders(MEDIUM_LOAD_ITEMS);
 		setCart(false);
         $data['cart']=getCart();
 		

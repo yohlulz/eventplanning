@@ -13,14 +13,17 @@ class Changelanguage extends CI_Controller {
 		$this->lang->load(array('general'));
 	}
 	
-	function index($lang='english',$url='default',$uri1='',$uri2='')
+	function index($lang='english',$url='default',$uri1='',$uri2='',$uri3='')
 	{
 		$site_url=$url==='default'?'':$url;
 		if($uri1!=''){
 			$site_url.='/'.$uri1;
 		}
-		if($uri1!=''){
+		if($uri2!=''){
 			$site_url.='/'.$uri2;
+		}
+		if($uri3!=''){
+			$site_url.='/'.$uri3;
 		}		
 		$this->session->set_userdata('lang',$lang);
 		redirect($site_url);

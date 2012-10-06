@@ -22,7 +22,7 @@ class Feed extends CI_Controller {
         $data['description'] = lang('rss_site_description');
         $data['copyright'] = lang('website_title');
         $data['date'] = date("D M j G:i:s T Y");
-        $data['items'] = $this->posts->getPosts(10);  
+        $data['items'] = $this->posts->getPosts(LONG_LOAD_ITEMS);  
         header("Content-Type: application/rss+xml"); // important!
         
         $this->load->view('rss', $data);

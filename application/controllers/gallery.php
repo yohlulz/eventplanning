@@ -21,11 +21,11 @@ class Gallery extends CI_Controller {
 	
 	function index()
 	{
-		$data['items'] = $this->posts->get_site_posts(10);
+		$data['items'] = $this->posts->get_site_posts(LONG_LOAD_ITEMS);
 		setCart(true);
         $data['cart']=getCart();
-		$data['slider']=$this->slider->getSliders(5);
-       	$data['gallery']=$this->gallery->getGalleries(5,'',true);
+		$data['slider']=$this->slider->getSliders(MEDIUM_LOAD_ITEMS);
+       	$data['gallery']=$this->gallery->getGalleries(MEDIUM_LOAD_ITEMS,'',true);
 		if ($this->authentication->is_signed_in())
 		{
 			$data['account'] = $this->account_model->get_by_id($this->session->userdata('account_id'));

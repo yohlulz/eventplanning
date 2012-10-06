@@ -64,7 +64,6 @@ class Gallery_model extends CI_Model {
 						<span class="news-pointer-date"><b>'.$entry->date_month.'</b> <i>'.$entry->year.'</i></span>
 						<div class="news-body">
 							<h3>'.$entry->title.'</h3>
-							<a href="#" class="btn"><span><em>read more</em></span></a>
 							<div class="cl">&nbsp;</div>
 							<p>'.$entry->comment.'</p>
 						</div>
@@ -72,7 +71,10 @@ class Gallery_model extends CI_Model {
 							<div class="ad-image-wrapper"></div>
 							<div class="ad-controls">';
 							if($cart){
-							$result.='<div class="cart-image" id="cart-container-id1">No Cost</div>';						
+								$result.='<div class="cart-image round_corners" id="cart-container-id1">No Cost</div>';						
+							}
+							else{
+								$result.='<div class"cart-image" id="cart-container-id1" style="display: none;">No Cost</div>';
 							}
 						$result.='<select id="switch-effect">
       								<option value="slide-hori">Slide horizontal</option>
@@ -114,7 +116,6 @@ class Gallery_model extends CI_Model {
 							<span class="news-pointer-date"><b>'.$entry->date_month.'</b> <i>'.$entry->year.'</i></span>
 							<div class="news-body">
 								<h3>'.$entry->title.'</h3>
-								<a href="#" class="btn"><span><em>read more</em></span></a>
 								<div class="cl">&nbsp;</div>
 								<p>'.$entry->comment.'</p>
 							</div>

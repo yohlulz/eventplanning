@@ -56,9 +56,9 @@ class Account_password extends CI_Controller {
 			$this->session->set_flashdata('password_info', lang('password_password_has_been_changed'));
 			redirect('account/account_password');
 		}
-		$data['items']=$this->posts->get_site_posts(5);
+		$data['items']=$this->posts->get_site_posts(MEDIUM_LOAD_ITEMS);
 		$data['submenus']=getSubmenus();
-		$data['slider']=$this->slider->getSliders(5);
+		$data['slider']=$this->slider->getSliders(MEDIUM_LOAD_ITEMS);
 		setCart(false);
         $data['cart']=getCart();
 		
