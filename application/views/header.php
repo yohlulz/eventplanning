@@ -39,4 +39,5 @@
 	<script src="resource/js/jquery-ad-gallery/jquery.ad-gallery.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript" src="resource/js/jquery-ui-1.8.23.custom/jquery-ui-1.8.23.custom.min.js"></script>
 	<script type="text/javascript" src="resource/js/jquery-ui-1.8.23.custom/sortableItemsList.js"></script>
+	<script type="text/javascript" src="resource/js/general.js"></script>
 </head>

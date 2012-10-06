@@ -701,7 +701,7 @@ h1#logo a:hover {
 }
 
 .connectedSortable {
-	margin-right: 30px;
+	margin-left: 40px;
 	list-style: none;
 	cursor: pointer; 
 	float: left;
@@ -712,7 +712,7 @@ ul.connectedSortable{
 	min-width: 80px;
 	min-height:20px;
 	background-color: #E0E0E0; 
--moz-border-radius-topright:5px; 
+	-moz-border-radius-topright:5px; 
 	-moz-border-radius-topleft:5px; 
 	-webkit-border-top-right-radius:5px; 
 	-webkit-border-top-left-radius:5px; 
@@ -757,3 +757,13 @@ ul.connectedSortable{
 	-webkit-border-bottom-right-radius:5px; 
 	-webkit-border-bottom-left-radius:5px;
 }
+
+.event_submit{
+	margin-left: 50px;
+	margin-top: 10px;
+	cursor: pointer;
+	padding-right: 5px;
+	padding-top: 1px;
+	
+}
+

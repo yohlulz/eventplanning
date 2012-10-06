@@ -80,7 +80,7 @@ class Event_model extends CI_Model {
 			if($entry->implicit==1){
 				$disabled=' ui-state-disabled';
 			}
-			$result.='<li class="ui-state-highlight'.$disabled.'">'.$entry->stepName.'</li>';
+			$result.='<li class="ui-state-highlight step_item'.$disabled.'">'.$entry->stepName.'</li>';
 			$least=true;
 		}
 		if(!$least){
@@ -91,13 +91,15 @@ class Event_model extends CI_Model {
 				  	<li class="headingSortable ui-state-disabled">'.lang('available_items').'</li>';
 		$least=false;
 		foreach ($available as $entry) {
-			$result.='<li class="ui-state-default">'.$entry->stepName.'</li>';
+			$result.='<li class="ui-state-default step_item">'.$entry->stepName.'</li>';
 			$least=true;
 		}
 		if(!$least){
 			$result.='<li class="ui-state-disabled">'.lang('no_items_available').'</li>';
 		}		  
 		$result.='</ul>
+				<div class="cl">&nbsp;</div>
+				<div class="btn round_corners event_submit" id="event_create_steps">'.lang('submit_create_event').'</div>
 				<div class="cl">&nbsp;</div>
 				</div>';
 		return $result;
