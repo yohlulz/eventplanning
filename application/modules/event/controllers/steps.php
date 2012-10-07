@@ -87,6 +87,14 @@ class Steps extends CI_Controller {
 		
 	}
 	
+	function submit_new_event($type){
+		echo $type."<br>";
+		$steps=$_POST;
+		print_r($steps);
+		echo "<br>//TODO";
+		die;
+	}
+	
 }
 
 

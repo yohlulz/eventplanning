@@ -72,7 +72,7 @@ class Event_model extends CI_Model {
 		$result.='<div class="welcome">';
 		$defaults=$CI->db->where('eventName',$type)->get('event_type_default_steps')->result();
 		$available=$CI->db->where('eventName',$type)->get('event_type_available_steps')->result();
-		$result.='<ul id="selectedSortableList" class="connectedSortable">
+		$result.='<ul id="selectedSortableList" class="connectedSortable" url="'.site_url('event/steps/submit_new_event/'.$type).'">
 					<li class="headingSortable ui-state-disabled">'.lang('selected_items').'</li>';
 		$least=false;			
 		foreach ($defaults as $entry) {
