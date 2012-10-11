@@ -2,8 +2,12 @@
 <?php echo $this->load->view('headup'); ?>
 <div class="shell">
 <?php echo $this->load->view('slider'); ?>
-<?php echo $this->load->view('menu'); ?>
-<!-- main -->
+<?php $menu_page='menu';
+	if($this->authentication->is_signed_in()){
+		$menu_page.='_'.$account->role;
+	}
+	echo $this->load->view($menu_page); ?>
+	<!-- main -->
 <div id="main">
 
 	<!-- content -->

@@ -13,6 +13,7 @@
     	<link rel="stylesheet" type="text/css" href="resource/css/dc.core.1.1.0.min.css" />    
     	<link rel="stylesheet" type="text/css" href="resource/css/dc.cart.css" />
 	<link type="text/css" href="resource/css/jquery-ui-1.8.23.custom.css" rel="stylesheet" />
+	<link type="text/css" href="resource/css/jquery.dataTables.css" rel="stylesheet" />
 	<!--[if IE 6]>
 		<link rel="stylesheet" href="css/ie6.css" type="text/css" media="all" />
 		<script src="js/png-fix.js" type="text/javascript" charset="utf-8"></script>
@@ -40,4 +41,6 @@
 	<script type="text/javascript" src="resource/js/jquery-ui-1.8.23.custom/jquery-ui-1.8.23.custom.min.js"></script>
 	<script type="text/javascript" src="resource/js/jquery-ui-1.8.23.custom/sortableItemsList.js"></script>
 	<script type="text/javascript" src="resource/js/general.js"></script>
+	<script type="text/javascript" src="resource/js/dataTables-1.9.4/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="resource/js/dataTables-1.9.4/jquery.tables.js"></script>
 </head>
