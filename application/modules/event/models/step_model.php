@@ -1,9 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Step_model extends CI_Model {
-	private $type;
-	private $dueDate;
-	private $description;	
 		
 	function __construct()
     {
@@ -11,18 +8,25 @@ class Step_model extends CI_Model {
         parent::__construct();
     }
 	
-	function create($type,$dueDate,$description=''){
-		$this->type=$type;
-		$this->dueDate=$dueDate;
-		$this->description=$description;
+	function create($entryId,$type){
+		$this->db->insert('event_step', array(
+			'entry_id' => $entryId, 
+			'type' => $type 
+		));
+		return $this->db->insert_id();
+	}
+
+	public function getById($id){
+		return $this->db->get_where('event_step', array('id' => $id))->row();
 	}
 	
-	function isDone(){
-		//TODO
+	function isDone($id){
+		$step=$this->getById($id);
+		return $step->terminated==1;
 	}
 	
-	private function persist(){
-		//TODO
+	function getByType($entryId,$type){
+		return $this->db->get_where('event_step',array('entry_id' => $entryId, 'type' => $type))->result();
 	}
 }
 

@@ -29,8 +29,13 @@ function getCart(){
 	return $tmp;
 }
 
-function setCart($value=false){
+function setCart($value=''){
+	$tmpValue=$value;
 	$CI=&get_instance();
 	$CI->load->library('session');
-	$CI->session->set_userdata('cart',$value);
+	$tmp=$CI->session->userdata('cart');
+	if($tmp=='' && $tmpValue==''){
+		$tmpValue=false;
+	}
+	$CI->session->set_userdata('cart',$tmpValue);
 }

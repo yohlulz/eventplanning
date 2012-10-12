@@ -4,9 +4,6 @@ class Event_model extends CI_Model {
 		
 	private $steps;
 	private $index;
-	private $type;
-	private $user;
-	private static $table='';
 		
 	function __construct()
     {
@@ -104,6 +101,79 @@ class Event_model extends CI_Model {
 				</div>';
 		return $result;
 	}
+
+	public function getRunningEvents($userId,$type,$current='nothing'){
+		$CI=&get_instance();
+		$data['current']=$current;
+		$data['type']=$type;
+		$result=$CI->load->view('event_menu',$data,true);
+		$result.='<div class="welcome">';
+		$events=$this->getByType($userId, $type,'running');
+		$headers='<tr>
+					<th>'.lang('table_index').'</th>
+					<th>'.lang('table_id').'</th>
+					<th>'.lang('table_date').'</th>
+					<th>'.lang('table_sum').'</th>
+					<th>'.lang('table_place').'</th>
+					<th>'.lang('table_status').'</th>
+				</tr>';
+		
+		$result.='<table cellpadding="0" cellspacing="0" border="0" class="display" id="dataTable1">
+					<thead>'.$headers.'</thead><tbody>';
+		$count=1;
+		foreach ($events as $event) {
+			$result.='	<tr class="gradeA">
+							<td class="center1">'.$count.'</td>
+							<td class="center1">'.$event->id.'</td>
+							<td class="center1">'.$event->submit_date.'</td>
+							<td class="center1">'.$event->total_cost.'</td>
+							<td id="table_gmap_icon_'.$count++.'" class="table_gmap_icon" >&nbsp;</td>
+							<td class="center1 status_'.$event->status.'">'.lang('status_'.$event->status).'</td>
+						</tr>';
+		}			
+		$result.='</tbody><tfoot>'.$headers.'</tfoot></table>';
+		
+		$result.='<div class="cl">&nbsp;</div>
+					</div>';
+		return $result;
+	}
+
+	public function getEndedEvents($userId,$type,$current='nothing'){
+		//TODO refactor
+		$CI=&get_instance();
+		$data['current']=$current;
+		$data['type']=$type;
+		$result=$CI->load->view('event_menu',$data,true);
+		$result.='<div class="welcome">';
+		$events=$this->getByType($userId, $type,'ended');
+		$headers='<tr>
+					<th>'.lang('table_index').'</th>
+					<th>'.lang('table_id').'</th>
+					<th>'.lang('table_date').'</th>
+					<th>'.lang('table_sum').'</th>
+					<th>'.lang('table_place').'</th>
+					<th>'.lang('table_status').'</th>
+				</tr>';
+		
+		$result.='<table cellpadding="0" cellspacing="0" border="0" class="display" id="dataTable1">
+					<thead>'.$headers.'</thead><tbody>';
+		$count=1;
+		foreach ($events as $event) {
+			$result.='	<tr class="gradeA">
+							<td class="center1">'.$count++.'</td>
+							<td class="center1">'.$event->id.'</td>
+							<td class="center1">'.$event->submit_date.'</td>
+							<td class="center1">'.$event->total_cost.'</td>
+							<td>'.$event->place.'</td>
+							<td class="center1 status_'.$event->status.'">'.lang('status_'.$event->status).'</td>
+						</tr>';
+		}			
+		$result.='</tbody><tfoot>'.$headers.'</tfoot></table>';
+		
+		$result.='<div class="cl">&nbsp;</div>
+					</div>';
+		return $result;
+	}
 	
 	public static function getHeadings($type,$gallery=false,$cart=false){
 		$CI =&get_instance();
@@ -115,6 +185,37 @@ class Event_model extends CI_Model {
 		}
 		return $result;
 	}
+
+	public function create($steps,$userId,$type){
+		if(count($steps)<1){
+			return -1;
+		}
+		$this->load->helper('date');
+		$this->db->insert('event_entry', array(
+			'user_id' => $userId, 
+			'type' => $type, 
+			'submit_date' => mdate('%Y-%m-%d %H:%i:%s', now())
+		));
+		$result=$this->db->insert_id();
+		foreach ($steps as $step) {
+			$this->addStep($result,$step);
+		}
+		return $result;
+	}
+	
+	private function addStep($entryId,$stepType){
+		$step_id=$this->step->create($entryId,$stepType);
+		$steps[]=$this->step->getById($step_id);
+		return $step_id;
+	}
+
+	public function getById($id){
+		return $this->db->get_where('event_entry', array('id' => $id))->row();
+	}
+	
+	public function getByType($userId,$type,$status='*'){
+		return $this->db->get_where('event_entry',array('user_id' => $userId, 'type' => $type, 'status' => $status))->result();
+	}
 	
 	public function save(){
 		//TODO
@@ -125,7 +226,7 @@ class Event_model extends CI_Model {
 	}
 
 	public function renderSteps(){
-		
+		//TODO
 	}
 }
 

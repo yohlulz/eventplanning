@@ -80,19 +80,70 @@ class Steps extends CI_Controller {
 	}
 	
 	function edit_event($type){
-		
+		maintain_ssl(true);	
+		if ($this->authentication->is_signed_in())
+		{
+			$data['account'] = $this->account_model->get_by_id($this->session->userdata('account_id'));
+		}
+		setCart(false);
+		$data['cart']=getCart();
+		$data['submenus']=getSubmenus();
+		$data['items']=$this->posts->get_site_posts(MEDIUM_LOAD_ITEMS);
+		$data['slider']=$this->slider->getSliders(MEDIUM_LOAD_ITEMS);
+		$data['page_info']='<div class="welcome">
+								<h2>'.lang('event_desc').'</h2>
+								<p>'.lang('event_desc_'.$type).'</p>
+							</div>';
+		if($this->authentication->is_signed_in()){
+			$data['page_info'].=$this->event_model->getRunningEvents($this->session->userdata('account_id'),$type,'edit_event');
+		}
+		else{
+			redirect('event/steps/index/'.$type);
+		}
+		$this->load->view('header');
+		$this->load->view('event/events_ask_steps', isset($data) ? $data : NULL);
+		$this->load->view('footer');		
 	}
 	
 	function history_event($type){
-		
+		maintain_ssl(true);	
+		if ($this->authentication->is_signed_in())
+		{
+			$data['account'] = $this->account_model->get_by_id($this->session->userdata('account_id'));
+		}
+		setCart(false);
+		$data['cart']=getCart();
+		$data['submenus']=getSubmenus();
+		$data['items']=$this->posts->get_site_posts(MEDIUM_LOAD_ITEMS);
+		$data['slider']=$this->slider->getSliders(MEDIUM_LOAD_ITEMS);
+		$data['page_info']='<div class="welcome">
+								<h2>'.lang('event_desc').'</h2>
+								<p>'.lang('event_desc_'.$type).'</p>
+							</div>';
+		if($this->authentication->is_signed_in()){
+			$data['page_info'].=$this->event_model->getEndedEvents($this->session->userdata('account_id'),$type,'edit_event');
+		}
+		else{
+			redirect('event/steps/index/'.$type);
+		}
+		$this->load->view('header');
+		$this->load->view('event/events_ask_steps', isset($data) ? $data : NULL);
+		$this->load->view('footer');
 	}
 	
 	function submit_new_event($type){
-		echo $type."<br>";
-		$steps=$_POST;
-		print_r($steps);
-		echo "<br>//TODO";
-		die;
+		if($this->authentication->is_signed_in()){
+			$steps=$_POST;
+			$event_id=$this->event_model->create($steps,$this->session->userdata('account_id'),$type);
+			if($event_id==-1){//some error
+				//log it
+				redirect('event/steps/create_event/'.$type.'#main_menu');
+			}
+			redirect('event/steps/edit_event/'.$type.'#main_menu');
+		}
+		else{
+			redirect('event/steps/index/'.$type.'#main_menu');
+		}
 	}
 	
 }
