@@ -23,7 +23,6 @@
                 });
                 
                 $(".table_gmap_icon").click(function(){
-                	
                 	if($(this).hasClass("clicked")){
                 		$(this).removeClass("clicked");
                 		$(location).attr('href',this.getAttribute("url_clicked"));

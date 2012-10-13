@@ -106,7 +106,7 @@ class Steps extends CI_Controller {
 		$this->load->view('footer');		
 	}
 	
-	function history_event($type){
+	function history_event($type,$gmap='nothing'){
 		//TODO refactor
 		maintain_ssl(true);	
 		if ($this->authentication->is_signed_in())
@@ -123,7 +123,7 @@ class Steps extends CI_Controller {
 								<p>'.lang('event_desc_'.$type).'</p>
 							</div>';
 		if($this->authentication->is_signed_in()){
-			$data['page_info'].=$this->event_model->getEndedEvents($this->session->userdata('account_id'),$type,'history_event');
+			$data['page_info'].=$this->event_model->getEndedEvents($this->session->userdata('account_id'),$type,'history_event',$gmap);
 		}
 		else{
 			redirect('event/steps/index/'.$type);

@@ -136,9 +136,9 @@ class Event_model extends CI_Model {
 					if($gmap!='nothing'){
 						$tmp_rs='clicked';
 					}
-					$result.='<td id="gmap-container-td-id'.$count.'" class="center1 table_gmap_icon '.$tmp_rs.'" title="'.$place->name.'" url="'.
+					$result.='<td class="gmap-icon-container center1"> <div id="gmap-container-td-id'.$count.'" class="center1 table_gmap_icon '.$tmp_rs.'" title="'.$place->name.'" url="'.
 									site_url('event/steps/edit_event/'.$type.'/'.$count).'#main_menu" url_clicked="'.
-									site_url('event/steps/edit_event/'.$type).'#main_menu">';
+									site_url('event/steps/edit_event/'.$type).'#main_menu"></div>';
 					if($gmap==$count){
 						$result.=$this->getGmapSubmenu($event->place);
 					}
@@ -168,7 +168,7 @@ private function getGmapSubmenu($id){
 	return $result;	
 }
 
-	public function getEndedEvents($userId,$type,$current='nothing'){
+	public function getEndedEvents($userId,$type,$current='nothing',$gmap){
 		//TODO refactor
 		$CI=&get_instance();
 		$data['current']=$current;
@@ -190,16 +190,36 @@ private function getGmapSubmenu($id){
 		$count=1;
 		foreach ($events as $event) {
 			if($event->status=='finished' || $event->status=='canceled'){
+				if($event->place){
+					$place=$this->db->get_where('event_place',array('id' => $event->place))->row();
+				}
 				$result.='	<tr class="gradeA">
-							<td class="center1">'.$count++.'</td>
+							<td class="center1">'.$count.'</td>
 							<td class="center1">'.$event->id.'</td>
 							<td class="center1">'.$event->submit_date.'</td>
-							<td class="center1">'.$event->total_cost.'</td>
-							<td>'.$event->place.'</td>
-							<td class="center1 status_'.$event->status.'">'.lang('status_'.$event->status).'</td>
+							<td class="center1">'.$event->total_cost.'</td>';
+				if($event->place){
+					$tmp_rs='';
+					if($gmap!='nothing'){
+						$tmp_rs='clicked';
+					}
+					$result.='<td class="gmap-icon-container center1">
+							<div id="gmap-container-td-id'.$count.'" class="center1 table_gmap_icon '.$tmp_rs.'" title="'.$place->name.'" url="'.
+									site_url('event/steps/history_event/'.$type.'/'.$count).'#main_menu" url_clicked="'.
+									site_url('event/steps/history_event/'.$type).'#main_menu"></div>';
+					if($gmap==$count){
+						$result.=$this->getGmapSubmenu($event->place);
+					}
+					$result.='</td>';
+				}	
+				else{
+					$result.='<td></td>';
+				}
+					$result.='<td class="center1 status_'.$event->status.'">'.lang('status_'.$event->status).'</td>
 						</tr>';
 			}
-		}			
+			$count++;
+		}				
 		$result.='</tbody><tfoot>'.$headers.'</tfoot></table>';
 		
 		$result.='<div class="cl">&nbsp;</div>
