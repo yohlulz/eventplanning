@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 23, 2012 at 01:08 PM
+-- Generation Time: Oct 13, 2012 at 08:42 PM
 -- Server version: 5.5.25a
 -- PHP Version: 5.4.4
 
@@ -42,14 +42,15 @@ CREATE TABLE IF NOT EXISTS `a3m_account` (
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`),
   KEY `role` (`role`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `a3m_account`
 --
 
 INSERT INTO `a3m_account` (`id`, `username`, `email`, `password`, `createdon`, `verifiedon`, `lastsignedinon`, `resetsenton`, `deletedon`, `suspendedon`, `role`) VALUES
-(1, 'ovidiu', 'ovi_dan89@yahoo.com', NULL, '2012-09-21 23:14:21', NULL, '2012-09-22 09:09:17', NULL, NULL, NULL, 'user');
+(1, 'ovidiu', 'ovi_dan89@yahoo.com', NULL, '2012-09-21 23:14:21', NULL, '2012-10-13 18:00:09', NULL, NULL, NULL, 'user'),
+(2, 'user1', 'ovidiu.maja@diana.uk.to', '$2a$08$WW84U7MiGmB9zK0/PmA3VuZYc1TwbLiJDWFp3ZFE9p5/NzkTCf7hW', '2012-10-07 11:34:42', NULL, '2012-10-07 11:37:11', NULL, NULL, NULL, 'user');
 
 -- --------------------------------------------------------
 
@@ -77,7 +78,8 @@ CREATE TABLE IF NOT EXISTS `a3m_account_details` (
 --
 
 INSERT INTO `a3m_account_details` (`account_id`, `fullname`, `firstname`, `lastname`, `dateofbirth`, `gender`, `postalcode`, `country`, `language`, `timezone`, `picture`) VALUES
-(1, 'Ovidiu Dan Maja', 'Ovidiu', 'Maja', '1989-11-22', 'm', NULL, 'ro', 'ro', 'Europe/Bucharest', 'pic_e4da3b7fbbce2345d7772b0674a318d5.jpg');
+(1, 'Ovidiu Dan Maja', 'Ovidiu', 'Maja', '1989-11-22', 'm', NULL, 'ro', 'ro', 'Europe/Bucharest', 'pic_e4da3b7fbbce2345d7772b0674a318d5.jpg'),
+(2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -151,7 +153,7 @@ CREATE TABLE IF NOT EXISTS `ci_sessions` (
 --
 
 INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-('4a8858319cb07dfef9edb517d6e46b75', '127.0.0.1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/536.11', 1348391151, 'a:2:{s:4:"cart";b:1;s:4:"lang";s:7:"english";}');
+('ad9633bca97ac32e29da3a03744c929d', '127.0.0.1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/536.11', 1350146396, 'a:3:{s:4:"cart";b:0;s:4:"lang";s:7:"english";s:10:"account_id";s:1:"1";}');
 
 -- --------------------------------------------------------
 
@@ -160,12 +162,28 @@ INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activ
 --
 
 CREATE TABLE IF NOT EXISTS `event_entry` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `type` varchar(100) NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `user_id` bigint(20) unsigned NOT NULL,
+  `status` varchar(50) NOT NULL DEFAULT 'new',
+  `submit_date` datetime NOT NULL,
+  `total_cost` float NOT NULL DEFAULT '0',
+  `place` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `type` (`type`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  KEY `type` (`type`),
+  KEY `status` (`status`),
+  KEY `user_id` (`user_id`),
+  KEY `place` (`place`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `event_entry`
+--
+
+INSERT INTO `event_entry` (`id`, `type`, `user_id`, `status`, `submit_date`, `total_cost`, `place`) VALUES
+(2, 'event_celebration_wedding', 1, 'running', '2012-10-12 16:30:47', 0, 2),
+(3, 'event_celebration_wedding', 1, 'finished', '2012-10-12 16:37:41', 0, 1),
+(4, 'event_celebration_wedding', 1, 'new', '2012-10-13 09:31:24', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -191,16 +209,54 @@ INSERT INTO `event_place` (`id`, `address`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `event_status`
+--
+
+CREATE TABLE IF NOT EXISTS `event_status` (
+  `name` varchar(50) NOT NULL,
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `event_status`
+--
+
+INSERT INTO `event_status` (`name`) VALUES
+('canceled'),
+('finished'),
+('new'),
+('running');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `event_step`
 --
 
 CREATE TABLE IF NOT EXISTS `event_step` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `entry_id` int(11) NOT NULL,
-  `reversible` tinyint(1) NOT NULL,
+  `entry_id` bigint(20) unsigned NOT NULL,
+  `reversible` tinyint(1) NOT NULL DEFAULT '0',
+  `type` varchar(50) NOT NULL,
+  `cost` float NOT NULL DEFAULT '0',
+  `due_date` date DEFAULT NULL,
+  `place` int(11) DEFAULT NULL,
+  `terminated` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
-  KEY `entry_id` (`entry_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  KEY `entry_id` (`entry_id`),
+  KEY `type` (`type`),
+  KEY `place` (`place`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `event_step`
+--
+
+INSERT INTO `event_step` (`id`, `entry_id`, `reversible`, `type`, `cost`, `due_date`, `place`, `terminated`) VALUES
+(1, 2, 0, 'invitations', 0, NULL, NULL, 0),
+(2, 2, 0, 'wedding rings', 0, NULL, NULL, 0),
+(3, 3, 0, 'invitations', 0, NULL, NULL, 0),
+(4, 4, 0, 'invitations', 0, NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -209,9 +265,19 @@ CREATE TABLE IF NOT EXISTS `event_step` (
 --
 
 CREATE TABLE IF NOT EXISTS `event_step_type` (
-  `id` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
+  `name` varchar(50) NOT NULL,
+  `commission` float NOT NULL,
+  PRIMARY KEY (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `event_step_type`
+--
+
+INSERT INTO `event_step_type` (`name`, `commission`) VALUES
+('custom', 0),
+('invitations', 5),
+('wedding rings', 20);
 
 -- --------------------------------------------------------
 
@@ -222,6 +288,7 @@ CREATE TABLE IF NOT EXISTS `event_step_type` (
 CREATE TABLE IF NOT EXISTS `event_type` (
   `name` varchar(100) NOT NULL,
   `url` varchar(100) NOT NULL DEFAULT '#',
+  `description` varchar(100) NOT NULL,
   PRIMARY KEY (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -229,12 +296,57 @@ CREATE TABLE IF NOT EXISTS `event_type` (
 -- Dumping data for table `event_type`
 --
 
-INSERT INTO `event_type` (`name`, `url`) VALUES
-('event_celebration_aniversary', '#'),
-('event_celebration_graduation', '#'),
-('event_celebration_wedding', '#'),
-('event_corporate', '#'),
-('event_public', '#');
+INSERT INTO `event_type` (`name`, `url`, `description`) VALUES
+('event_celebration_aniversary', 'event/steps/index/event_celebration_aniversary', 'event_desc_event_celebration_aniversary'),
+('event_celebration_graduation', 'event/steps/index/event_celebration_graduation', 'event_desc_event_celebration_graduation'),
+('event_celebration_wedding', 'event/steps/index/event_celebration_wedding', 'event_desc_event_celebration_wedding'),
+('event_corporate', 'event/steps/index/event_corporate', 'event_desc_event_corporate'),
+('event_public', 'event/steps/index/event_public', 'event_desc_event_public');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `event_type_available_steps`
+--
+
+CREATE TABLE IF NOT EXISTS `event_type_available_steps` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `eventName` varchar(100) NOT NULL,
+  `stepName` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `eventName` (`eventName`),
+  KEY `stepName` (`stepName`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `event_type_available_steps`
+--
+
+INSERT INTO `event_type_available_steps` (`id`, `eventName`, `stepName`) VALUES
+(1, 'event_celebration_wedding', 'wedding rings');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `event_type_default_steps`
+--
+
+CREATE TABLE IF NOT EXISTS `event_type_default_steps` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `eventName` varchar(100) NOT NULL,
+  `stepName` varchar(50) NOT NULL,
+  `implicit` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `eventName` (`eventName`),
+  KEY `stepName` (`stepName`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `event_type_default_steps`
+--
+
+INSERT INTO `event_type_default_steps` (`id`, `eventName`, `stepName`, `implicit`) VALUES
+(1, 'event_celebration_wedding', 'invitations', 1);
 
 -- --------------------------------------------------------
 
@@ -101349,6 +101461,27 @@ INSERT INTO `rss_posts` (`id`, `title`, `text`, `date_post`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `slider_entries`
+--
+
+CREATE TABLE IF NOT EXISTS `slider_entries` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `path` varchar(100) NOT NULL,
+  `type` varchar(100) DEFAULT '''''',
+  PRIMARY KEY (`id`),
+  KEY `type` (`type`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `slider_entries`
+--
+
+INSERT INTO `slider_entries` (`id`, `path`, `type`) VALUES
+(1, 'ex1', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user_role`
 --
 
@@ -101358,8 +101491,24 @@ CREATE TABLE IF NOT EXISTS `user_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Dumping data for table `user_role`
+--
+
+INSERT INTO `user_role` (`id`) VALUES
+('accounter'),
+('admin'),
+('planner'),
+('user');
+
+--
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `a3m_account`
+--
+ALTER TABLE `a3m_account`
+  ADD CONSTRAINT `a3m_account_ibfk_1` FOREIGN KEY (`role`) REFERENCES `user_role` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `a3m_account_details`
@@ -101389,19 +101538,44 @@ ALTER TABLE `a3m_account_twitter`
 -- Constraints for table `event_entry`
 --
 ALTER TABLE `event_entry`
-  ADD CONSTRAINT `event_entry_ibfk_1` FOREIGN KEY (`type`) REFERENCES `event_type` (`name`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `event_entry_ibfk_1` FOREIGN KEY (`type`) REFERENCES `event_type` (`name`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `event_entry_ibfk_2` FOREIGN KEY (`status`) REFERENCES `event_status` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `event_entry_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `a3m_account` (`id`),
+  ADD CONSTRAINT `event_entry_ibfk_4` FOREIGN KEY (`place`) REFERENCES `event_place` (`id`);
 
 --
 -- Constraints for table `event_step`
 --
 ALTER TABLE `event_step`
-  ADD CONSTRAINT `event_step_ibfk_1` FOREIGN KEY (`entry_id`) REFERENCES `event_entry` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `event_step_ibfk_2` FOREIGN KEY (`type`) REFERENCES `event_step_type` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `event_step_ibfk_3` FOREIGN KEY (`entry_id`) REFERENCES `event_entry` (`id`),
+  ADD CONSTRAINT `event_step_ibfk_4` FOREIGN KEY (`place`) REFERENCES `event_place` (`id`);
+
+--
+-- Constraints for table `event_type_available_steps`
+--
+ALTER TABLE `event_type_available_steps`
+  ADD CONSTRAINT `event_type_available_steps_ibfk_1` FOREIGN KEY (`eventName`) REFERENCES `event_type` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `event_type_available_steps_ibfk_3` FOREIGN KEY (`stepName`) REFERENCES `event_step_type` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `event_type_default_steps`
+--
+ALTER TABLE `event_type_default_steps`
+  ADD CONSTRAINT `event_type_default_steps_ibfk_1` FOREIGN KEY (`eventName`) REFERENCES `event_type` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `event_type_default_steps_ibfk_2` FOREIGN KEY (`stepName`) REFERENCES `event_step_type` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `gallery`
 --
 ALTER TABLE `gallery`
   ADD CONSTRAINT `gallery_ibfk_1` FOREIGN KEY (`event_type`) REFERENCES `event_type` (`name`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `slider_entries`
+--
+ALTER TABLE `slider_entries`
+  ADD CONSTRAINT `slider_entries_ibfk_1` FOREIGN KEY (`type`) REFERENCES `event_type` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

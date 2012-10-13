@@ -148,6 +148,11 @@ class Steps extends CI_Controller {
 		}
 	}
 	
+	function details($type,$current,$eventId){
+		//TODO
+		echo 'to be continued';
+	}
+	
 }
 
 

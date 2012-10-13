@@ -116,6 +116,7 @@ class Event_model extends CI_Model {
 					<th>'.lang('table_sum').'</th>
 					<th>'.lang('table_place').'</th>
 					<th>'.lang('table_status').'</th>
+					<th>'.lang('table_actions').'</th>
 				</tr>';
 		
 		$result.='<table cellpadding="0" cellspacing="0" border="0" class="display" id="dataTable1">
@@ -147,8 +148,10 @@ class Event_model extends CI_Model {
 				else{
 					$result.='<td></td>';
 				}
-					$result.='<td class="center1 status_'.$event->status.'">'.lang('status_'.$event->status).'</td>
-						</tr>';
+					$result.='<td class="center1 status_'.$event->status.'">'.lang('status_'.$event->status).'</td>';
+					
+					$result.='<td></td>';
+					$result.='</tr>';
 			}
 			$count++;
 		}			
@@ -195,7 +198,7 @@ private function getGmapSubmenu($id){
 				}
 				$result.='	<tr class="gradeA">
 							<td class="center1">'.$count.'</td>
-							<td class="center1">'.$event->id.'</td>
+							<td class="center1">'.anchor('event/steps/details/'.$type.'/'.$current.'/'.$event->id,$event->id,'title="'.lang('event_history_details').'""').'</td>
 							<td class="center1">'.$event->submit_date.'</td>
 							<td class="center1">'.$event->total_cost.'</td>';
 				if($event->place){
