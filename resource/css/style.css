@@ -657,7 +657,7 @@ h1#logo a:hover {
     top:18px;
 }
 
-#navigation .triangle {
+#navigation .triangle, .triangle1 {
     border: 1px solid #d9d9d9;
     border-width: 2px 0 0 2px;
     width:10px;
@@ -673,8 +673,11 @@ h1#logo a:hover {
     background: #fff;
     padding-top: -10px;
 }
+.triangle1 {
+	margin-left: 180px;
+}
 
-#navigation .events_submenu,#navigation .service_submenu {
+#navigation .events_submenu,#navigation .service_submenu, .gmap_container_submenu {
     background: #fff;
     -webkit-border-radius: .5em;
     -moz-border-radius: .5em;
@@ -685,6 +688,18 @@ h1#logo a:hover {
     box-shadow: 0px 0px 3px rgba(0,0,0,.5);
     padding: 2px;
     position:relative;
+}
+
+.gmap_container_submenu .gmap-container{
+	width: 280px;
+	height: 250px;
+}
+
+.gmap_container_submenu {
+	margin: 30px 0 0 1px;
+    position: absolute;
+    width: 284px;
+    margin-left: -170px;
 }
 
 #navigation .events_submenu a,#navigation .service_submenu a {

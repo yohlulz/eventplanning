@@ -79,7 +79,8 @@ class Steps extends CI_Controller {
 		$this->load->view('footer');					
 	}
 	
-	function edit_event($type){
+	function edit_event($type,$gmap='nothing'){
+		//TODO refactor
 		maintain_ssl(true);	
 		if ($this->authentication->is_signed_in())
 		{
@@ -95,7 +96,7 @@ class Steps extends CI_Controller {
 								<p>'.lang('event_desc_'.$type).'</p>
 							</div>';
 		if($this->authentication->is_signed_in()){
-			$data['page_info'].=$this->event_model->getRunningEvents($this->session->userdata('account_id'),$type,'edit_event');
+			$data['page_info'].=$this->event_model->getRunningEvents($this->session->userdata('account_id'),$type,'edit_event',$gmap);
 		}
 		else{
 			redirect('event/steps/index/'.$type);
@@ -106,6 +107,7 @@ class Steps extends CI_Controller {
 	}
 	
 	function history_event($type){
+		//TODO refactor
 		maintain_ssl(true);	
 		if ($this->authentication->is_signed_in())
 		{
@@ -121,7 +123,7 @@ class Steps extends CI_Controller {
 								<p>'.lang('event_desc_'.$type).'</p>
 							</div>';
 		if($this->authentication->is_signed_in()){
-			$data['page_info'].=$this->event_model->getEndedEvents($this->session->userdata('account_id'),$type,'edit_event');
+			$data['page_info'].=$this->event_model->getEndedEvents($this->session->userdata('account_id'),$type,'history_event');
 		}
 		else{
 			redirect('event/steps/index/'.$type);

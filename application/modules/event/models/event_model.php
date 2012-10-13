@@ -102,13 +102,13 @@ class Event_model extends CI_Model {
 		return $result;
 	}
 
-	public function getRunningEvents($userId,$type,$current='nothing'){
+	public function getRunningEvents($userId,$type,$current='nothing',$gmap){
 		$CI=&get_instance();
 		$data['current']=$current;
 		$data['type']=$type;
 		$result=$CI->load->view('event_menu',$data,true);
 		$result.='<div class="welcome">';
-		$events=$this->getByType($userId, $type,'running');
+		$events=$this->getByType($userId, $type);
 		$headers='<tr>
 					<th>'.lang('table_index').'</th>
 					<th>'.lang('table_id').'</th>
@@ -122,14 +122,35 @@ class Event_model extends CI_Model {
 					<thead>'.$headers.'</thead><tbody>';
 		$count=1;
 		foreach ($events as $event) {
-			$result.='	<tr class="gradeA">
+			if($event->status=='new' || $event->status=='running'){
+				if($event->place){
+					$place=$this->db->get_where('event_place',array('id' => $event->place))->row();
+				}
+				$result.='	<tr class="gradeA">
 							<td class="center1">'.$count.'</td>
 							<td class="center1">'.$event->id.'</td>
 							<td class="center1">'.$event->submit_date.'</td>
-							<td class="center1">'.$event->total_cost.'</td>
-							<td id="table_gmap_icon_'.$count++.'" class="table_gmap_icon" >&nbsp;</td>
-							<td class="center1 status_'.$event->status.'">'.lang('status_'.$event->status).'</td>
+							<td class="center1">'.$event->total_cost.'</td>';
+				if($event->place){
+					$tmp_rs='';
+					if($gmap!='nothing'){
+						$tmp_rs='clicked';
+					}
+					$result.='<td id="gmap-container-td-id'.$count.'" class="center1 table_gmap_icon '.$tmp_rs.'" title="'.$place->name.'" url="'.
+									site_url('event/steps/edit_event/'.$type.'/'.$count).'#main_menu" url_clicked="'.
+									site_url('event/steps/edit_event/'.$type).'#main_menu">';
+					if($gmap==$count){
+						$result.=$this->getGmapSubmenu($event->place);
+					}
+					$result.='</td>';
+				}	
+				else{
+					$result.='<td></td>';
+				}
+					$result.='<td class="center1 status_'.$event->status.'">'.lang('status_'.$event->status).'</td>
 						</tr>';
+			}
+			$count++;
 		}			
 		$result.='</tbody><tfoot>'.$headers.'</tfoot></table>';
 		
@@ -138,6 +159,15 @@ class Event_model extends CI_Model {
 		return $result;
 	}
 
+private function getGmapSubmenu($id){
+	$entry=$this->db->get_where('event_place',array('id' => $id))->row();
+	$result='<div class="gmap_container_submenu">
+    				<div class="triangle1"></div>';
+	$result.='<div class="gmap-container" id="gmap-container-id'.$id.'" view="normal" value="'.$entry->address.'" title="'.$entry->name.'" gmap-width="230" gmap-height="200"></div>';	
+	$result.='</div>';
+	return $result;	
+}
+
 	public function getEndedEvents($userId,$type,$current='nothing'){
 		//TODO refactor
 		$CI=&get_instance();
@@ -145,7 +175,7 @@ class Event_model extends CI_Model {
 		$data['type']=$type;
 		$result=$CI->load->view('event_menu',$data,true);
 		$result.='<div class="welcome">';
-		$events=$this->getByType($userId, $type,'ended');
+		$events=$this->getByType($userId, $type);
 		$headers='<tr>
 					<th>'.lang('table_index').'</th>
 					<th>'.lang('table_id').'</th>
@@ -159,7 +189,8 @@ class Event_model extends CI_Model {
 					<thead>'.$headers.'</thead><tbody>';
 		$count=1;
 		foreach ($events as $event) {
-			$result.='	<tr class="gradeA">
+			if($event->status=='finished' || $event->status=='canceled'){
+				$result.='	<tr class="gradeA">
 							<td class="center1">'.$count++.'</td>
 							<td class="center1">'.$event->id.'</td>
 							<td class="center1">'.$event->submit_date.'</td>
@@ -167,6 +198,7 @@ class Event_model extends CI_Model {
 							<td>'.$event->place.'</td>
 							<td class="center1 status_'.$event->status.'">'.lang('status_'.$event->status).'</td>
 						</tr>';
+			}
 		}			
 		$result.='</tbody><tfoot>'.$headers.'</tfoot></table>';
 		
@@ -213,8 +245,8 @@ class Event_model extends CI_Model {
 		return $this->db->get_where('event_entry', array('id' => $id))->row();
 	}
 	
-	public function getByType($userId,$type,$status='*'){
-		return $this->db->get_where('event_entry',array('user_id' => $userId, 'type' => $type, 'status' => $status))->result();
+	public function getByType($userId,$type){
+		return $this->db->get_where('event_entry',array('user_id' => $userId, 'type' => $type))->result();
 	}
 	
 	public function save(){

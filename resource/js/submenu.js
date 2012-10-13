@@ -21,4 +21,16 @@
                         $(".service_submenu").show();
                     }
                 });
+                
+                $(".table_gmap_icon").click(function(){
+                	
+                	if($(this).hasClass("clicked")){
+                		$(this).removeClass("clicked");
+                		$(location).attr('href',this.getAttribute("url_clicked"));
+                	}
+                	else{
+                		$(this).addClass("clicked");
+                		$(location).attr('href',this.getAttribute("url"));
+                	}
+                });
 });
