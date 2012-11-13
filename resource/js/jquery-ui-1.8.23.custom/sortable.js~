@@ -1,0 +1,5 @@
+$(function() {
+		$( "#selectedSortableList, #availableSortableList" ).sortable({
+			connectWith: ".connectedSortable"
+		}).disableSelection();
+});

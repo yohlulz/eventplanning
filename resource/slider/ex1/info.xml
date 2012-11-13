@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<slider>
+	<item>
+		<path>8.jpg</path>
+		<title>
+			<english>Picture 1</english>
+		</title>
+		<description>
+			<english>Picture 1 desc en</english>
+			<ro>Picture 1 desc ro</ro>
+			<de>Picture 1 desc de</de>
+		</description>
+	</item>
+	<item>
+		<path>9.jpg</path>
+		<title>
+			<english>Picture 2</english>
+		</title>
+		<description>
+			<english>Picture 2 desc en</english>
+			<ro>Picture 2 desc ro</ro>
+			<de>Picture 2 desc de</de>
+		</description>
+	</item>
+	<item>
+		<path>10.jpg</path>
+		<title>
+			<english>Picture 3</english>
+		</title>
+		<description>
+			<english>Picture 3 desc en</english>
+			<ro>Picture 3 desc ro</ro>
+			<de>Picture 3 desc de</de>
+		</description>
+	</item>
+	<item>
+		<path>11.jpg</path>
+		<title>
+			<english>Picture 4</english>
+			<de>Picture 4</de>
+			<ro>Picture 4</ro>
+		</title>
+		<description>
+			<english>Picture 4 desc en</english>
+			<ro>Picture 4 desc ro</ro>
+			<de>Picture 4 desc de</de>
+		</description>
+	</item>
+</slider>
