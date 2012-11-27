@@ -1,0 +1,107 @@
+.event_actions {
+	list-style: none;
+	height: 20px;
+	width: auto;
+	margin-bottom: 0px;
+}
+
+.event_actions li {
+	height: 20px;
+	width: 20px;
+	float: left;
+	margin-left: 3px;
+}
+
+.event_actions .warning {
+	background: url(../img/action/warning.png) no-repeat;
+}
+
+.event_actions .warning:hover {
+	background: url(../img/action/warning-hover.png) no-repeat;
+}
+
+.event_actions .calendar {
+	background: url(../img/action/calendar.png) no-repeat;
+}
+
+.event_actions .calendar:hover {
+	background: url(../img/action/calendar-hover.png) no-repeat;
+}
+
+.event_actions .status-new {
+	background: url(../img/action/status-new.png) no-repeat;
+}
+
+.event_actions .status-new:hover {
+	background: url(../img/action/status-new.png) no-repeat;
+}
+
+.event_actions .status-over {
+	background: url(../img/action/status-over.png) no-repeat;
+}
+
+.event_actions .status-over:hover {
+	background: url(../img/action/status-over.png) no-repeat;
+}
+.event_actions .status-running {
+	background: url(../img/action/status-running.png) no-repeat;
+}
+
+.event_actions .status-running:hover {
+	background: url(../img/action/status-running.png) no-repeat;
+}
+.event_actions .status-trouble {
+	background: url(../img/action/status-trouble.png) no-repeat;
+}
+
+.event_actions .status-trouble:hover {
+	background: url(../img/action/status-trouble.png) no-repeat;
+}
+
+.event_actions .status-warning {
+	background: url(../img/action/status-warning.png) no-repeat;
+}
+
+.event_actions .status-warning:hover {
+	background: url(../img/action/status-warning.png) no-repeat;
+}
+
+.event_actions .status-late {
+	background: url(../img/action/status-late.png) no-repeat;
+}
+
+.event_actions .status-late:hover {
+	background: url(../img/action/status-late.png) no-repeat;
+}
+
+.event_actions .planner {
+	background: url(../img/action/planner.png) no-repeat;
+}
+
+.event_actions .planner:hover {
+	background: url(../img/action/planner-hover.png) no-repeat;
+}
+
+.event_actions .add-step {
+	background: url(../img/action/add-step.png) no-repeat;
+}
+
+.event_actions .add-step:hover {
+	background: url(../img/action/add-step.png) no-repeat;
+}
+
+.event_actions .delete-step {
+	background: url(../img/action/delete-step.png) no-repeat;
+}
+
+.event_actions .delete-step:hover {
+	background: url(../img/action/delete-step.png) no-repeat;
+}
+
+.event_actions .confirm-step {
+	background: url(../img/action/confirm-step.png) no-repeat;
+}
+
+.event_actions .confirm-step:hover {
+	background: url(../img/action/confirm-step.png) no-repeat;
+}

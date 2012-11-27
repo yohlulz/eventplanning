@@ -1,5 +1,4 @@
 <?php
-
 class Home extends CI_Controller {
 
     function __construct()
@@ -17,7 +16,10 @@ class Home extends CI_Controller {
 	
 	function index()
 	{
-		maintain_ssl();	
+		maintain_ssl();
+		if($this->config->item('DEMO')===TRUE){
+			demoLogin();
+		}
 		if ($this->authentication->is_signed_in())
 		{
 			$data['account'] = $this->account_model->get_by_id($this->session->userdata('account_id'));

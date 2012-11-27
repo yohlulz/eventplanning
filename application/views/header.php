@@ -14,6 +14,7 @@
     	<link rel="stylesheet" type="text/css" href="resource/css/dc.cart.css" />
 	<link type="text/css" href="resource/css/jquery-ui-1.8.23.custom.css" rel="stylesheet" />
 	<link type="text/css" href="resource/css/jquery.dataTables.css" rel="stylesheet" />
+	<link type="text/css" href="resource/css/event_actions.css" rel="stylesheet" />
 	<!--[if IE 6]>
 		<link rel="stylesheet" href="css/ie6.css" type="text/css" media="all" />
 		<script src="js/png-fix.js" type="text/javascript" charset="utf-8"></script>

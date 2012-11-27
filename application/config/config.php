@@ -360,5 +360,7 @@ $config['contact_to_email'] 				= 'eventplanning@diana.uk.to';
 $config['contact_from_email'] 			= 'notify@diana.uk.to';
 $config['contact_subject'] 			= 'Feedback';
 
+$config['DEMO']=TRUE;
+
 /* End of file config.php */
 /* Location: ./application/config/config.php */

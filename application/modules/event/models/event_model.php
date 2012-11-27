@@ -171,20 +171,34 @@ class Event_model extends CI_Model {
 					$result.='</td>';
 				}	
 				else{
-					$result.='<td></td>';
+					$result.='<td class="center1"></td>';
 				}
-					$result.='<td class="center1 status_'.$event->status.'">'.lang('status_'.$event->status).'</td>';
-					
-					$result.='<td></td>';
-					$result.='</tr>';
+				$result.='<td class="center1 status_'.$event->status.'">'.lang('status_'.$event->status).'</td>';	
+				$result.='<td>'.$this->getActionsForEvent($type,$event->id).'</td>';
+				$result.='</tr>';
+				$count++;
 			}
-			$count++;
 		}			
 		$result.='</tbody><tfoot>'.$headers.'</tfoot></table>';
 		
 		$result.='<div class="cl">&nbsp;</div>
 					</div>';
 		}
+		return $result;
+	}
+
+	private function getActionsForEvent($type,$eventId){
+		$result='<ul class="event_actions">';
+		
+		$result.='<li class="warning" id="'.$eventId.'" title="Warning"></li>';
+		$result.='<li class="calendar" id="'.$eventId.'" title="Calendar"></li>';
+		$result.='<li class="status-late" id="'.$eventId.'" title="Status late"></li>';
+		$result.='<li class="planner" id="'.$eventId.'" title="Planner"></li>';
+		$result.='<li class="add-step" id="'.$eventId.'" title="Stg"></li>';
+		$result.='<li class="delete-step" id="'.$eventId.'" title="Stg"></li>';
+		$result.='<li class="confirm-step" id="'.$eventId.'" title="Stg"></li>';
+		
+		$result.='</ul>';
 		return $result;
 	}
 	
