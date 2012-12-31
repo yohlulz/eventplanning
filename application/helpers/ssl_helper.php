@@ -19,7 +19,7 @@
  */
 if ( ! function_exists('maintain_ssl'))
 {
-    function maintain_ssl($maintain = TRUE)
+    function maintain_ssl($maintain = FALSE)
     {
         $CI =& get_instance();
         
