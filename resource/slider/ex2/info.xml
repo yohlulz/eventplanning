@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<slider>
+  <item>
+    <path>anniversary.jpg</path>
+    <title>
+      <english>Anniversary party</english>
+      <ro>Petrecere aniversara</ro>
+      <de>Geburtstag Feier</de>
+    </title>
+    <description>
+      <english>Do you wish an perfect party without worries?</english>
+      <ro>Va doriti o petrecere perfecta fara griji?</ro>
+      <de>Traumen Sie einen perfektes Party ohne Sorgen?</de>
+    </description>
+  </item>
+  <item>
+    <path>baptise.jpg</path>
+    <title>
+      <english>Baby baptise</english>
+      <ro>Botez copii</ro>
+      <de>Baby Taufe</de>
+    </title>
+    <description>
+      <english>A perfect moment for you and your baby</english>
+      <ro>Un moment memorabil pentru dumneavoastra si bebelusul vostru</ro>
+      <de>Einen unvergessliches Zeit fuer Ihnen und eure Baby</de>
+    </description>
+  </item>
+  <item>
+    <path>corporate.jpg</path>
+    <title>
+      <english>Corporate Party</english>
+      <ro>Petrecere Corporate</ro>
+      <de>Corporate Feier</de>
+    </title>
+    <description>
+      <english>A </english>
+      <ro>O petrecere cu adevarat uimitoare in mediul business</ro>
+      <de>Profesionelle Feier fuer professionele Unternehmen</de>
+    </description>
+  </item>
+  <item>
+    <path>wedding.jpg</path>
+    <title>
+      <english>Wedding</english>
+      <de>Hochzeit</de>
+      <ro>Nunta</ro>
+    </title>
+    <description>
+      <english>A wedding planned in detail without worries</english>
+      <ro>O nunta planuita in amanunt, dar fara griji</ro>
+      <de>Eine Hochzeit in Detail geplant, aber ohne Sorgen</de>
+    </description>
+  </item>
+</slider>
+
