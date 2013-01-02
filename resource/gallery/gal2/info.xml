@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<gallery>
+  <item>
+     <path>black_red_cake.jpg</path>
+     <thumb>thumbs/tblack_red_cake.jpg</thumb>
+    <title>
+    
+      Tort nunta
+     
+    </title>
+    <description>
+     
+      Tort martipan cu funda neagra si flori rosii
+     
+    </description>       
+  </item>
+  <item>
+     <path>chocolate_cake.jpg</path>
+      <thumb>thumbs/tchocolate_cake.jpg</thumb>
+    <title>
+     
+      Tort ciocolata
+      
+    </title>
+    <description>
+      
+      Tort ciocolata cu modele tematice
+     
+    </description>
+  </item>
+  <item>
+     <path>customized_cake.jpg</path>
+      <thumb>thumbs/tcust1.jpg</thumb>
+    <title>
+     
+      Torturi personalizate
+      
+    </title>
+    <description>
+     
+     O petrecere cu adevarat uimitoare in mediul business
+     
+    </description>
+  </item>
+    <item>
+     <path>customized_cake.jpg</path>
+      <thumb>thumbs/tcust2.jpg</thumb>
+    <title>
+      
+      Torturi personalizate
+      
+    </title>
+    <description>
+     
+      O petrecere cu adevarat uimitoare in mediul business
+     
+    </description>
+  </item>
+    <item>
+     <path>customized_cake.jpg</path>
+      <thumb>thumbs/tcust3.jpg</thumb>
+    <title>
+     
+      <ro>Torturi personalizate</ro>
+     
+    </title>
+    <description>
+         O petrecere cu adevarat uimitoare in mediul business
+    
+    </description>
+  </item>
+  <item>
+   <path>flower_cake_red.jpg</path>
+      <thumb>thumbs/tflower_cake_red.jpg</thumb>
+    <title>
+      
+     
+     Nunta
+    </title>
+    <description>
+     
+    O nunta planuita in amanunt, dar fara griji     
+    </description>
+  </item>
+ 
+ 
+</gallery>
+

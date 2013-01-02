@@ -31,9 +31,14 @@ class Home extends CI_Controller {
 		$data['slider']=$this->slider->getSliders(MEDIUM_LOAD_ITEMS);
 		$data['gmap']=getPlace("Iulius Mall").getPlace("21 Decembrie","street");
 		$data['page_info']='<div class="welcome">
-				<h2>Welcome</h2>
-				<p>TODO</p>
-			</div>';
+        <h2>Bun venit</h2>
+          <p>Scopul nostru este <b><u><i> un eveniment planificat:</b> </u></i>
+          <ul>
+          <li> in detaliu la cateva click-uri distanta</li>
+          <li> modelat dupa dorintele clientului </li>
+          <li> cu raport calitate pret excelent</li>
+          </ul></p>
+      </div>';
 		
 		$this->load->view('header');
 		$this->load->view('home', isset($data) ? $data : NULL);

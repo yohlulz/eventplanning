@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<gallery>
+  <item>
+     <path>black_red_cake.jpg</path>
+     <thumb>thumbs/tblack_red_cake.jpg</thumb>
+    <title>
+      <english>Wedding cake</english>
+      <ro>Tort nunta</ro>
+      <de>Hochzeitkuchen</de>
+    </title>
+    <description>
+      <english>Black ribbon and red node Cake curtesy of our partners Cake Bakery</english>
+      <ro>Tort martipan cu funda neagra si flori rosii</ro>
+      <de>Scharzband mit rotten Blumen Kuchen</de>
+    </description>       
+  </item>
+  <item>
+     <path>chocolate_cake.jpg</path>
+      <thumb>thumbs/tchocolate_cake.jpg</thumb>
+    <title>
+      <english>Chocolate cake</english>
+      <ro>Tort ciocolata</ro>
+      <de>Schokoladekuchen</de>
+    </title>
+    <description>
+      <english>Chocolate cake with patterns</english>
+      <ro>Tort ciocolata cu modele tematice</ro>
+      <de>Schokolade Kuchen dank Cake Bakery</de>
+    </description>
+  </item>
+  <item>
+     <path>customized_cake.jpg</path>
+      <thumb>thumbs/tcust1.jpg</thumb>
+    <title>
+      <english>Customized cakes</english>
+      <ro>Torturi personalizate</ro>
+      <de>Einzigartige Kuchen</de>
+    </title>
+    <description>
+      <english> </english>
+      <ro>O petrecere cu adevarat uimitoare in mediul business</ro>
+      <de>Profesionelle Feier fuer professionele Unternehmen</de>
+    </description>
+  </item>
+    <item>
+     <path>customized_cake.jpg</path>
+      <thumb>thumbs/tcust2.jpg</thumb>
+    <title>
+      <english>Customized cakes</english>
+      <ro>Torturi personalizate</ro>
+      <de>Einzigartige Kuchen</de>
+    </title>
+    <description>
+      <english> </english>
+      <ro>O petrecere cu adevarat uimitoare in mediul business</ro>
+      <de>Profesionelle Feier fuer professionele Unternehmen</de>
+    </description>
+  </item>
+    <item>
+     <path>customized_cake.jpg</path>
+      <thumb>thumbs/tcust3.jpg</thumb>
+    <title>
+      <english>Customized cakes</english>
+      <ro>Torturi personalizate</ro>
+      <de>Einzigartige Kuchen</de>
+    </title>
+    <description>
+      <english> </english>
+      <ro>O petrecere cu adevarat uimitoare in mediul business</ro>
+      <de>Profesionelle Feier fuer professionele Unternehmen</de>
+    </description>
+  </item>
+  <item>
+   <path>flower_cake_red.jpg</path>
+      <thumb>thumbs/tflower_cake_red.jpg</thumb>
+    <title>
+      <english>Wedding</english>
+      <de>Hochzeit</de>
+      <ro>Nunta</ro>
+    </title>
+    <description>
+      <english>A wedding planned in detail without worries</english>
+      <ro>O nunta planuita in amanunt, dar fara griji</ro>
+      <de>Eine Hochzeit in Detail geplant, aber ohne Sorgen</de>
+    </description>
+  </item>
+ 
+ 
+</gallery>
+
