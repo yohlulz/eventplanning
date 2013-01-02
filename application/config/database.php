@@ -41,12 +41,13 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';/*'192.168.1.4';*///change it !!!!! 
-//$db['default']['username'] = 'oana';
-//$db['default']['password'] = 'somnorici';
-$db['default']['username'] = 'root';
-$db['default']['password'] = 'mod22111989';
-$db['default']['database'] = 'abd_eventplanning';
+$db['default']['hostname'] = 'diana.uk.to';/*'192.168.1.4';*///change it !!!!! 
+$db['default']['username'] = 'oana';
+$db['default']['password'] = 'somnorici';
+$db['default']['database'] = 'oana_event';
+// $db['default']['username'] = 'root';
+// $db['default']['password'] = 'mod22111989';
+// $db['default']['database'] = 'abd_eventplanning';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = FALSE;
