@@ -3,75 +3,31 @@
 	<item>
 		<path>1.jpg</path>
 		<thumb>thumbs/t1.jpg</thumb>
-		<title>Picture 1</title>
-		<description>Picture 1 desc</description>
+		<title>Catering for corporate events</title>
+		<description>Business lunches, or dinner, boardroom lunches, or dinner, conferences - in marquees, your offices or an evening</description>
 	</item>
 	<item>
-		<path>1.jpg</path>
-		<thumb>thumbs/t1.jpg</thumb>
-		<title>Picture 1</title>
-		<description>Picture 1 desc</description>
+		<path>2.jpg</path>
+		<thumb>thumbs/t2.jpg</thumb>
+		<title>Party people</title>
+		<description>Our job is to make people smile.</description>
 	</item>
 	<item>
-		<path>1.jpg</path>
-		<thumb>thumbs/t1.jpg</thumb>
-		<title>Picture 1</title>
-		<description>Picture 1 desc</description>
-	</item>
-	<item>
-		<path>1.jpg</path>
-		<thumb>thumbs/t1.jpg</thumb>
-		<title>Picture 1</title>
-		<description>Picture 1 desc</description>
-	</item>
-	<item>
-		<path>1.jpg</path>
-		<thumb>thumbs/t1.jpg</thumb>
-		<title>Picture 1</title>
-		<description>Picture 1 desc</description>
-	</item>
-	<item>
-		<path>1.jpg</path>
-		<thumb>thumbs/t1.jpg</thumb>
-		<title>Picture 1</title>
-		<description>Picture 1 desc</description>
-	</item>
-	<item>
-		<path>1.jpg</path>
-		<thumb>thumbs/t1.jpg</thumb>
-		<title>Picture 1</title>
-		<description>Picture 1 desc</description>
-	</item>
-	<item>
-		<path>1.jpg</path>
-		<thumb>thumbs/t1.jpg</thumb>
-		<title>Picture 1</title>
-		<description>Picture 1 desc</description>
-	</item>
-	<item>
-		<path>1.jpg</path>
-		<thumb>thumbs/t1.jpg</thumb>
-		<title>Picture 1</title>
-		<description>Picture 1 desc</description>
-	</item>
-	<item>	
-		<path>12.jpg</path>
-		<thumb>thumbs/t12.jpg</thumb>
-		<title>Picture 12</title>
-		<description>Picture 12 desc</description>
-<name>Test2</name>
-		<id>test-13</id>
-		<price>6</price>
-		<shipping>2</shipping>
-	</item>
-	<item>	
 		<path>3.jpg</path>
 		<thumb>thumbs/t3.jpg</thumb>
-		<title>Picture 3</title>
-		<description>Picture 3 desc</description>
-<name>Test3</name>
-		<id>test-33</id>
-		<price>7</price>
-		<shipping>0</shipping>
+		<title>Location for every taste</title>
+		<description>We provide different kind of tastes in matter of locations in order to satisfy our customers.</description>
+	</item>
+	<item>
+		<path>4.jpg</path>
+		<thumb>thumbs/t4.jpg</thumb>
+		<title>Excelence in details</title>
+		<description>Every aspect of an event is reviewed in detail by our professionals.</description>
+	</item>
+	<item>
+		<path>5.jpg</path>
+		<thumb>thumbs/t5.jpg</thumb>
+		<title>Big decisions</title>
+		<description>Every decision is beneficial if each stakeloder is happy.</description>
 	</item>
 </gallery>
