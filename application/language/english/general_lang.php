@@ -25,6 +25,14 @@ $lang['event_desc']								= 'Event description';
 $lang['notice']									= 'Notice';
 $lang['not_logged']								= 'Nu sunteti autentificat.<br> Logati-va pentru a putea continua.';
 $lang['contact_sidebar_message']				= 'Ne puteti contacta folosind formularul din coltul dreapta sus. Asteptam cu nerabdare sugestiile dumneavoastra.';
+$lang['welcome_message']						= '<h2>Bun venit</h2>
+											          <p>Scopul nostru este <b><u><i> un eveniment planificat:</b> </u></i>
+											          <ul>
+											          <li> in detaliu la cateva click-uri distanta</li>
+											          <li> modelat dupa dorintele clientului </li>
+											          <li> cu raport calitate pret excelent</li>
+											          </ul></p>';
+$lang['upcoming_event']							= 'Upcoming events';
 
 //==================================================================================
 
