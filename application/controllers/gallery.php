@@ -22,10 +22,10 @@ class Gallery extends CI_Controller {
 	function index()
 	{
 		$data['items'] = $this->posts->get_site_posts(LONG_LOAD_ITEMS);
-		setCart(true);
+		setCart(false);
         $data['cart']=getCart();
 		$data['slider']=$this->slider->getSliders(MEDIUM_LOAD_ITEMS);
-       	$data['gallery']=$this->gallery->getGalleries(MEDIUM_LOAD_ITEMS,'',true);
+       	$data['gallery']=$this->gallery->getGalleries(MEDIUM_LOAD_ITEMS,'',getCart());
 		if ($this->authentication->is_signed_in())
 		{
 			$data['account'] = $this->account_model->get_by_id($this->session->userdata('account_id'));
