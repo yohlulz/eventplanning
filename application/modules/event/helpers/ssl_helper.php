@@ -18,9 +18,9 @@
  * @param	int
  * @return	void
  */
-if ( ! function_exists('maintain_ssl'))
+if ( ! function_exists('maintain_ssl1'))
 {
-	function maintain_ssl($maintain = FALSE, $port = 443)
+	function maintain_ssl1($maintain = FALSE, $port = 443)
 	{
 		$CI =& get_instance();
 		

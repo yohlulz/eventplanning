@@ -7,7 +7,7 @@ class Steps extends CI_Controller {
         parent::__construct();
 		
 		// Load the necessary stuff...
-		$this->load->helper(array('language', 'url', 'form', 'event/ssl'));
+		$this->load->helper(array('language', 'url', 'form', '../ssl'));
         $this->load->library(array('account/authentication'));
 		$this->load->model(array('account/account_model','event/event_model'));
 		$this->lang->load(array('general'));
@@ -21,7 +21,7 @@ class Steps extends CI_Controller {
 
 	function index($type,$what='headings',$gmap='nothing'){
 		
-		maintain_ssl(true);	
+		maintain_ssl($this->config->item("ssl_enabled"));	
 		if ($this->authentication->is_signed_in())
 		{
 			$data['account'] = $this->account_model->get_by_id($this->session->userdata('account_id'));
