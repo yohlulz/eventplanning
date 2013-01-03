@@ -24,4 +24,16 @@ $lang['status_canceled']='Canceled event';
 
 $lang['event_history_details']='View details';
 
+$lang['notification_steps'] ='Steps';
+$lang['notification_planner']='Planner';
+$lang['notification_add_step']='Add step';
+$lang['notification_delete_step']='Cancel step';
+$lang['notification_calendar']='Calendar';
+$lang['notification_status_running']=$lang['status_running'];
+$lang['notification_status_late']='Your are late';
+$lang['notification_status_warning']='There are some matters that need you attention';
+$lang['notification_status_trouble']='There are some problems that need to be solved asap.';
+$lang['notification_status_over']=$lang['status_finished'];
+$lang['notification_status_cart']='View cost details for each step';
+
 ?>
