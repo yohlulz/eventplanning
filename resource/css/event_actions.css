@@ -18,6 +18,7 @@
 
 .event_actions .warning:hover {
 	background: url(../img/action/warning-hover.png) no-repeat;
+	text-decoration: none;
 }
 
 .event_actions .calendar {
@@ -26,6 +27,7 @@
 
 .event_actions .calendar:hover {
 	background: url(../img/action/calendar-hover.png) no-repeat;
+	text-decoration: none;
 }
 
 .event_actions .status-new {
@@ -34,6 +36,7 @@
 
 .event_actions .status-new:hover {
 	background: url(../img/action/status-new.png) no-repeat;
+	text-decoration: none;
 }
 
 .event_actions .status-over {
@@ -42,6 +45,7 @@
 
 .event_actions .status-over:hover {
 	background: url(../img/action/status-over.png) no-repeat;
+	text-decoration: none;
 }
 .event_actions .status-running {
 	background: url(../img/action/status-running.png) no-repeat;
@@ -49,13 +53,16 @@
 
 .event_actions .status-running:hover {
 	background: url(../img/action/status-running.png) no-repeat;
+	text-decoration: none;
 }
+
 .event_actions .status-trouble {
 	background: url(../img/action/status-trouble.png) no-repeat;
 }
 
 .event_actions .status-trouble:hover {
 	background: url(../img/action/status-trouble.png) no-repeat;
+	text-decoration: none;
 }
 
 .event_actions .status-warning {
@@ -64,6 +71,7 @@
 
 .event_actions .status-warning:hover {
 	background: url(../img/action/status-warning.png) no-repeat;
+	text-decoration: none;
 }
 
 .event_actions .status-late {
@@ -72,6 +80,7 @@
 
 .event_actions .status-late:hover {
 	background: url(../img/action/status-late.png) no-repeat;
+	text-decoration: none;
 }
 
 .event_actions .planner {
@@ -80,6 +89,7 @@
 
 .event_actions .planner:hover {
 	background: url(../img/action/planner-hover.png) no-repeat;
+	text-decoration: none;
 }
 
 .event_actions .add-step {
@@ -88,6 +98,7 @@
 
 .event_actions .add-step:hover {
 	background: url(../img/action/add-step.png) no-repeat;
+	text-decoration: none;
 }
 
 .event_actions .delete-step {
@@ -96,6 +107,7 @@
 
 .event_actions .delete-step:hover {
 	background: url(../img/action/delete-step.png) no-repeat;
+	text-decoration: none;
 }
 
 .event_actions .confirm-step {
@@ -104,6 +116,7 @@
 
 .event_actions .confirm-step:hover {
 	background: url(../img/action/confirm-step.png) no-repeat;
+	text-decoration: none;
 }
 
 .event_actions .steps {
@@ -112,4 +125,5 @@
 
 .event_actions .steps:hover {
 	background: url(../img/action/steps-hover.png) no-repeat;
+	text-decoration: none;
 }
