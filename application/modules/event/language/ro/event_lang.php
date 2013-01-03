@@ -16,6 +16,7 @@ $lang['table_status']='Status';
 $lang['table_place']='Place';
 $lang['table_id']='Id';
 $lang['table_actions']='Actions';
+$lang['table_type']='Type';
 
 $lang['status_new']='New event';
 $lang['status_running']='Running event';
