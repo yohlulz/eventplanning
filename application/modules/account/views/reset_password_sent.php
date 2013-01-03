@@ -53,7 +53,7 @@
 			<!-- contact -->
 			<div class="contact">
 				<h2>Contact</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at lobortis mauris. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.</p>
+				        <p><?php echo lang('contact_sidebar_message'); ?></p>
 			</div>
 			<!-- end contact -->
 <!-- ====================================================================================== -->
