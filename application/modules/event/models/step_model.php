@@ -25,7 +25,7 @@ class Step_model extends CI_Model {
 		return $step->terminated==1;
 	}
 	
-	function getByType($entryId,$type=''){
+	function getByType($entryId,$type){
 		return $this->db->get_where('event_step',array('entry_id' => $entryId, 'type' => $type))->result();
 	}
 }
