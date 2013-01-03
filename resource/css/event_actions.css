@@ -105,3 +105,11 @@
 .event_actions .confirm-step:hover {
 	background: url(../img/action/confirm-step.png) no-repeat;
 }
+
+.event_actions .steps {
+	background: url(../img/action/steps.png) no-repeat;
+}
+
+.event_actions .steps:hover {
+	background: url(../img/action/steps-hover.png) no-repeat;
+}
