@@ -5,7 +5,7 @@
 | Global
 |--------------------------------------------------------------------------
 */
-$config['ssl_enabled'] 							= TRUE;
+$config['ssl_enabled'] 							= FALSE;
 
 		
 /* End of file event.php */
