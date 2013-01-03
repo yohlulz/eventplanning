@@ -101,7 +101,7 @@
       <!-- contact -->
       <div class="contact">
         <h2>Contact</h2>
-        <p>Ne puteti contacta folosind formularul din coltul dreapta sus. Asteptam cu nerabdare sugestiile dumneavoastra.</p>
+        <p><?php echo lang('contact_sidebar_message'); ?></p>
       </div>
       <!-- end contact -->
 <!-- ====================================================================================== -->
