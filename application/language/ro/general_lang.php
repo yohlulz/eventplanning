@@ -24,6 +24,7 @@ $lang['rss_site_description']					= 'Ceva povesti';
 $lang['event_desc']								= 'Descriere eveniment';
 $lang['notice']									= 'Notificare';
 $lang['not_logged']								= 'Nu sunteti autentificat.<br> Logati-va pentru a putea continua.';
+$lang['contact_sidebar_message']				= 'Ne puteti contacta folosind formularul din coltul dreapta sus. Asteptam cu nerabdare sugestiile dumneavoastra.';
 
 /* End of file general_lang.php */
-/* Location: ./application/language/english/general_lang.php */
+/* Location: ./application/language/ro/general_lang.php */
