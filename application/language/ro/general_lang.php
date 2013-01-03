@@ -33,6 +33,7 @@ $lang['welcome_message']						= '<h2>Bun venit</h2>
 											          <li> cu raport calitate pret excelent</li>
 											          </ul></p>';
 $lang['upcoming_event']							= 'Upcoming events';
+$lang['public_gallery']							= 'Public Gallery';
 
 /* End of file general_lang.php */
 /* Location: ./application/language/ro/general_lang.php */
