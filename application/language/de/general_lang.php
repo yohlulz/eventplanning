@@ -34,6 +34,7 @@ $lang['welcome_message']						= '<h2>Bun venit</h2>
 											          </ul></p>';
 $lang['upcoming_event']							= 'Upcoming events';
 $lang['public_gallery']							= 'Public Gallery';
+$lang['who_are_we']								= 'Who are we';
 
 /* End of file general_lang.php */
 /* Location: ./application/language/de/general_lang.php */
