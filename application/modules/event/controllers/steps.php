@@ -87,6 +87,10 @@ class Steps extends CI_Controller {
 			$tmpId = $this->step->getById($eventId)->entry_id;
 			setCart(true);	
 		}
+		if( $what === 'planner') {
+			$tmpId = $this->step->getById($eventId)->entry_id;
+			setCart(false);
+		}
 		$eventEntry = $this->event_model->getById($tmpId);
 		$type = $eventEntry->type;
 		if($eventEntry->status === 'finished') {

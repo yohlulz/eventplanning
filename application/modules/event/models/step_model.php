@@ -49,7 +49,7 @@ class Step_model extends CI_Model {
 			$result.='<li class="confirm-step" id='.$step->id.' title="'.lang("notification_finished").'"></li>';
 		}
 		if($step->status != 'not_started' && $step->status != 'over') {
-			$result.='<li class="planner" id='.$step->id.' title="'.lang("notification_planner").'"></li>';
+			$result.='<li id='.$step->id.' title="'.lang("notification_planner").'">'.anchor('event/steps/details/planner/'.$step->id.'#start_step','&nbsp;','class="planner"').'</li>';
 		}
 		$result.= '</div>';
 		return $result;
@@ -75,8 +75,11 @@ class Step_model extends CI_Model {
 			
 			$result.='<div id="gmapSearchAddress1"></div>';
 		}else
-		if($type === 'custom' || $type === 'planner') {
-			//TODO
+		if($type === 'custom') {
+			$result.='<div class="welcome">';
+			$result.= '<iframe src="https://www.google.com/calendar/embed?height=400&amp;wkst=2&amp;bgcolor=%23FFFFFF&amp;src=eventplanning.uk.to%40gmail.com&amp;color=%232F6309&amp;ctz=Europe%2FBucharest" style=" border-width:0 " width="100%" height="400" frameborder="0" scrolling="no"></iframe>
+			<iframe src="https://docs.google.com/spreadsheet/embeddedform?formkey=dHc0NktlZkQydVlJN0w5REc5RVEzZEE6MQ" width="100%" height="924" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>';
+			$result.='</div>';
 		}
 		else { //every other type -> photo gallery
 			$entries = $this->db->query('SELECT id FROM event_step WHERE `entry_id` ='.$step->entry_id)->result();
