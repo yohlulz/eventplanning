@@ -234,43 +234,43 @@ tr.even.gradeU td.sorting_3 {
 
 /* Row Highight */
 
-#dataTable1 tbody tr.even:hover, #dataTable1 tbody tr.even td.highlighted {
+#dataTable1 tbody tr.even:hover, #dataTable1 tbody tr.even td.highlighted,#dataTable2 tbody tr.even:hover, #dataTable2 tbody tr.even td.highlighted {
 	background-color: #ECFFB3;
 }
 
-#dataTable1 tbody tr.odd:hover, #dataTable1 tbody tr.odd td.highlighted {
+#dataTable1 tbody tr.odd:hover, #dataTable1 tbody tr.odd td.highlighted,#dataTable2 tbody tr.odd:hover, #dataTable2 tbody tr.odd td.highlighted {
 	background-color: #E6FF99;
 }
 
-#dataTable1 tr.even:hover {
+#dataTable1 tr.even:hover, #dataTable2 tr.even:hover {
 	background-color: #ECFFB3;
 }
 
-#dataTable1 tr.even:hover td.sorting_1 {
+#dataTable1 tr.even:hover td.sorting_1, #dataTable2 tr.even:hover td.sorting_1 {
 	background-color: #DDFF75;
 }
 
-#dataTable1 tr.even:hover td.sorting_2 {
+#dataTable1 tr.even:hover td.sorting_2, #dataTable2 tr.even:hover td.sorting_2 {
 	background-color: #E7FF9E;
 }
 
-#dataTable1 tr.even:hover td.sorting_3 {
+#dataTable1 tr.even:hover td.sorting_3, #dataTable2 tr.even:hover td.sorting_3 {
 	background-color: #E2FF89;
 }
 
-#dataTable1 tr.odd:hover {
+#dataTable1 tr.odd:hover, #dataTable2 tr.odd:hover {
 	background-color: #E6FF99;
 }
 
-#dataTable1 tr.odd:hover td.sorting_1 {
+#dataTable1 tr.odd:hover td.sorting_1, #dataTable2 tr.odd:hover td.sorting_1 {
 	background-color: #D6FF5C;
 }
 
-#dataTable1 tr.odd:hover td.sorting_2 {
+#dataTable1 tr.odd:hover td.sorting_2, #dataTable2 tr.odd:hover td.sorting_2 {
 	background-color: #E0FF84;
 }
 
-#dataTable1 tr.odd:hover td.sorting_3 {
+#dataTable1 tr.odd:hover td.sorting_3, #dataTable2 tr.odd:hover td.sorting_3 {
 	background-color: #DBFF70;
 }
 /* ============== */

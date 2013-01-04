@@ -700,6 +700,7 @@ h1#logo a:hover {
     position: absolute;
     width: 284px;
     margin-left: -175px;
+    z-index: 5;
 }
 
 #navigation .events_submenu a,#navigation .service_submenu a {
