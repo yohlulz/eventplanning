@@ -264,7 +264,7 @@ class Event_model extends CI_Model {
 		}
 		if ($what === 'planner') {
 			$result.= $this->getSteps($this->step->getById($id)->entry_id);
-			$result.='<div class="welcome"><h2>Calendar</h2><div class="cl">&nbsp;</div>';
+			$result.='<div class="welcome" id="start_step"><h2>Calendar</h2><div class="cl">&nbsp;</div>';
 			$result.= '<iframe src="https://www.google.com/calendar/embed?height=400&amp;wkst=2&amp;bgcolor=%23FFFFFF&amp;src=eventplanning.uk.to%40gmail.com&amp;color=%232F6309&amp;ctz=Europe%2FBucharest" style=" border-width:0 " width="100%" height="400" frameborder="0" scrolling="no"></iframe>
 			<div class="cl">&nbsp;</div>
 			<h2>Contact</h2>
