@@ -16,11 +16,13 @@ class Steps extends CI_Controller {
 		$this->load->language(array('general', 'event/event','event/event_desc'));
 		$this->load->model('gallery_model', 'gallery');
 		$this->load->model('feed_post_model', 'posts');
-		$this->load->model('slider_model', 'slider');
+		$this->load->model('slider_model', 'slider');		
 	}
 
 	function index($type,$what='headings',$gmap='nothing'){
-		
+		if(!isset($type)) {
+			redirect(site_url());
+		}
 		maintain_ssl($this->config->item("ssl_enabled"));	
 		if ($this->authentication->is_signed_in())
 		{
@@ -40,7 +42,7 @@ class Steps extends CI_Controller {
 		}
 		else{
 			if($what==='edit' || $what==='history'){
-				redirect('event/steps/index/'.$type.'/'.$what);
+				redirect('event/steps/index/'.$type);
 			}
 			else{
 				$data['page_info'].='<div class="welcome">
@@ -70,9 +72,38 @@ class Steps extends CI_Controller {
 		}
 	}
 	
-	function details($type,$current,$eventId){
+	function history($type,$current,$eventId){
 		//TODO
 		echo 'to be continued';
+	}
+	
+	function details($what, $eventId, $gmap='nothing') {
+		$eventEntry = $this->event_model->getById($eventId);
+		$type = $eventEntry->type;
+		maintain_ssl($this->config->item("ssl_enabled"));	
+		if ($this->authentication->is_signed_in())
+		{
+			$data['account'] = $this->account_model->get_by_id($this->session->userdata('account_id'));
+		}
+		setCart(false);
+		$data['cart']=getCart();
+		$data['submenus']=getSubmenus();
+		$data['items']=$this->posts->get_site_posts(MEDIUM_LOAD_ITEMS);
+		$data['slider']=$this->slider->getSliders(MEDIUM_LOAD_ITEMS);
+		$data['page_info']='<div class="welcome">
+								<h2>'.lang('event_desc').'</h2>
+								<p>'.lang('event_desc_'.$type).'</p>
+							</div>';
+		if($this->authentication->is_signed_in()){
+			$data['page_info'].=$this->event_model->getEvent('edit',$type,$this->session->userdata('account_id'),$gmap,true,getCart(),'details/'.$what);
+			$data['page_info'].=$this->event_model->getDetails($eventId, $what);
+		}
+		else{
+			redirect('event/steps/index/'.$type);
+		}
+		$this->load->view('header');
+		$this->load->view('event/events_ask_steps', isset($data) ? $data : NULL);
+		$this->load->view('footer');
 	}
 }
 

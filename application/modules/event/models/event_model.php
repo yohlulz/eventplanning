@@ -2,8 +2,6 @@
 
 class Event_model extends CI_Model {
 		
-	private $steps;
-	private $index;
 		
 	function __construct()
     {
@@ -11,8 +9,6 @@ class Event_model extends CI_Model {
         parent::__construct();
 		$this->load->model('event/step_model', 'step');
 		$this->load->model('gallery_model', 'gallery');
-		$this->steps=array();
-		$this->index=-1;
     }
 	
 /*	
@@ -58,7 +54,7 @@ class Event_model extends CI_Model {
 		}
 	}*/
 	
-	public function getEvent($what,$type,$userId,$gmap='nothing',$param1=false,$param2=false){
+	public function getEvent($what,$type,$userId,$gmap='nothing',$param1=false,$param2=false,$prefix='index'){
 		$current=$what==='headings'?'nothing':$what;
 		$CI=&get_instance();
 		$data['current']=$current;
@@ -113,7 +109,7 @@ class Event_model extends CI_Model {
 					}
 					$tmpId=$event->id;
 					if($what=='history'){
-						$tmpId=anchor('event/steps/details/'.$type.'/'.$current.'/'.$event->id,$event->id,'title="'.lang('event_history_details').'"');
+						$tmpId=anchor('event/steps/history/'.$type.'/'.$current.'/'.$event->id,$event->id,'title="'.lang('event_history_details').'"');
 					}
 
 					$result.='	<tr class='.$grade.'>
@@ -126,9 +122,14 @@ class Event_model extends CI_Model {
 					if($gmap!='nothing'){
 						$tmp_rs='clicked';
 					}
+					$url = site_url('event/steps/'.$prefix.'/'.$type.'/'.$what);
+					if($prefix != 'index') {
+						//ciobaneste style
+						$url = site_url('event/steps/'.$prefix.'/'.$event->id);
+					}
 					$result.='<td class="gmap-icon-container center1"> <div id="gmap-container-td-id'.$count.'" class="center1 table_gmap_icon '.$tmp_rs.'" title="'.$place->name.'" url="'.
-									site_url('event/steps/index/'.$type.'/'.$what.'/'.$count).'#main_menu" url_clicked="'.
-									site_url('event/steps/index/'.$type.'/'.$what).'#main_menu"></div>';
+									$url.'/'.$count.'#main_menu" url_clicked="'.
+									$url.'#main_menu"></div>';
 					if($gmap==$count){
 						$result.=$this->getGmapSubmenu($event->place);
 					}
@@ -138,7 +139,7 @@ class Event_model extends CI_Model {
 					$result.='<td class="center1"></td>';
 				}
 				$result.='<td class="center1 status_'.$event->status.'">'.lang('status_'.$event->status).'</td>';	
-				$result.='<td>'.$this->getActionsForEvent($type,$event->id).'</td>';
+				$result.='<td>'.$this->getActionsForEvent($type,$event->id, $what).'</td>';
 				$result.='</tr>';
 				$count++;
 			}
@@ -151,17 +152,23 @@ class Event_model extends CI_Model {
 		return $result;
 	}
 
-	private function getActionsForEvent($type,$eventId){
+	private function getActionsForEvent($type, $eventId, $what){
+		$event = $this->getById($eventId);
+		$steps = $this->step->getByType($eventId);
+		$warning = false;
+		foreach ($steps as $step) {
+			if($step->status === 'late' || $step->status === 'trouble' || $step->status === 'warning') {
+				$warning = true;
+				break;
+			}			
+		}
 		$result='<ul class="event_actions">';
-		
-		$result.='<li class="warning" id="'.$eventId.'" title="Warning"></li>';
-		$result.='<li class="calendar" id="'.$eventId.'" title="Calendar"></li>';
-		$result.='<li class="status-late" id="'.$eventId.'" title="Status late"></li>';
-		$result.='<li class="planner" id="'.$eventId.'" title="Planner"></li>';
-		$result.='<li class="add-step" id="'.$eventId.'" title="Stg"></li>';
-		$result.='<li class="delete-step" id="'.$eventId.'" title="Stg"></li>';
-		$result.='<li class="confirm-step" id="'.$eventId.'" title="Stg"></li>';
-		
+		if ($warning) {
+			$result.='<li class="warning" id="'.$eventId.'" title="'.lang('notification_status_warning').'"></li>';
+		}	
+		if($event->status === 'new' || $event->status === 'running') {
+			$result.='<li id="'.$eventId.'" title="'.lang('notification_steps').'">'.anchor('event/steps/details/steps/'.$eventId.'#main_menu','&nbsp;', 'class="steps"').'</li>';
+		}		
 		$result.='</ul>';
 		return $result;
 	}
@@ -232,9 +239,7 @@ class Event_model extends CI_Model {
 	}
 	
 	private function addStep($entryId,$stepType){
-		$step_id=$this->step->create($entryId,$stepType);
-		$steps[]=$this->step->getById($step_id);
-		return $step_id;
+		$this->step->create($entryId,$stepType);
 	}
 
 	public function getById($id){
@@ -244,17 +249,62 @@ class Event_model extends CI_Model {
 	public function getByType($userId,$type){
 		return $this->db->get_where('event_entry',array('user_id' => $userId, 'type' => $type))->result();
 	}
-	
-	public function save(){
-		//TODO
-	}
-	
-	private function persist(){
-		//TODO
-	}
 
-	public function renderSteps(){
-		//TODO
+	public function getDetails($eventId, $what) {
+		$result = '';
+		if($what === 'steps') {
+			$result.= $this->getSteps($eventId);
+		}
+		return $result;
+	}
+	
+	
+	private function getSteps($eventId) {
+		$steps = $this->step->getByType($eventId);
+		$result = '';
+		$result.= '<div class="welcome">
+					<h2>'.lang('notification_steps').'</h2>';
+		$headers='<tr>
+					<th>'.lang('table_index').'</th>
+					<th>'.lang('table_id').'</th>
+					<th>'.lang('table_date').'</th>
+					<th>'.lang('table_sum').'</th>
+					<th>'.lang('table_type').'</th>
+					<th>'.lang('table_status').'</th>
+					<th>'.lang('table_actions').'</th>
+				</tr>';
+		$result.='<table cellpadding="0" cellspacing="0" border="0" class="display" id="dataTable2">
+					<thead>'.$headers.'</thead><tbody>';
+		$count = 0;
+		$size = count($steps);
+		foreach($steps as $step) {
+			$count ++;
+			$grade='gradeU';
+					switch($step->status){
+						case 'not_started':
+							$grade='gradeA';
+							break;
+						case 'running':
+							$grade='gradeC';
+							break;
+						case 'trouble':
+							$grade='gradeX';
+							break;
+					}
+			$result.='<tr class="'.$grade.'">';
+			$result.='	<td class="center1">'.$count.'</td>
+						<td class="center1">'.$step->id.'</td>
+						<td class="center1">'.$step->due_date.'</td>
+						<td class="center1">'.$step->cost.'</td>
+						<td class="center1 status_new">'.$step->type.'</td>
+						<td class="center1 status_running">'.$step->status.'</td>
+						<td class="center1">'.$this->step->getActionsForStep($steps,$count-1,$size).'</td>';
+			$result.='</tr>';
+		}					
+		$result.='</tbody><tfoot>'.$headers.'</tfoot></table>';		
+		$result.='<div class="cl">&nbsp;</div>
+					</div>';
+		return $result;
 	}
 }
 
