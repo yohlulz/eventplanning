@@ -49,19 +49,24 @@ class Gallery_model extends CI_Model {
 	}
 	
 	
-	function getGalleries($limit=NULL,$type='',$cart=false){
-		$entries=$this->getEntries($limit,$type);
+	function getGalleries($limit=NULL,$type='',$cart=false,$step_type='',$index=0){
+		$entries=$this->getEntries($limit,$type,$step_type);
 		$result='';
 		foreach ($entries as $entry) {
 			if($entry->picture==1){
-				$pictures=$this->getPictures($entry->path);
+				$pictures=$this->getPictures($entry->path.$step_type);
 				$havePictures=count($pictures)>0;
 				if(!$havePictures){
 					continue;
 				}
+				if($index > 0) {
+					$news_date = '<span class="news-pointer">'.$index.'</span>';
+				}
+				else {
+					$news_date = '<span class="news-pointer-date"><b>'.$entry->date_month.'</b> <i>'.$entry->year.'</i></span>';
+				}
 				$result.='
-					<div class="news-item">
-						<span class="news-pointer-date"><b>'.$entry->date_month.'</b> <i>'.$entry->year.'</i></span>
+					<div class="news-item">'.$news_date.'
 						<div class="news-body">
 							<h3>'.$entry->title.'</h3>
 							<div class="cl">&nbsp;</div>
@@ -127,10 +132,10 @@ class Gallery_model extends CI_Model {
 		return $result;
 	}
 	
-	private function getEntries($limit = NULL,$type='')
+	private function getEntries($limit = NULL,$key='event_type',$type='')
 	{
 		if($type!=''){
-			$this->db->where('event_type',$type);
+			$this->db->where($key,$type);
 		}
 		return $this->db->get('gallery', $limit)->result();
 	}

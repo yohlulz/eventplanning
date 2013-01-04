@@ -6,6 +6,8 @@ class Step_model extends CI_Model {
     {
         // Call the Model constructor
         parent::__construct();
+		$this->load->model('gallery_model', 'gallery');
+		
     }
 	
 	function create($entryId,$type){
@@ -72,8 +74,25 @@ class Step_model extends CI_Model {
 			';
 			
 			$result.='<div id="gmapSearchAddress1"></div>';
+		}else
+		if($type === 'custom' || $type === 'planner') {
+			//TODO
 		}
-		
+		else { //every other type -> photo gallery
+			$entries = $this->db->query('SELECT id FROM event_step WHERE `entry_id` ='.$step->entry_id)->result();
+			$index = 0;
+			foreach ($entries as $entry) {
+				$index ++;
+				if($entry->id == $step->id) {
+					break;
+				}
+			}
+			$result.= $this->gallery->getGalleries(NULL,'step_type',true,$type,$index);
+			$result.='<form method="POST" action="'.site_url('event/steps/submit_form').'" id="submit_add_step" style="display:none;">
+						<input type="hidden" name="id" value="'.$id.'">
+						<input type="hidden" name="status" value="running">
+					</form>';
+		}		
 		return $result;
 	}
 }

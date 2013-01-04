@@ -89,6 +89,9 @@ class Steps extends CI_Controller {
 		}
 		$eventEntry = $this->event_model->getById($tmpId);
 		$type = $eventEntry->type;
+		if($eventEntry->status === 'finished') {
+			redirect('event/steps/index/'.$type.'/edit#main_menu');
+		}
 		maintain_ssl($this->config->item("ssl_enabled"));	
 		if ($this->authentication->is_signed_in())
 		{
@@ -134,8 +137,15 @@ class Steps extends CI_Controller {
 			$this->db->insert('event_place', array('name' => $postData['name'],'address' => $postData['address']));
 			$place = $this->db->insert_id();
 			$this->event_model->setValue('place',$place,$step->entry_id);
-			$this->event_model->setValue('status','running',$step->entry_id);
 			$this->step->setValue('status','over',$step->id);
+			redirect('event/steps/details/steps/'.$step->entry_id);
+		}
+		else {
+			foreach ($postData as $key => $value) {
+				if($key != 'id') {
+					$this->step->setValue($key,$value,$step->id);
+				}
+			}
 			redirect('event/steps/details/steps/'.$step->entry_id);
 		}
 	}

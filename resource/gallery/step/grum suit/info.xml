@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<gallery>
+	<item>
+		<path>1.jpg</path>
+		<thumb>thumbs/t1.jpg</thumb>
+		<title>Picture 1</title>
+		<description>Picture 1 desc</description>
+	</item>
+	<item>
+		<path>1.jpg</path>
+		<thumb>thumbs/t1.jpg</thumb>
+		<title>Picture 1</title>
+		<description>Picture 1 desc</description>
+	</item>
+	<item>
+		<path>1.jpg</path>
+		<thumb>thumbs/t1.jpg</thumb>
+		<title>Picture 1</title>
+		<description>Picture 1 desc</description>
+	</item>
+	<item>
+		<path>1.jpg</path>
+		<thumb>thumbs/t1.jpg</thumb>
+		<title>Picture 1</title>
+		<description>Picture 1 desc</description>
+	</item>
+	<item>
+		<path>1.jpg</path>
+		<thumb>thumbs/t1.jpg</thumb>
+		<title>Picture 1</title>
+		<description>Picture 1 desc</description>
+	</item>
+	<item>
+		<path>1.jpg</path>
+		<thumb>thumbs/t1.jpg</thumb>
+		<title>Picture 1</title>
+		<description>Picture 1 desc</description>
+	</item>
+	<item>
+		<path>1.jpg</path>
+		<thumb>thumbs/t1.jpg</thumb>
+		<title>Picture 1</title>
+		<description>Picture 1 desc</description>
+	</item>
+	<item>
+		<path>1.jpg</path>
+		<thumb>thumbs/t1.jpg</thumb>
+		<title>Picture 1</title>
+		<description>Picture 1 desc</description>
+	</item>
+	<item>
+		<path>1.jpg</path>
+		<thumb>thumbs/t1.jpg</thumb>
+		<title>Picture 1</title>
+		<description>Picture 1 desc</description>
+		<name>Test1</name>
+		<id>test-12</id>
+		<price>6</price>
+		<shipping>2</shipping>
+	</item>
+	<item>	
+		<path>12.jpg</path>
+		<thumb>thumbs/t12.jpg</thumb>
+		<title>Picture 12</title>
+		<description>Picture 12 desc</description>
+		<name>Test2</name>
+		<id>test-13</id>
+		<price>6</price>
+		<shipping>2</shipping>
+	</item>
+	<item>	
+		<path>3.jpg</path>
+		<thumb>thumbs/t3.jpg</thumb>
+		<title>Picture 3</title>
+		<description>Picture 3 desc</description>
+		<name>Test3</name>
+		<id>test-33</id>
+		<price>7</price>
+		<shipping>0</shipping>
+	</item>
+</gallery>
