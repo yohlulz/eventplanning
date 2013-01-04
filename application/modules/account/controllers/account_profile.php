@@ -76,7 +76,7 @@ class Account_profile extends CI_Controller {
 					'overwrite' => true,
 					'upload_path' => FCPATH.'resource/user/profile',
 					'allowed_types' => 'jpg|png|gif',
-					'max_size' => '800' // kilobytes
+					'max_size' => '900' // kilobytes
 				));
 				
 				/// Try to upload the file
@@ -97,10 +97,10 @@ class Account_profile extends CI_Controller {
 						'image_library' => 'gd2',
 						'source_image' => FCPATH.'resource/user/profile/'.$picture['file_name'],
 						'new_image' => FCPATH.'resource/user/profile/pic_'.$picture['raw_name'].'.jpg',
-						'maintain_ratio' => FALSE,
+						'maintain_ratio' => TRUE,
 						'quality' => '100%',
-						'width' => 100,
-						'height' => 100
+						'width' => 350,
+						'height' => 350
 					));
 					
 					// Try resizing the picture
