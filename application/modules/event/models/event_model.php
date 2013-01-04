@@ -163,9 +163,12 @@ class Event_model extends CI_Model {
 			}			
 		}
 		$result='<ul class="event_actions">';
-		if ($warning) {
+		if ($warning && $what != 'history') {
 			$result.='<li class="warning" id="'.$eventId.'" title="'.lang('notification_status_warning').'"></li>';
 		}	
+		if($event->status ==='new') {
+			$result.='<li id="'.$eventId.'" title="'.lang('notification_cancel_event').'">'.anchor('event/steps/action/ccevt/'.$eventId.'/'.$type,'&nbsp;', 'class="delete-step"').'</li>';
+		}
 		if($event->status === 'new' || $event->status === 'running') {
 			$result.='<li id="'.$eventId.'" title="'.lang('notification_steps').'">'.anchor('event/steps/details/steps/'.$eventId.'#main_menu','&nbsp;', 'class="steps"').'</li>';
 		}		
@@ -250,11 +253,27 @@ class Event_model extends CI_Model {
 		return $this->db->get_where('event_entry',array('user_id' => $userId, 'type' => $type))->result();
 	}
 
-	public function getDetails($eventId, $what) {
+	public function getDetails($id, $what) {
 		$result = '';
 		if($what === 'steps') {
-			$result.= $this->getSteps($eventId);
+			$result.= $this->getSteps($id);
 		}
+		if ($what === 'start') {
+			$result.= $this->getSteps($this->step->getById($id)->entry_id);
+			$result.= $this->getNewStepForm($id);
+		}
+		return $result;
+	}
+
+	private function getNewStepForm($stepId) {
+		$step = $this->step->getById($stepId);
+		$result = '<div class="welcome" id="start_step">';
+		$result.= '<h2>'.lang('notification_add_step').'</h2>
+						<div class="cl">&nbsp;</div>';
+		$result.= $this->step->getFormForType($step->id);
+		//TODO add submit buttons etc;
+		
+		$result.= '</div>';
 		return $result;
 	}
 	
@@ -305,6 +324,10 @@ class Event_model extends CI_Model {
 		$result.='<div class="cl">&nbsp;</div>
 					</div>';
 		return $result;
+	}
+
+	public function setValue($key, $value, $id) {
+		$this->db->where('id', $id)->update('event_entry', array($key => $value)); 
 	}
 }
 

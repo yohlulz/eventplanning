@@ -15,6 +15,10 @@ class Step_model extends CI_Model {
 		));
 		return $this->db->insert_id();
 	}
+	
+	function delete($id) {
+		$this->db->delete('event_step', array('id' => $id));
+	}
 
 	public function getById($id){
 		return $this->db->get_where('event_step', array('id' => $id))->row();
@@ -35,9 +39,9 @@ class Step_model extends CI_Model {
 		$result.='<li class="status-'.$step->status.'" id='.$step->id.' title="'.lang("notification_status_".$step->status).'"></li>';
 		if($step->status === 'not_started') {
 			if($size > 1) {
-				$result.='<li class="delete-step" id='.$step->id.' title="'.lang("notification_delete_step").'"></li>';
+				$result.='<li id='.$step->id.' title="'.lang("notification_delete_step").'">'.anchor('event/steps/action/ccst/'.$step->id.'/steps','&nbsp;','class="delete-step"').'</li>';
 			}
-			$result.='<li class="start_step" id='.$step->id.' title="'.lang("notification_start_step").'"></li>';
+			$result.='<li id='.$step->id.' title="'.lang("notification_start_step").'">'.anchor('event/steps/details/start/'.$step->id.'#start_step','&nbsp;','class="start_step"').'</li>';
 		}
 		if($step->status === 'over') {
 			$result.='<li class="confirm-step" id='.$step->id.' title="'.lang("notification_finished").'"></li>';
@@ -46,6 +50,30 @@ class Step_model extends CI_Model {
 			$result.='<li class="planner" id='.$step->id.' title="'.lang("notification_planner").'"></li>';
 		}
 		$result.= '</div>';
+		return $result;
+	}
+	
+	public function setValue($key, $value, $id) {
+		$this->db->where('id', $id)->update('event_step', array($key => $value)); 
+	}
+	
+	public function getFormForType($id) {
+		$step = $this->getById($id);
+		$type = $step->type;
+		$result = '';
+		if($type === 'location') {
+			$result .='<form method="POST" action="'.site_url('event/steps/submit_form').'">
+							Name<br/><input type="text" name="name" size="30"/><br/><br/>
+							Address<br/><input type="text" name="address" size="80" /><br/><br/><br/>
+							<input type="hidden" name="id" value="'.$id.'"/>
+							<input type="hidden" name="status" value="over"/>
+							<input type="submit" value="Save" class="btn"/><br/>
+						</form><br/>
+			';
+			
+			$result.='<div id="gmapSearchAddress1"></div>';
+		}
+		
 		return $result;
 	}
 }

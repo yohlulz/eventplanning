@@ -16,7 +16,8 @@ class Steps extends CI_Controller {
 		$this->load->language(array('general', 'event/event','event/event_desc'));
 		$this->load->model('gallery_model', 'gallery');
 		$this->load->model('feed_post_model', 'posts');
-		$this->load->model('slider_model', 'slider');		
+		$this->load->model('slider_model', 'slider');
+		$this->load->model('event/step_model', 'step');		
 	}
 
 	function index($type,$what='headings',$gmap='nothing'){
@@ -78,14 +79,21 @@ class Steps extends CI_Controller {
 	}
 	
 	function details($what, $eventId, $gmap='nothing') {
-		$eventEntry = $this->event_model->getById($eventId);
+		setCart(false);
+		if($what === 'steps') {
+			$tmpId = $eventId;
+		}
+		if($what === 'start') {
+			$tmpId = $this->step->getById($eventId)->entry_id;
+			setCart(true);	
+		}
+		$eventEntry = $this->event_model->getById($tmpId);
 		$type = $eventEntry->type;
 		maintain_ssl($this->config->item("ssl_enabled"));	
 		if ($this->authentication->is_signed_in())
 		{
 			$data['account'] = $this->account_model->get_by_id($this->session->userdata('account_id'));
 		}
-		setCart(false);
 		$data['cart']=getCart();
 		$data['submenus']=getSubmenus();
 		$data['items']=$this->posts->get_site_posts(MEDIUM_LOAD_ITEMS);
@@ -104,6 +112,32 @@ class Steps extends CI_Controller {
 		$this->load->view('header');
 		$this->load->view('event/events_ask_steps', isset($data) ? $data : NULL);
 		$this->load->view('footer');
+	}
+
+	function action($what, $id, $return) {
+		if ($what === 'ccst') {//cancel step
+			$eventId = $this->step->getById($id)->entry_id;
+			$this->step->delete($id);
+			redirect('event/steps/details/'.$return.'/'.$eventId.'#main_menu');
+		}
+		if ($what === 'ccevt') {//cancel event
+			$this->event_model->setValue('status', 'canceled', $id);
+			redirect('event/steps/index/'.$return.'/edit#main_menu');
+		}
+	}
+	
+	function submit_form() {
+		$postData = $_POST;
+		$step = $this->step->getById($postData['id']);
+		if($step->type === 'location') {
+			//ciobaneala style
+			$this->db->insert('event_place', array('name' => $postData['name'],'address' => $postData['address']));
+			$place = $this->db->insert_id();
+			$this->event_model->setValue('place',$place,$step->entry_id);
+			$this->event_model->setValue('status','running',$step->entry_id);
+			$this->step->setValue('status','over',$step->id);
+			redirect('event/steps/details/steps/'.$step->entry_id);
+		}
 	}
 }
 
