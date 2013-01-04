@@ -73,14 +73,9 @@ class Steps extends CI_Controller {
 		}
 	}
 	
-	function history($type,$current,$eventId){
-		//TODO
-		echo 'to be continued';
-	}
-	
 	function details($what, $eventId, $gmap='nothing') {
 		setCart(false);
-		if($what === 'steps') {
+		if($what === 'steps' || $what === 'history') {
 			$tmpId = $eventId;
 		}
 		if($what === 'start') {
@@ -93,9 +88,6 @@ class Steps extends CI_Controller {
 		}
 		$eventEntry = $this->event_model->getById($tmpId);
 		$type = $eventEntry->type;
-		if($eventEntry->status === 'finished') {
-			redirect('event/steps/index/'.$type.'/edit#main_menu');
-		}
 		maintain_ssl($this->config->item("ssl_enabled"));	
 		if ($this->authentication->is_signed_in())
 		{
@@ -110,7 +102,7 @@ class Steps extends CI_Controller {
 								<p>'.lang('event_desc_'.$type).'</p>
 							</div>';
 		if($this->authentication->is_signed_in()){
-			$data['page_info'].=$this->event_model->getEvent('edit',$type,$this->session->userdata('account_id'),$gmap,true,getCart(),'details/'.$what);
+			$data['page_info'].=$this->event_model->getEvent($what === 'history'? 'history':'edit',$type,$this->session->userdata('account_id'),$gmap,true,getCart(),'details/'.$what);
 			$data['page_info'].=$this->event_model->getDetails($eventId, $what);
 		}
 		else{

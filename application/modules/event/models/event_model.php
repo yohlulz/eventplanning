@@ -11,49 +11,6 @@ class Event_model extends CI_Model {
 		$this->load->model('gallery_model', 'gallery');
     }
 	
-/*	
-	function nextStep(){
-		if(!$this->steps[$this->index]->isDone()){
-			throw new Exception(lang('step_not_done'));
-		}
-		if($this->isTerminated()){
-			throw new Exception(lang('no_more_steps'));
-		}
-		$this->index++;
-	}
-	
-	function previousStep(){
-		if($this->index==0){
-			throw new Exception(lang('no_more_steps'));
-		}
-		$this->index--;
-	}
-	
-	function isTerminated(){
-		return count($this->steps)==$this->index+1;
-	}
-	
-	function removeCurrentStep(){
-		if($this->steps[$this->index]->isDone()){
-			throw new Exception(lang('step_completed'));
-		}
-		unset($this->steps[$this->index]);
-		$this->steps=array_values($this->steps);
-		if($this->index==count($this->steps)){
-			$this->index--;
-		}
-	}
-	
-	function cancelAllRemaining(){
-		$this->index=0;
-		foreach ($this->steps as $step) {
-			if(!$step->isDone()){
-				$this->removeCurrentStep();
-			}
-			$this->index++;
-		}
-	}*/
-	
 	public function getEvent($what,$type,$userId,$gmap='nothing',$param1=false,$param2=false,$prefix='index'){
 		$current=$what==='headings'?'nothing':$what;
 		$CI=&get_instance();
@@ -108,9 +65,9 @@ class Event_model extends CI_Model {
 							break;
 					}
 					$tmpId=$event->id;
-					if($what=='history'){
-						$tmpId=anchor('event/steps/history/'.$type.'/'.$current.'/'.$event->id,$event->id,'title="'.lang('event_history_details').'"');
-					}
+//					if($what=='history'){
+//						$tmpId=anchor('event/steps/history/'.$type.'/'.$current.'/'.$event->id,$event->id,'title="'.lang('event_history_details').'"');
+//					}
 
 					$result.='	<tr class='.$grade.'>
 							<td class="center1">'.$count.'</td>
@@ -169,9 +126,7 @@ class Event_model extends CI_Model {
 		if($event->status ==='new') {
 			$result.='<li id="'.$eventId.'" title="'.lang('notification_cancel_event').'">'.anchor('event/steps/action/ccevt/'.$eventId.'/'.$type,'&nbsp;', 'class="delete-step"').'</li>';
 		}
-		if($event->status === 'new' || $event->status === 'running') {
-			$result.='<li id="'.$eventId.'" title="'.lang('notification_steps').'">'.anchor('event/steps/details/steps/'.$eventId.'#main_menu','&nbsp;', 'class="steps"').'</li>';
-		}		
+		$result.='<li id="'.$eventId.'" title="'.lang('notification_steps').'">'.anchor('event/steps/details/'.($what==='history'?'history':'steps').'/'.$eventId.'#main_menu','&nbsp;', 'class="steps"').'</li>';
 		$result.='</ul>';
 		return $result;
 	}
@@ -255,7 +210,7 @@ class Event_model extends CI_Model {
 
 	public function getDetails($id, $what) {
 		$result = '';
-		if($what === 'steps') {
+		if($what === 'steps' || $what === 'history') {
 			$result.= $this->getSteps($id);
 		}
 		if ($what === 'start') {
