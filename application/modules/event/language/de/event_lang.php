@@ -38,5 +38,6 @@ $lang['notification_status_trouble']='There are some problems that need to be so
 $lang['notification_status_over']=$lang['status_finished'];
 $lang['notification_status_cart']='View cost details for each step';
 $lang['notification_finished']='Step is finished';
+$lang['notification_cancel_event']='Cancel event';
 
 ?>
