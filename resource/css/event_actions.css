@@ -127,3 +127,12 @@
 	background: url(../img/action/steps-hover.png) no-repeat;
 	text-decoration: none;
 }
+
+.event_actions .start_step:hover {
+	background: url(../img/action/play.png) no-repeat;
+	text-decoration: none;
+}
+
+.event_actions .start_step {
+	background: url(../img/action/play.png) no-repeat;
+}
