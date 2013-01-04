@@ -34,6 +34,7 @@
 	<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
 	<script src="resource/js/jquery-gmap3-4.1/gmap3.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="resource/js/jquery-gmap3-4.1/gmap.js" type="text/javascript" charset="utf-8"></script>
+	<script src="resource/js/jquery-gmap3-4.1/gmap.search.js" type="text/javascript" charset="utf-8"></script>
 	<script src="resource/js/ajaxpaypal-1.1.0/dc.core.1.1.0.min.js" type="text/javascript"></script>  
 	<script src="resource/js/ajaxpaypal-1.1.0/dc.cart.free.min.js" type="text/javascript"></script>      
 	<script src="resource/js/ajaxpaypal-1.1.0/dc.cart.lang.js" type="text/javascript"></script>

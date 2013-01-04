@@ -136,3 +136,8 @@
 .event_actions .start_step {
 	background: url(../img/action/play.png) no-repeat;
 }
+
+#gmapSearchAddress1 {
+	width: 100%;
+	height: 400px;
+}
