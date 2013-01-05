@@ -9,7 +9,7 @@ class Slider_model extends CI_Model {
 		$this->load->model('item_slider_model', 'item');
     }
 	
-	private function getSliderItems($path=''){
+	public function getSliderItems($path=''){
 		if($path==''){
 			return;
 		}
