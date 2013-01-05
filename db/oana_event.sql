@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 13, 2012 at 08:42 PM
+-- Generation Time: Jan 05, 2013 at 03:08 AM
 -- Server version: 5.5.25a
 -- PHP Version: 5.4.4
 
@@ -19,6 +19,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `oana_event`
 --
+
+DELIMITER $$
+--
+-- Procedures
+--
+$$
+
+$$
+
+$$
+
+$$
+
+--
+-- Functions
+--
+$$
+
+$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -38,6 +59,7 @@ CREATE TABLE IF NOT EXISTS `a3m_account` (
   `deletedon` datetime DEFAULT NULL,
   `suspendedon` datetime DEFAULT NULL,
   `role` varchar(50) NOT NULL DEFAULT 'user',
+  `is_public` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`),
@@ -48,9 +70,9 @@ CREATE TABLE IF NOT EXISTS `a3m_account` (
 -- Dumping data for table `a3m_account`
 --
 
-INSERT INTO `a3m_account` (`id`, `username`, `email`, `password`, `createdon`, `verifiedon`, `lastsignedinon`, `resetsenton`, `deletedon`, `suspendedon`, `role`) VALUES
-(1, 'ovidiu', 'ovi_dan89@yahoo.com', NULL, '2012-09-21 23:14:21', NULL, '2012-10-13 18:00:09', NULL, NULL, NULL, 'user'),
-(2, 'user1', 'ovidiu.maja@diana.uk.to', '$2a$08$WW84U7MiGmB9zK0/PmA3VuZYc1TwbLiJDWFp3ZFE9p5/NzkTCf7hW', '2012-10-07 11:34:42', NULL, '2012-10-07 11:37:11', NULL, NULL, NULL, 'user');
+INSERT INTO `a3m_account` (`id`, `username`, `email`, `password`, `createdon`, `verifiedon`, `lastsignedinon`, `resetsenton`, `deletedon`, `suspendedon`, `role`, `is_public`) VALUES
+(1, 'ovidiu', 'ovi_dan89@yahoo.com', NULL, '2012-09-21 23:14:21', NULL, '2012-11-13 14:46:55', NULL, NULL, NULL, 'planner', 1),
+(2, 'user1', 'ovidiu.maja@diana.uk.to', '$2a$08$bczdEp9PVvNGidqI1Ih0n.1tkUxY0Rl1m.tIzwUckXAdqSg5OxMBy', '2012-10-07 11:34:42', NULL, '2012-11-13 14:47:26', NULL, NULL, NULL, 'accounter', 0);
 
 -- --------------------------------------------------------
 
@@ -79,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `a3m_account_details` (
 
 INSERT INTO `a3m_account_details` (`account_id`, `fullname`, `firstname`, `lastname`, `dateofbirth`, `gender`, `postalcode`, `country`, `language`, `timezone`, `picture`) VALUES
 (1, 'Ovidiu Dan Maja', 'Ovidiu', 'Maja', '1989-11-22', 'm', NULL, 'ro', 'ro', 'Europe/Bucharest', 'pic_e4da3b7fbbce2345d7772b0674a318d5.jpg'),
-(2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(2, 'Test User', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pic_c81e728d9d4c2f636f067f89cc14862c.jpg');
 
 -- --------------------------------------------------------
 
@@ -153,7 +175,10 @@ CREATE TABLE IF NOT EXISTS `ci_sessions` (
 --
 
 INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-('ad9633bca97ac32e29da3a03744c929d', '127.0.0.1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/536.11', 1350146396, 'a:3:{s:4:"cart";b:0;s:4:"lang";s:7:"english";s:10:"account_id";s:1:"1";}');
+('250f928000b244bbdf9bb448b5007a7c', '89.136.51.153', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/53', 1357346905, 'a:3:{s:10:"account_id";i:2;s:4:"cart";b:0;s:4:"lang";s:7:"english";}'),
+('728f1f705ff7110fbf850055f9e7e859', '127.0.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:17.0) G', 1357343207, 'a:3:{s:10:"account_id";i:2;s:4:"cart";b:0;s:4:"lang";s:7:"english";}'),
+('8d483a3157d05d1791612781628c4d1b', '89.137.126.248', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.4 ', 1357345746, 'a:3:{s:10:"account_id";i:2;s:4:"cart";b:0;s:4:"lang";s:7:"english";}'),
+('d8b656d6f0f5aae560439f2d1ae6f001', '127.0.0.1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.4 ', 1357344193, 'a:3:{s:4:"cart";b:0;s:4:"lang";s:7:"english";s:10:"account_id";i:2;}');
 
 -- --------------------------------------------------------
 
@@ -174,16 +199,15 @@ CREATE TABLE IF NOT EXISTS `event_entry` (
   KEY `status` (`status`),
   KEY `user_id` (`user_id`),
   KEY `place` (`place`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `event_entry`
 --
 
 INSERT INTO `event_entry` (`id`, `type`, `user_id`, `status`, `submit_date`, `total_cost`, `place`) VALUES
-(2, 'event_celebration_wedding', 1, 'running', '2012-10-12 16:30:47', 0, 2),
-(3, 'event_celebration_wedding', 1, 'finished', '2012-10-12 16:37:41', 0, 1),
-(4, 'event_celebration_wedding', 1, 'new', '2012-10-13 09:31:24', 0, NULL);
+(13, 'event_celebration_wedding', 2, 'running', '2013-01-04 14:46:42', 2, 7),
+(14, 'event_celebration_wedding', 2, 'finished', '2013-01-04 14:46:50', 2, 8);
 
 -- --------------------------------------------------------
 
@@ -196,15 +220,15 @@ CREATE TABLE IF NOT EXISTS `event_place` (
   `address` varchar(200) NOT NULL,
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `event_place`
 --
 
 INSERT INTO `event_place` (`id`, `address`, `name`) VALUES
-(1, 'Iulius Mall, Cluj-Napoca, Cluj, Romania', 'Iulius Mall'),
-(2, 'Bulevardul 21 Decembrie 1989, Cluj-Napoca, Cluj, România', 'Bulevardul 21 Decembrie');
+(7, 'Cluj-Napoca, Cluj, Romania', 'Cluj-Napoca'),
+(8, 'Iulius Mall, Cluj, Romania', 'Iulius Mall');
 
 -- --------------------------------------------------------
 
@@ -240,23 +264,103 @@ CREATE TABLE IF NOT EXISTS `event_step` (
   `type` varchar(50) NOT NULL,
   `cost` float NOT NULL DEFAULT '0',
   `due_date` date DEFAULT NULL,
-  `place` int(11) DEFAULT NULL,
   `terminated` tinyint(1) NOT NULL DEFAULT '0',
+  `status` varchar(100) NOT NULL DEFAULT 'not_started',
   PRIMARY KEY (`id`),
   KEY `entry_id` (`entry_id`),
   KEY `type` (`type`),
-  KEY `place` (`place`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+  KEY `status` (`status`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=47 ;
 
 --
 -- Dumping data for table `event_step`
 --
 
-INSERT INTO `event_step` (`id`, `entry_id`, `reversible`, `type`, `cost`, `due_date`, `place`, `terminated`) VALUES
-(1, 2, 0, 'invitations', 0, NULL, NULL, 0),
-(2, 2, 0, 'wedding rings', 0, NULL, NULL, 0),
-(3, 3, 0, 'invitations', 0, NULL, NULL, 0),
-(4, 4, 0, 'invitations', 0, NULL, NULL, 0);
+INSERT INTO `event_step` (`id`, `entry_id`, `reversible`, `type`, `cost`, `due_date`, `terminated`, `status`) VALUES
+(41, 13, 0, 'church', 0, NULL, 0, 'running'),
+(42, 13, 0, 'invitations', 0, NULL, 0, 'running'),
+(43, 13, 0, 'location', 2, NULL, 1, 'over'),
+(44, 13, 0, 'catering', 0, NULL, 0, 'not_started'),
+(46, 14, 0, 'location', 2, NULL, 1, 'over');
+
+--
+-- Triggers `event_step`
+--
+DROP TRIGGER IF EXISTS `check_event`;
+DELIMITER //
+CREATE TRIGGER `check_event` AFTER UPDATE ON `event_step`
+ FOR EACH ROW if isEventOver(old.entry_id) then
+	call setEntryStatus('finished',old.entry_id);
+        call updateEventCost(old.entry_id);
+elseif isEventStarted(old.entry_id) then
+        call setEntryStatus('running',old.entry_id);
+        call updateEventCost(old.entry_id);
+end if
+//
+DELIMITER ;
+DROP TRIGGER IF EXISTS `check_event_delete`;
+DELIMITER //
+CREATE TRIGGER `check_event_delete` AFTER DELETE ON `event_step`
+ FOR EACH ROW if isEventOver(old.entry_id) then
+	call setEntryStatus('finished',old.entry_id);
+        call updateEventCost(old.entry_id);
+elseif isEventStarted(old.entry_id) then
+        call setEntryStatus('running',old.entry_id);
+        call updateEventCost(old.entry_id);
+end if
+//
+DELIMITER ;
+DROP TRIGGER IF EXISTS `check_terminatd_flag`;
+DELIMITER //
+CREATE TRIGGER `check_terminatd_flag` BEFORE UPDATE ON `event_step`
+ FOR EACH ROW if NEW.`status` like 'over' then
+	set NEW.`terminated` = 1;
+        set new.`cost` = old.`cost` + (select commission from event_step_type where name like new.`type`);
+else
+	set NEW.`terminated` = 0;
+end if
+//
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `event_step_cost_details`
+--
+
+CREATE TABLE IF NOT EXISTS `event_step_cost_details` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `step_id` int(11) NOT NULL,
+  `paypal_transaction_id` varchar(50) NOT NULL,
+  `status` varchar(50) NOT NULL,
+  `amount` float NOT NULL,
+  `transaction_date` date NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `step_id` (`step_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `event_step_status`
+--
+
+CREATE TABLE IF NOT EXISTS `event_step_status` (
+  `name` varchar(100) NOT NULL,
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `event_step_status`
+--
+
+INSERT INTO `event_step_status` (`name`) VALUES
+('late'),
+('not_started'),
+('over'),
+('running'),
+('trouble'),
+('warning');
 
 -- --------------------------------------------------------
 
@@ -275,8 +379,17 @@ CREATE TABLE IF NOT EXISTS `event_step_type` (
 --
 
 INSERT INTO `event_step_type` (`name`, `commission`) VALUES
+('brides dress', 2),
+('cake', 3),
+('catering', 10),
+('church', 17),
 ('custom', 0),
+('decorations', 12),
+('flowers', 15),
+('groom suit', 4),
 ('invitations', 5),
+('location', 2),
+('photographs', 3),
 ('wedding rings', 20);
 
 -- --------------------------------------------------------
@@ -316,14 +429,23 @@ CREATE TABLE IF NOT EXISTS `event_type_available_steps` (
   PRIMARY KEY (`id`),
   KEY `eventName` (`eventName`),
   KEY `stepName` (`stepName`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `event_type_available_steps`
 --
 
 INSERT INTO `event_type_available_steps` (`id`, `eventName`, `stepName`) VALUES
-(1, 'event_celebration_wedding', 'wedding rings');
+(1, 'event_celebration_wedding', 'wedding rings'),
+(2, 'event_celebration_wedding', 'catering'),
+(3, 'event_celebration_wedding', 'flowers'),
+(4, 'event_celebration_wedding', 'brides dress'),
+(5, 'event_celebration_wedding', 'cake'),
+(6, 'event_celebration_wedding', 'church'),
+(7, 'event_celebration_wedding', 'decorations'),
+(8, 'event_celebration_wedding', 'groom suit'),
+(9, 'event_celebration_wedding', 'photographs'),
+(10, 'event_public', 'catering');
 
 -- --------------------------------------------------------
 
@@ -339,14 +461,17 @@ CREATE TABLE IF NOT EXISTS `event_type_default_steps` (
   PRIMARY KEY (`id`),
   KEY `eventName` (`eventName`),
   KEY `stepName` (`stepName`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `event_type_default_steps`
 --
 
 INSERT INTO `event_type_default_steps` (`id`, `eventName`, `stepName`, `implicit`) VALUES
-(1, 'event_celebration_wedding', 'invitations', 1);
+(1, 'event_celebration_wedding', 'invitations', 1),
+(2, 'event_celebration_wedding', 'location', 0),
+(3, 'event_celebration_wedding', 'catering', 0),
+(4, 'event_public', 'location', 1);
 
 -- --------------------------------------------------------
 
@@ -357,24 +482,70 @@ INSERT INTO `event_type_default_steps` (`id`, `eventName`, `stepName`, `implicit
 CREATE TABLE IF NOT EXISTS `gallery` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(50) NOT NULL,
-  `comment` text NOT NULL,
+  `comment` text,
   `path` varchar(50) NOT NULL,
   `picture` tinyint(1) NOT NULL,
   `year` int(4) NOT NULL,
   `date_month` varchar(50) NOT NULL,
-  `event_type` varchar(100) NOT NULL,
+  `event_type` varchar(100) DEFAULT NULL,
+  `step_type` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `event_type` (`event_type`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+  KEY `event_type` (`event_type`),
+  KEY `step_type` (`step_type`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `gallery`
 --
 
-INSERT INTO `gallery` (`id`, `title`, `comment`, `path`, `picture`, `year`, `date_month`, `event_type`) VALUES
-(1, 'Primis in faucibus luctus', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at lobortis mauris. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at lobortis mauris. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at lobortis mauris. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.', 'ysSxxIqKNN0', 0, 2012, '5 Nov', 'event_public'),
-(2, 'Nulla lovortis cubilia', 'Nulla lovortis cubiliaNulla lovortis cubilia\r\nNulla lovortis cubiliaNulla lovortis cubiliaNulla lovortis cubiliavvNulla lovortis cubiliaNulla lovortis cubiliav\r\nNulla lovortis cubiliavvNulla lovortis cubilia\r\nNulla lovortis cubilia', 'gal1', 1, 2012, '6 Nov', 'event_corporate');
+INSERT INTO `gallery` (`id`, `title`, `comment`, `path`, `picture`, `year`, `date_month`, `event_type`, `step_type`) VALUES
+(1, 'Baby Shower Decoration', 'Unique Balloon Decoration for Baby shower event by DreamARK.\n\n\nWe do indoor and outdoor decoration. \nBalloons, drape, lights, foam, Etc!', 'lcSeHRaibg8', 0, 2012, '5 Nov', 'event_celebration_aniversary', NULL),
+(2, 'Team Building', 'Our clients come back to us year after year because they know we deliver creative, motivational and inspirational corporate team building events that leave a lasting positive business impact!\n', 'gal1', 1, 2012, '6 Jul', 'event_corporate', NULL),
+(3, 'Wedding', 'Special cakes', 'gal2', 1, 2013, '2 Nov', 'event_celebration_wedding', NULL),
+(4, 'Artificii Revelion 2013', 'Câteva mii de clujeni și-au urat „La mulți ani” în Piața Avram Iancu la trecerea în anul 2013, închinând un pahar de șampanie și admirând focurile de artificii, a căror durată a fost de aproximativ 20 de minute.\r\n', 'wevT7Re-RiU', 0, 2013, '1 Ian', 'event_public', NULL),
+(5, 'Choose items', '', 'step/', 1, 2013, '1 Ian', NULL, 'invitations'),
+(6, 'Choose items', '', 'step/', 1, 2013, '1 Ian', NULL, 'brides dress'),
+(7, 'Choose items', '', 'step/', 1, 2013, '1 Ian', NULL, 'cake'),
+(8, 'Choose items', '', 'step/', 1, 2013, '1 Ian', NULL, 'catering'),
+(9, 'Choose items', '', 'step/', 1, 2013, '1 Ian', NULL, 'church'),
+(10, 'Choose items', '', 'step/', 1, 2013, '1 Ian', NULL, 'decorations'),
+(11, 'Choose items', '', 'step/', 1, 2013, '1 Ian', NULL, 'flowers'),
+(12, 'Choose items', '', 'step/', 1, 2013, '1 Ian', NULL, 'groom suit'),
+(13, 'Choose items', '', 'step/', 1, 2013, '1 Ian', NULL, 'photographs'),
+(14, 'Choose items', '', 'step/', 1, 2013, '1 Ian', NULL, 'wedding rings');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `plan_request`
+--
+
+CREATE TABLE IF NOT EXISTS `plan_request` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) unsigned NOT NULL,
+  `planner_id` bigint(20) unsigned NOT NULL,
+  `event_id` bigint(20) NOT NULL,
+  `appoint_date` date NOT NULL,
+  `message` text NOT NULL,
+  `completed` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  KEY `planner_id` (`planner_id`),
+  KEY `event_id` (`event_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `public_events`
+--
+CREATE TABLE IF NOT EXISTS `public_events` (
+`id` int(11)
+,`due_date` date
+,`terminated` tinyint(1)
+,`name` varchar(50)
+,`address` varchar(200)
+);
 -- --------------------------------------------------------
 
 --
@@ -101446,17 +101617,21 @@ CREATE TABLE IF NOT EXISTS `rss_posts` (
   `title` varchar(120) NOT NULL,
   `text` text NOT NULL,
   `date_post` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+  `type` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `type` (`type`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `rss_posts`
 --
 
-INSERT INTO `rss_posts` (`id`, `title`, `text`, `date_post`) VALUES
-(1, 'Some great article', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for ''lorem ipsum'' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).', '2009-08-10'),
-(2, 'Another great article', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for ''lorem ipsum'' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).', '2009-08-10'),
-(3, 'News from myfeed', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for ''lorem ipsum'' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).', '2009-08-10');
+INSERT INTO `rss_posts` (`id`, `title`, `text`, `date_post`, `type`) VALUES
+(1, 'Concert Voltaj', 'In data de 31.12.2012 Voltaj va concerta!!!Cei care au ales sa faca Revelionul in Bucuresti ne pot vedea in: - Parcul Sebastian - ora 20:20, - Piata Revolutiei - ora 22:45, - Piata Constitutiei - ora 00:15, - Romexpo - ora 5:15.', '2009-08-10', 'event_celebration_aniversary'),
+(2, 'O lume mai buna Shoebox', 'O initiativa de ajutorare a copiilor orfani, proveniti din familii dezorganizate sau prea sarace ca sa le poate face viata usoara. Macar de Craciun, cand toti copiii primesc cadouri, vrem sa aducem zambetul si pe fetele lor. Suntem la a 6-a editie si va chemam sa aducem bucurie in jurul nostru!', '2009-08-10', 'event_public'),
+(3, 'Deschidere oficiala ', 'Inaugurarea noului sediu a avut loc intr-o atmosfera de neuitat, cand noi am devenit proprii nostri clienti fideli in materie de organizat evenimente. Va asteptam cu drag.', '2009-08-10', 'event_public'),
+(4, 'Olympic Stadium will hold major concerts by July', 'Music promoters are in talks with the managers of the Olympic Stadium to hold music events for 60,000 people at the venue by July this year.\r\n\r\nThe London Legacy Development Corporation (LLDC), which manages the stadium, says it is in talks with various event organisers.', '2013-01-03', 'event_public'),
+(5, 'ÎNVAŢĂ SĂ VORBEŞTI ŞI SĂ PREZINŢI ÎN PUBLIC - Ediţia a III-a', 'Mastermind Communications organizează a treia ediție a Cursului de Vorbire şi Prezentare în Public pe 30-31 ianuarie la Bucureşti. Vom avea şi mai multe exerciţii şi surprize pentru voi. Începem anul cu energie maximă!', '2013-01-04', 'event_corporate');
 
 -- --------------------------------------------------------
 
@@ -101477,7 +101652,25 @@ CREATE TABLE IF NOT EXISTS `slider_entries` (
 --
 
 INSERT INTO `slider_entries` (`id`, `path`, `type`) VALUES
-(1, 'ex1', NULL);
+(1, 'ex2', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_opinions`
+--
+
+CREATE TABLE IF NOT EXISTS `user_opinions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `entry_id` varchar(50) NOT NULL,
+  `post_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `stars` enum('1','2','3','4','5','0') NOT NULL DEFAULT '3',
+  `message` text NOT NULL,
+  `pros` text NOT NULL,
+  `cons` text NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `entry_id` (`entry_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -101499,6 +101692,15 @@ INSERT INTO `user_role` (`id`) VALUES
 ('admin'),
 ('planner'),
 ('user');
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `public_events`
+--
+DROP TABLE IF EXISTS `public_events`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `public_events` AS select `s`.`id` AS `id`,`s`.`due_date` AS `due_date`,`s`.`terminated` AS `terminated`,`p`.`name` AS `name`,`p`.`address` AS `address` from ((`event_entry` `e` join `event_step` `s`) join `event_place` `p`) where ((`e`.`id` = `s`.`entry_id`) and (`e`.`type` like 'event_public') and (`s`.`type` like 'location') and (`e`.`place` = `p`.`id`));
 
 --
 -- Constraints for dumped tables
@@ -101549,7 +101751,13 @@ ALTER TABLE `event_entry`
 ALTER TABLE `event_step`
   ADD CONSTRAINT `event_step_ibfk_2` FOREIGN KEY (`type`) REFERENCES `event_step_type` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `event_step_ibfk_3` FOREIGN KEY (`entry_id`) REFERENCES `event_entry` (`id`),
-  ADD CONSTRAINT `event_step_ibfk_4` FOREIGN KEY (`place`) REFERENCES `event_place` (`id`);
+  ADD CONSTRAINT `event_step_ibfk_5` FOREIGN KEY (`status`) REFERENCES `event_step_status` (`name`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `event_step_cost_details`
+--
+ALTER TABLE `event_step_cost_details`
+  ADD CONSTRAINT `event_step_cost_details_ibfk_1` FOREIGN KEY (`step_id`) REFERENCES `event_step` (`id`);
 
 --
 -- Constraints for table `event_type_available_steps`
@@ -101569,7 +101777,21 @@ ALTER TABLE `event_type_default_steps`
 -- Constraints for table `gallery`
 --
 ALTER TABLE `gallery`
-  ADD CONSTRAINT `gallery_ibfk_1` FOREIGN KEY (`event_type`) REFERENCES `event_type` (`name`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `gallery_ibfk_3` FOREIGN KEY (`event_type`) REFERENCES `event_type` (`name`) ON DELETE SET NULL ON UPDATE SET NULL,
+  ADD CONSTRAINT `gallery_ibfk_5` FOREIGN KEY (`step_type`) REFERENCES `event_step_type` (`name`) ON DELETE SET NULL ON UPDATE SET NULL;
+
+--
+-- Constraints for table `plan_request`
+--
+ALTER TABLE `plan_request`
+  ADD CONSTRAINT `plan_request_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `a3m_account` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `plan_request_ibfk_2` FOREIGN KEY (`planner_id`) REFERENCES `a3m_account` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `rss_posts`
+--
+ALTER TABLE `rss_posts`
+  ADD CONSTRAINT `rss_posts_ibfk_1` FOREIGN KEY (`type`) REFERENCES `event_type` (`name`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `slider_entries`
